@@ -1,0 +1,56 @@
+name: Gathos - Generate Video
+
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: "Video scene description"
+        required: true
+        type: string
+      duration_seconds:
+        description: "Target total video length in seconds"
+        required: false
+        default: "60"
+        type: string
+      style:
+        description: "Optional Gathos style name (Cinematic, Ghibli, Pixar, Anime, ...). Leave blank for none."
+        required: false
+        default: ""
+        type: string
+      generate_audio:
+        description: "Generate AI audio for each clip"
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Generate video
+        env:
+          GATHOS_VIDEO_KEY: ${{ secrets.GATHOS_VIDEO_KEY }}
+          GATHOS_API_URL: ${{ secrets.GATHOS_API_URL }}
+        run: |
+          python scripts/gathos_generate_video.py \
+            --prompt "${{ inputs.prompt }}" \
+            --duration "${{ inputs.duration_seconds }}" \
+            --style "${{ inputs.style }}" \
+            --generate-audio "${{ inputs.generate_audio }}" \
+            --out output.mp4
+
+      - name: Upload video artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gathos-video
+          path: output.mp4
+          retention-days: 14

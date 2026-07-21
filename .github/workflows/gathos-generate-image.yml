@@ -1,0 +1,38 @@
+name: Gathos - Generate Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: "Image description"
+        required: true
+        type: string
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Generate image
+        env:
+          GATHOS_IMAGE_KEY: ${{ secrets.GATHOS_IMAGE_KEY }}
+          GATHOS_API_URL: ${{ secrets.GATHOS_API_URL }}
+        run: |
+          python scripts/gathos_generate_image.py \
+            --prompt "${{ inputs.prompt }}" \
+            --out output.png
+
+      - name: Upload image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gathos-image
+          path: output.png
+          retention-days: 14
