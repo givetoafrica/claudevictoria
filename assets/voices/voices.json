@@ -1,5 +1,5 @@
 {
-  "narrator": "assets/voices/narrator-prof.mp3",
-  "explorer": "assets/voices/explorer-percy.wav",
-  "robot": "assets/voices/robot-sparky.mp3"
+  "narrator": "assets/voices/narrator-percy.wav",
+  "explorer": "assets/voices/explorer-sparky.mp3",
+  "robot": "assets/voices/robot-prof.mp3"
 }
