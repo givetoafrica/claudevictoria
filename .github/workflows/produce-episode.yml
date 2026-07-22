@@ -1,0 +1,62 @@
+name: Produce Episode
+
+on:
+  push:
+    branches:
+      - claude/youtube-channel-analysis-j2tu40
+    paths:
+      - "scripts/produce_episode.py"
+      - "data/episodes/*/segments.json"
+      - ".github/workflows/produce-episode.yml"
+  workflow_dispatch:
+    inputs:
+      episode_dir:
+        description: "Episode directory"
+        required: false
+        default: "data/episodes/ep01-rains-glass-sideways"
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Produce episode
+        env:
+          GATHOS_IMAGE_KEY: ${{ secrets.GATHOS_IMAGE_KEY }}
+          GATHOS_TTS_KEY: ${{ secrets.GATHOS_TTS_KEY }}
+          GATHOS_VIDEO_KEY: ${{ secrets.GATHOS_VIDEO_KEY }}
+          GATHOS_API_URL: ${{ secrets.GATHOS_API_URL }}
+        run: |
+          python scripts/produce_episode.py \
+            --episode-dir "${{ inputs.episode_dir || 'data/episodes/ep01-rains-glass-sideways' }}"
+
+      - name: Commit outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/episodes/*/output/
+          git diff --cached --quiet || git commit -m "Add produced episode output"
+          git pull --rebase origin ${{ github.ref_name }} || true
+          git push
+
+      - name: Upload output artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: episode-output
+          path: data/episodes/*/output/
+          retention-days: 14

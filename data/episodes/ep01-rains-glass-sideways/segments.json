@@ -1,0 +1,88 @@
+{
+  "episode": "ep01-rains-glass-sideways",
+  "title": "The Planet Where It Rains Glass — Sideways!",
+  "channel": "Better Than Fiction",
+  "forbidden_names_in_visuals": ["Juno", "Rex"],
+  "style_suffix": "semi-realistic painterly space illustration, cinematic lighting, awe-inspiring, rich detail, deep-space navy palette with molten-orange accents, no text, no watermark",
+  "voice_hints": {
+    "narrator": ["narrator", "documentary", "warm", "deep", "calm", "storyteller", "male"],
+    "explorer": ["young", "bright", "energetic", "child", "teen", "girl", "boy", "cheerful"],
+    "robot": ["robot", "synthetic", "monotone", "flat", "android", "deadpan", "dry"]
+  },
+  "segments": [
+    {
+      "id": "01_cold_open",
+      "visual": "Slow cinematic push toward a serene deep-blue gas giant planet glowing against black space, its blue surface resolving into horizontal streaks of glowing amber glass shards whipping sideways through cobalt cloud bands",
+      "lines": [
+        {"speaker": "narrator", "text": "This is a real planet. Its sky is a beautiful, calm, ocean blue. Astronauts would cry if they saw it. And if you stepped outside for one second... you would be shredded by a rainstorm of molten glass, moving sideways, at seven times the speed of sound. This is H D one eight nine seven three three b. It is real. And it is better than fiction."}
+      ]
+    },
+    {
+      "id": "02_the_doubt",
+      "visual": "A star map zooming from Earth's night sky into a fox-shaped constellation toward a small orange star with a huge gas giant orbiting extremely close; a curious young explorer with dark curly hair in a white-and-teal spacesuit and a small boxy silver robot with one large round blue eye watch from a stylized observation deck, the robot unimpressed with arms crossed",
+      "lines": [
+        {"speaker": "narrator", "text": "Sixty-four light-years away, in a constellation called the Little Fox, there's a star just a bit smaller and cooler than our Sun. And hugging that star, twenty times closer than Mercury hugs ours, is a giant planet the size of Jupiter."},
+        {"speaker": "robot", "text": "Blue planet. Big deal. Earth is blue. Neptune is blue. Wake me up when something violates the laws of physics."},
+        {"speaker": "explorer", "text": "But that's the thing. It shouldn't be blue at all. It has no oceans. No water. It's a giant ball of gas hotter than a pizza oven. A thousand degrees. So... what's making it blue?"},
+        {"speaker": "narrator", "text": "That question, asked by real scientists staring at real telescope data, is where this story stops being pretty... and starts being terrifying."}
+      ]
+    },
+    {
+      "id": "03_color_that_lied",
+      "visual": "Split composition: Earth's soft blue marble beside a harder cobalt-blue alien gas giant; below them a dive into an alien cloud deck where countless shimmering molten glass droplets glint like billions of tiny lenses catching orange starlight, beautiful and unsettling",
+      "lines": [
+        {"speaker": "narrator", "text": "In twenty thirteen, the Hubble Space Telescope did something never done before. It measured the actual color of a planet outside our solar system. As the planet slipped behind its star, the starlight dimmed, and the blue light dimmed most of all. The missing blue was the planet's own reflected glow. Cobalt blue. The first true color of an alien world. And it looked just like home."},
+        {"speaker": "explorer", "text": "On Earth, blue means water. Blue means life. Blue means... safe."},
+        {"speaker": "narrator", "text": "On this world, blue means something else entirely. At a thousand degrees, water clouds are impossible. These clouds are made of rock, vaporized, then condensed into countless microscopic droplets of silicate. And silicate, when it cools and hardens, has another name you know very well. Glass. The planet is blue because its skies are full of glass, scattering blue light exactly the way our air makes our sky blue."}
+      ]
+    },
+    {
+      "id": "04_wind",
+      "visual": "A dramatic speed-comparison scene: a hurricane swirl, a sleek race car, and a passenger jet racing past glowing scale markers, all dwarfed by a screaming planetary jet stream of luminous atmosphere tearing around a gas giant that has one hemisphere glowing hot toward its orange star and the other in darkness",
+      "lines": [
+        {"speaker": "narrator", "text": "Now add the wind. The strongest hurricane ever recorded on Earth reached about three hundred fifty kilometers per hour. Strong enough to peel roofs off houses. A passenger jet cruises near nine hundred. The winds on this planet have been clocked at eight thousand seven hundred kilometers per hour. That is seven times faster than the speed of sound."},
+        {"speaker": "robot", "text": "Running the numbers. At that speed you could fly from London to New York in under forty minutes. Correction. Pieces of you could."},
+        {"speaker": "narrator", "text": "Why? The planet is gravitationally locked. One side always faces its star, roasting forever, while the other side faces eternal night. All that heat piles up on one side and has nowhere to go. So the atmosphere itself stampedes around the planet, day side to night side, in a permanent, planet-wide jet stream. And it drags the glass clouds with it."}
+      ]
+    },
+    {
+      "id": "05_the_rain",
+      "visual": "Inside the storm: glowing amber glass shards streaking horizontally through towering cobalt-blue cloud canyons, lit by a huge orange star low on the horizon, sheets of luminous sideways rain, terrifying scale and beauty",
+      "lines": [
+        {"speaker": "narrator", "text": "So let's put it together. Skies full of microscopic molten glass. Winds at seven times the speed of sound. On Earth, rain falls down. Here, nothing gets the chance to fall. The glass rain moves sideways, horizontally, in sheets, at two kilometers per second. Standing in those clouds would be like standing inside a sandblaster the size of a planet. Every surface, polished. Every edge, erased."},
+        {"speaker": "explorer", "text": "And from far away... it just looks like a calm blue marble."},
+        {"speaker": "narrator", "text": "The most beautiful thing in the sky, and the most hostile weather we have ever discovered. The universe does not warn you which one it's being."},
+        {"speaker": "robot", "text": "Okay. I'm awake now."}
+      ]
+    },
+    {
+      "id": "06_the_reveal",
+      "visual": "An elegant diagram-style scene: a planet silhouette crossing a bright star, a beam of starlight passing through the thin glowing rim of its atmosphere and splitting into a rainbow spectrum with dark fingerprint lines; a curious young explorer with dark curly hair in a white-and-teal spacesuit traces the spectrum lines in the air while a small boxy silver robot with one large round blue eye projects glowing data from its chest",
+      "lines": [
+        {"speaker": "narrator", "text": "Here's the best part. No spacecraft has ever been there. Everything you just saw, scientists worked out from a single flickering point of light, sixty-four light-years away. When the planet crosses its star, a tiny bit of starlight filters through its atmosphere, and the atmosphere leaves fingerprints in that light. Sodium fingerprints. Glass fingerprints. When they measured the heat racing from the day side to the night side, they clocked the wind. When they watched the blue light vanish behind the star, they found the color."},
+        {"speaker": "explorer", "text": "So it's not a guess. It's a measurement. Detective work, with a telescope."},
+        {"speaker": "narrator", "text": "Every wild thing in this episode was read from starlight, by people on this planet, who have never left it. Fiction needs an author to imagine it. Reality just needs someone to look closely enough."}
+      ]
+    },
+    {
+      "id": "07_fact_stack",
+      "visual": "Three playful vignette panels in space: a birthday cake with planetary orbits spinning rapidly around it; a blue gas giant with cartoonish green stink wisps rising while a small boxy silver robot with one large round blue eye pinches at its face; the same planet trailing a faint glowing comet-like tail of escaping atmosphere",
+      "lines": [
+        {"speaker": "narrator", "text": "Still not convinced this place is showing off? Three more things. All measured. All real. One. A year there, one full trip around its star, lasts just two point two Earth days. You'd have a birthday every other day. Two. In twenty twenty-four, the James Webb Space Telescope smelled it. Hydrogen sulfide. The rotten-egg gas. The glass-storm planet also stinks. Three. Its star is slowly boiling it away. The atmosphere is evaporating into space, thousands of tonnes every second. The planet is beautiful, deadly... and disappearing."}
+      ]
+    },
+    {
+      "id": "08_open_loop",
+      "visual": "The blue gas giant receding into starfield as the camera swings toward a soft pastel-pink fluffy gas giant glowing mysteriously in the distance, deep-space navy background with sparse stars, hopeful and inviting end-card mood",
+      "lines": [
+        {"speaker": "narrator", "text": "So. A planet that disguises a glass hurricane as a calm blue sea. That's our universe, on episode one. Next week: a planet so light it shouldn't be able to exist. A world the size of Jupiter, as fluffy as cotton candy. Not kidding. It's real. And it's better than fiction."},
+        {"speaker": "robot", "text": "A cotton candy planet. Sure. I'll believe that when I..."},
+        {"speaker": "explorer", "text": "See you next week!"}
+      ]
+    }
+  ],
+  "thumbnail": {
+    "prompt": "Cinematic painterly space illustration: a massive cobalt-blue gas giant planet fills the left of frame, its atmosphere streaked with glowing molten-orange glass shards blasting horizontally in sheets, motion-blurred sideways; dramatic rim light from an orange star off-frame; in the lower right, tiny for scale, a curious young explorer with dark curly hair in a white-and-teal spacesuit shields their orange visor beside a small boxy silver robot with one large round blue eye and a bent antenna leaning into the wind; deep-space navy background with sparse stars; awe-inspiring, richly detailed, high contrast, no text, no watermark",
+    "text": "IT RAINS GLASS"
+  }
+}
