@@ -48,6 +48,53 @@ def audio_duration(path):
     return float(out.stdout.strip())
 
 
+def upload_reference_voice(name, path):
+    """POST /tts/voices with a local sample for zero-shot cloning.
+
+    Field names unconfirmed — sends multipart {file} + {name} and parses the
+    voice id defensively, raising with the full response on a miss.
+    """
+    import requests
+    key = os.environ["GATHOS_TTS_KEY"]
+    with open(path, "rb") as f:
+        resp = requests.post(
+            f"{gathos.BASE_URL}/tts/voices",
+            headers={"Authorization": f"Bearer {key}"},
+            data={"name": name},
+            files={"file": (os.path.basename(path), f)},
+            timeout=180,
+        )
+    resp.raise_for_status()
+    data = resp.json()
+    for k in ("voice_id", "id", "voiceId", "name"):
+        if isinstance(data, dict) and data.get(k):
+            return str(data[k])
+    raise gathos.GathosError(
+        f"Voice upload for {name!r} returned no recognizable voice id: {data}")
+
+
+def resolve_voices(repo_root, hints, warnings):
+    """Prefer cloned reference voices from assets/voices/voices.json;
+    fall back to picking from the provider's catalog, then to default."""
+    refs_file = repo_root / "assets" / "voices" / "voices.json"
+    if refs_file.exists():
+        refs = json.loads(refs_file.read_text())
+        picks = {}
+        try:
+            for character, rel_path in refs.items():
+                picks[character] = upload_reference_voice(
+                    f"btf-{character}", repo_root / rel_path)
+            return picks
+        except Exception as e:
+            warnings.append(f"reference voice upload failed ({e}); "
+                            f"falling back to catalog voices")
+    voices = list_voices()
+    if not voices:
+        warnings.append("no voices available; default voice used for all lines")
+        return {}
+    return pick_voices(voices, hints)
+
+
 def list_voices():
     """GET /tts/voices — shape unconfirmed; normalize defensively."""
     import requests
@@ -161,11 +208,8 @@ def main():
 
     log = {"episode": spec["episode"], "voices": {}, "segments": [], "warnings": []}
 
-    voices = list_voices()
-    (out_dir / "voices.json").write_text(json.dumps([v["raw"] for v in voices], indent=2))
-    picks = pick_voices(voices, spec.get("voice_hints", {})) if voices else {}
-    if not voices:
-        log["warnings"].append("voice listing unavailable; default voice used for all lines")
+    repo_root = Path(__file__).resolve().parent.parent
+    picks = resolve_voices(repo_root, spec.get("voice_hints", {}), log["warnings"])
     log["voices"] = picks
     print(f"[voices] picks: {picks}")
 

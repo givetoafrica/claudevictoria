@@ -42,7 +42,7 @@ visual_rules:
   - "Scale shots must include a familiar reference object (Earth, a city, a person) so size reads instantly"
 
 voice:
-  provider: "elevenlabs"
+  provider: "gathos"
   voice_id_map: {}   # TBD — fill before running VO step
 
 script_structure:
