@@ -1,0 +1,70 @@
+# Channel profile: Better Than Fiction
+# Source of truth lives in this repo; copy into the video-factory skill's
+# assets/channel-profiles/ when running the generation pipeline.
+
+channel_name: "Better Than Fiction"
+target_audience: "family co-viewing: curious kids 7+, teens, and their parents (general audience, NOT made-for-kids)"
+format: "both"
+video_length_target: "8-12 minutes flagship; 3-6 minutes event shorts"
+
+brand:
+  colors:
+    primary: "#0E1B33"    # deep-space navy
+    secondary: "#FF7A00"  # molten-glass orange (accent/CTA)
+  tone: "wonder-driven storytelling with dry wit; layered humor (visual gags for kids, one-liners for adults); never baby-talk, never lecture"
+  taboo_topics:
+    - "graphic injury, gore, or death played for horror"
+    - "framing that could genuinely terrify young children (jump scares, dread music without resolution)"
+    - "religion and politics"
+    - "pseudo-science or speculation presented as established fact (speculation must be labeled)"
+    - "the word 'kids' in any title, description, or metadata"
+  made_for_kids: false
+
+characters:
+  - name: "Juno"
+    visual_description: "a curious young explorer with dark curly hair, wearing a white-and-teal spacesuit with an orange visor pushed up"
+    voice_id: ""   # TBD — blocks VO generation until user supplies
+    personality: "boundlessly curious, asks the questions the audience is thinking, delighted by weirdness"
+  - name: "Rex"
+    visual_description: "a small boxy silver robot with one large round blue eye, stubby arms, and a bent antenna"
+    voice_id: ""   # TBD — blocks VO generation until user supplies
+    personality: "the skeptic; refuses to believe anything until shown proof; catchphrase energy: 'that violates at least three laws of physics'"
+  - name: "Narrator"
+    visual_description: ""  # voice-only, never on screen
+    voice_id: ""   # TBD — blocks VO generation until user supplies
+    personality: "warm, wry adult storyteller; David Attenborough meets a good bedtime story"
+
+visual_rules:
+  - "Never use character names in visual/image description lines — use physical descriptors instead"
+  - "Space rendered semi-realistic and painterly with awe and warmth; never flat clip-art, never horror-dark"
+  - "Baked-in thumbnail text maximum 4 words, bold sans-serif"
+  - "No real brand logos, no watermark text"
+  - "Scale shots must include a familiar reference object (Earth, a city, a person) so size reads instantly"
+
+voice:
+  provider: "elevenlabs"
+  voice_id_map: {}   # TBD — fill before running VO step
+
+script_structure:
+  - segment: "cold_open"      # show the impossible thing; thumbnail paid off
+    target_seconds: 30
+  - segment: "the_doubt"      # cast reacts: "that can't be real"
+    target_seconds: 90
+  - segment: "escalation_1"
+    target_seconds: 90
+  - segment: "escalation_2"
+    target_seconds: 90
+  - segment: "escalation_3"
+    target_seconds: 90
+  - segment: "the_reveal"     # the real mechanism; how scientists know
+    target_seconds: 90
+  - segment: "fact_stack"     # three rapid 'it gets weirder' facts
+    target_seconds: 60
+  - segment: "open_loop"      # named tease of next episode
+    target_seconds: 20
+
+reference_style_notes: >
+  Format research from AumSum cluster analysis (data/aumsum_clusters.md):
+  single impossible-image premise per episode; thumbnail promise paid off in
+  first 30 seconds; escalating three-act middle; short punchy titles with no
+  hashtags. Patterns only — no content reproduced from any reference channel.
