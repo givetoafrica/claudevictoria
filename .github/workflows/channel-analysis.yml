@@ -1,6 +1,12 @@
 name: Channel Analysis - Fetch Videos
 
 on:
+  push:
+    branches:
+      - claude/youtube-channel-analysis-j2tu40
+    paths:
+      - ".github/workflows/channel-analysis.yml"
+      - "scripts/fetch_channel_videos.py"
   workflow_dispatch:
     inputs:
       channel:
@@ -39,9 +45,9 @@ jobs:
         run: |
           mkdir -p data
           python scripts/fetch_channel_videos.py \
-            --channel "${{ inputs.channel }}" \
-            --months "${{ inputs.months }}" \
-            --top "${{ inputs.top }}" \
+            --channel "${{ inputs.channel || 'https://www.youtube.com/@AumSum' }}" \
+            --months "${{ inputs.months || '6' }}" \
+            --top "${{ inputs.top || '40' }}" \
             --out-json data/channel_videos.json \
             --out-md data/channel_videos.md
 
