@@ -1,0 +1,61 @@
+name: Channel Analysis - Fetch Videos
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "YouTube channel URL"
+        required: false
+        default: "https://www.youtube.com/@AumSum"
+        type: string
+      months:
+        description: "Look-back window in months"
+        required: false
+        default: "6"
+        type: string
+      top:
+        description: "How many top videos to keep"
+        required: false
+        default: "40"
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install yt-dlp
+
+      - name: Fetch channel videos
+        run: |
+          mkdir -p data
+          python scripts/fetch_channel_videos.py \
+            --channel "${{ inputs.channel }}" \
+            --months "${{ inputs.months }}" \
+            --top "${{ inputs.top }}" \
+            --out-json data/channel_videos.json \
+            --out-md data/channel_videos.md
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "Add fetched channel video data"
+          git push
+
+      - name: Upload data artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: channel-videos
+          path: data/
+          retention-days: 14
