@@ -1,0 +1,19 @@
+{
+  "name": "firecrawl-scraper",
+  "version": "1.0.0",
+  "description": "Firecrawl-powered URL scraping utility",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "scrape": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  }
+}
