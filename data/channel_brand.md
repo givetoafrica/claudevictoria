@@ -1,53 +1,59 @@
-# Channel Identity — Better Than Fiction
+# Channel Identity — Better Than Fiction (v2, matches locked script style)
 
 ## Name
 **Better Than Fiction**
-- Keeps the "Fiction" hook the channel is built on ("sounds fake, it's real").
-- Simple, positive words a child can say and an adult respects.
-- Not space-locked: works for planets now, human body / machines / animals later.
-- No existing YouTube channel found with this name (verify handle in-app at creation).
+Handle: `@BetterThanFiction` (fallbacks: `@BetterThanFictionShow`, `@ItsBetterThanFiction`)
+Tagline: "Real planets. True stories. Wilder than any cartoon."
 
-## Handle
-Primary: `@BetterThanFiction`
-Fallbacks if taken: `@BetterThanFictionShow`, `@BetterThanFictionTV`, `@ItsBetterThanFiction`
+## Channel description (About page)
+Welcome to Better Than Fiction — where every amazing thing is REAL!
 
-## Tagline (banner / trailer / outro)
-**"Real science. Wilder than any story."**
+A planet where it rains glass — sideways! A planet as fluffy as cotton
+candy! A storm bigger than the whole Earth that never, ever stops! These
+sound made up. They are not. They are real, and scientists found every one
+of them.
 
-## Channel description (About page — first 2 lines carry search weight)
-True science stories that sound made up — because the real universe is better
-than fiction. A planet where it rains glass sideways. A storm bigger than
-Earth that has raged for 350 years. A magnet that could erase you from
-100,000 km away. All of it real.
+Join our explorer and Rex the robot as the Narrator takes us to the
+strangest true places in the universe. Simple words, silly jokes, and 100%
+real science — fun for kids, amazing for grown-ups.
 
-New animated episodes weekly: deep-dive stories (8–12 min) and quick "true
-event" shorts (3–6 min) about space, planets, stars — and soon the human
-body, wild machines, and everything else science has found that fiction
-couldn't invent.
+New episode every week. Subscribe, and remember: the real universe is
+better than fiction!
 
-Made for curious kids, teens, and the adults who watch with them. If an
-episode doesn't make you say "wait, that's REAL?" — we haven't done our job.
+## Channel keywords
+science for kids, space for kids, planets, solar system, fun science,
+amazing facts, animated science, educational videos, family friendly,
+real science stories, astronomy for kids, space facts, learning videos,
+edutainment, what if, universe, stars, kids education, science stories,
+true facts
 
-Subscribe and never miss a world that shouldn't exist.
+## Audience setting
+Channel-level: "Yes, made for kids" — the locked script style (simple
+English for ~6-year-olds, AumSum-style) makes the content child-directed
+under COPPA. This supersedes the earlier "not made for kids" plan.
+Consequences accepted: lower RPM, no comments; kids keywords now help.
 
-## Channel keywords (Settings → Channel → Keywords)
-science, space, astronomy, planets, universe, exoplanets, real science
-stories, amazing science facts, animated science, science stories, family
-friendly science, science for students, edutainment, STEM, weird science,
-true facts, solar system, stars, black holes, educational animation
+## Art
+- Profile: Rex the robot's face (boxy silver robot, one large round blue
+  eye) on deep-space navy #0E1B33 circle; readable at 48px.
+- Banner 2560x1440 (safe 1546x423): explorer + robot amazed (left),
+  name + tagline (center), blue Glass Storm Planet with sideways orange
+  streaks (right). Navy #0E1B33 + orange #FF7A00.
+- Watermark: Rex's blue eye.
 
-## Per-video description template
-[1–2 sentence restatement of the impossible premise + "and it's real"]
+## Playlists (day one)
+1. Worlds That Shouldn't Exist (Season 1)
+2. Storms & Space Disasters (shorts/event episodes)
 
-In this episode: [3 bullet outline of the escalations/reveal]
+## Upload defaults
+Category Education · Language English
+Description template:
+  [One line: the amazing thing + "and it's REAL!"]
+  In this episode: [3 fun bullet points]
+  New episodes every week — subscribe!
+  The real universe is better than fiction.
 
-Sources & further reading: [links]
-
-New episodes every week. Subscribe: [channel link]
-[Timestamps/chapters]
-
-## Settings checklist at channel creation
-- Audience: "No, it's not made for kids" (channel level); review per video.
-- No hashtags in titles; no "kids" in any metadata.
-- Series name on flagship playlist: "Worlds That Shouldn't Exist" (Season 1).
-- Upload defaults: language English, category Education.
+## First upload
+Title: "What if it Rained Glass... Sideways? | Real Planet!"
+Thumbnail text: "IT RAINS GLASS"
+Script: data/episodes/ep01-rains-glass-sideways/script.md
