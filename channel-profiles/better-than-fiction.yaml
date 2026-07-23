@@ -11,7 +11,7 @@ brand:
   colors:
     primary: "#0E1B33"    # deep-space navy
     secondary: "#FF7A00"  # molten-glass orange (accent/CTA)
-  tone: "wonder-driven storytelling with dry wit; layered humor (visual gags for kids, one-liners for adults); never baby-talk, never lecture"
+  tone: "simple English a 6-year-old follows, fun for all ages; question -> silly joke -> numbered facts rhythm; every hard idea becomes a familiar picture (pizza oven, race car, ice cream); no science jargon ever; a gag every few lines; warm, never a lecture"
   taboo_topics:
     - "graphic injury, gore, or death played for horror"
     - "framing that could genuinely terrify young children (jump scares, dread music without resolution)"
@@ -46,22 +46,16 @@ voice:
   voice_id_map: {}   # TBD — fill before running VO step
 
 script_structure:
-  - segment: "cold_open"      # show the impossible thing; thumbnail paid off
-    target_seconds: 30
-  - segment: "the_doubt"      # cast reacts: "that can't be real"
-    target_seconds: 90
-  - segment: "escalation_1"
-    target_seconds: 90
-  - segment: "escalation_2"
-    target_seconds: 90
-  - segment: "escalation_3"
-    target_seconds: 90
-  - segment: "the_reveal"     # the real mechanism; how scientists know
-    target_seconds: 90
-  - segment: "fact_stack"     # three rapid 'it gets weirder' facts
-    target_seconds: 60
-  - segment: "open_loop"      # named tease of next episode
+  - segment: "question_hook"    # "What if...?" premise + instant silly joke from the robot
     target_seconds: 20
+  - segment: "its_real"         # explorer reveals it's REAL; give the planet a fun nickname
+    target_seconds: 20
+  - segment: "numbered_facts"   # firstly/secondly/thirdly... 5-7 facts, each a familiar picture, gag every few lines
+    target_seconds: 150
+  - segment: "how_we_know"      # explorer asks "how do we know?"; starlight detective answer
+    target_seconds: 40
+  - segment: "wrap_and_tease"   # "better than fiction" line + next episode tease + robot disbelief gag
+    target_seconds: 25
 
 reference_style_notes: >
   Format research from AumSum cluster analysis (data/aumsum_clusters.md):
