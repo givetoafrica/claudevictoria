@@ -44,9 +44,23 @@ all-ages script style is a clarity choice, not kid-targeting. Therefore:
   streaks (right). Navy #0E1B33 + orange #FF7A00. Cinematic, not cartoonish.
 - Watermark: Rex's blue eye.
 
-## Playlists (day one)
-1. Worlds That Shouldn't Exist (Season 1)
-2. Storms & Space Disasters (event episodes)
+## Playlists (day one — exactly two, no more)
+1. **Worlds That Shouldn't Exist — Season 1** (series; Ep1 goes here)
+   Description: "Real planets so strange they sound made up. A world where
+   it rains glass sideways. A planet as fluffy as cotton candy. A place
+   darker than coal. Every single one is REAL — found by scientists,
+   explained with simple words and silly jokes. Watch in order: each
+   episode reveals the next impossible world."
+   Settings: manual order Ep1->Ep2->..., featured on homepage, mark as
+   official series when offered (autoplay-next priority).
+2. **Storms & Space Disasters** (event episodes; fills from Ep7)
+   Description: "True space events, told fast. The storm bigger than Earth
+   that never stops. The day our planet had two moons. The star that could
+   explode any day. Short episodes, real science, zero made-up stuff."
+
+Rules: every upload joins exactly one playlist at upload time; no third
+playlist until a genuine new format exists. Homepage layout: featured
+video = trailer (non-subscribers), first row = series playlist.
 
 ## Upload defaults
 Category Education · Language English
