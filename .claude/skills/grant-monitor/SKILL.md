@@ -60,9 +60,32 @@ python3 .claude/skills/grant-monitor/scripts/tracker.py add --file /tmp/new-gran
 ```
 
 Every object needs all of: `name`, `funder_type`, `status`, `amount`, `deadline`,
-`deadline_iso`, `eligibility`, `fit`, `website`, `email`, `phone`, `link`,
-`next_step`, `verification`. The script sets `priority` and `first_seen`, and
-refuses near-duplicate names.
+`deadline_iso`, `eligibility`, `fit`, `website`, `email`, `phone`,
+`how_to_apply`, `link`, `next_step`, `verification`. The script sets `priority`
+and `first_seen`, and refuses near-duplicate names.
+
+**`how_to_apply` is the field Victoria actually uses, and it must answer one
+question: what do I click or email, right now?** A source article is not an
+application route. Before writing it, find the funder's real submission page and
+say which of these applies:
+
+- `APPLY HERE: <url>` — a live form or portal she can open today.
+- `APPLY ON GRANTS.GOV` — with the opportunity number, plus a warning if SAM.gov
+  registration is needed and the deadline is too close to complete it.
+- `EMAIL <address>` — when submission is by email, or when no form is posted
+  between cycles and the address is how you get the pack.
+- `NO OPEN CALL` / `NO APPLICATION ROUTE` / `NOT A GRANT` — say so plainly and
+  give the real alternative (who to contact, what to watch). Never imply a portal
+  exists when it does not.
+
+Also note portal prerequisites that take time — SAM.gov and grants.gov
+registration, a Government of Canada GCKey, a UNDEF OPPS org profile, an IFE
+SmartME account. These take days to weeks and are the usual reason a real
+deadline becomes unreachable. Flag them before the deadline, not after.
+
+**Verify the domain.** Confirm the funder's live website rather than trusting an
+address that appears in an aggregator summary — an email domain is often not the
+website domain.
 
 `deadline_iso` must be `YYYY-MM-DD`, or one of `rolling`, `none`, `unknown`.
 For a recurring call that just closed, use **next year's expected date** so it

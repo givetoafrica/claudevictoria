@@ -14,7 +14,8 @@
     "link": "https://www.state.gov/notice-of-funding-opportunity-nofo-track-2-0-peacebuilding-and-dialogue-support",
     "next_step": "Read the full NOFO before investing time. Skip unless a DRC/Rwanda partner is already in hand - the geographic mismatch makes this a long shot.",
     "verification": "Deadline and eligibility confirmed via State Dept listing",
-    "deadline_iso": "2026-08-13"
+    "deadline_iso": "2026-08-13",
+    "how_to_apply": "APPLY ON GRANTS.GOV. Search opportunity number DFOP0019287 at grants.gov and download the application package. The State Dept NOFO page (state.gov, linked) has the full requirements. Registration in SAM.gov + grants.gov is required BEFORE you can submit and can take weeks - if you are not already registered, the Aug 13 deadline is not reachable."
   },
   {
     "priority": 1,
@@ -31,7 +32,8 @@
     "link": "https://www.globalsouthopportunities.com/2026/06/18/grant-24/",
     "next_step": "VERIFY FIRST via ifc.org directly before spending any time on this - see Verification column. If genuine, it is the single best dollar-for-dollar fit on this list for the shea factory work.",
     "verification": "NEEDS VERIFICATION - SCAM RISK. Fraudulent sites impersonating IFC grant programs are documented. Confirm the call exists on an official ifc.org / ifcgrants.org page before applying, and never pay a fee.",
-    "deadline_iso": "2026-10-10"
+    "deadline_iso": "2026-10-10",
+    "how_to_apply": "NO VERIFIED APPLICATION URL FOUND. Could not locate this call on ifc.org or ifcgrants.org - it appears only on aggregator sites. Treat as unverified until you see it on an official IFC domain. Start at ifcgrants.org and contact IFC directly. Never pay a fee to apply."
   },
   {
     "priority": 2,
@@ -42,13 +44,14 @@
     "deadline": "Rolling - concept notes accepted at any time",
     "eligibility": "Community philanthropy organizations based in Africa, Asia, Middle East, CEE, or Latin America - including national public foundations, women's funds, and grassroots grantmakers. Two-stage process: concept note first, full application by invitation.",
     "fit": "STRONGEST fit on this list for YENDAA and Fiscal Sponsorship. GFCF funds exactly the thing Give to Africa is building - infrastructure that moves resources to locally led African organizations. The 'philanthropy, technology and innovation' positioning line was written for this funder.",
-    "website": "https://www.globalfundcf.org",
+    "website": "https://globalfundcommunityfoundations.org",
     "email": "info@globalfundcf.org",
     "phone": "not publicly listed",
     "link": "https://www2.fundsforngos.org/latest-funds-for-ngos/apply-for-small-grants-to-foster-community-philanthropy/",
     "next_step": "Submit a concept note within the next 2 weeks. Lead with YENDAA as African-led giving infrastructure and the November fiscal-sponsorship cohort as proof of local-resource mobilization. Small dollar amount, but it opens a door to a network of community philanthropy funders.",
-    "verification": "Grant range, rolling process and email confirmed across multiple listings",
-    "deadline_iso": "rolling"
+    "verification": "Grant range, rolling process and email confirmed. CORRECTED Jul 29, 2026: the website was previously listed as globalfundcf.org - the live site is globalfundcommunityfoundations.org (the short domain is used for email only).",
+    "deadline_iso": "rolling",
+    "how_to_apply": "APPLY HERE: https://globalfundcommunityfoundations.org/what-we-do/grants/share-a-concept-note/ - an online concept-note form. You can also email the concept note to info@globalfundcf.org. Read their 'who can apply' guidance first: https://globalfundcommunityfoundations.org/what-we-do/grants/our-grantmaking-process-and-approach/ Stage 2 (longer application) is by invitation only."
   },
   {
     "priority": 2,
@@ -65,7 +68,8 @@
     "link": "https://gh.usembassy.gov/ambassadors-special-self-help-program/",
     "next_step": "Email AccraSelfHelp@state.gov this week asking when the next window opens, and have MDF Ghana ready as the named applicant. Small award, but a U.S. Embassy grant is a credential worth more than $12,000 in later proposals.",
     "verification": "Amounts and eligibility confirmed; current-cycle deadline NOT confirmed - the embassy page has not published a 2026 date",
-    "deadline_iso": "unknown"
+    "deadline_iso": "unknown",
+    "how_to_apply": "PROGRAM PAGE: https://gh.usembassy.gov/education-culture/ambassadors-special-self-help-program/ No live application form is posted between cycles. EMAIL AccraSelfHelp@state.gov to ask for the current Notice of Funding Opportunity and application form. MDF Ghana must be the applicant."
   },
   {
     "priority": 2,
@@ -82,24 +86,26 @@
     "link": "https://gh.usembassy.gov/education-culture/public-affairs-small-grants/public-diplomacy-section-annual-program-statement-request-for-statements-of-interest/",
     "next_step": "Email PASAccraGrant@state.gov to ask when the FY2027 APS will be issued and to be added to any notification list. Draft the Bradford curriculum Statement of Interest now so it is ready the day the APS posts.",
     "verification": "Email address and prior-cycle funding range confirmed; no open 2026 call found",
-    "deadline_iso": "unknown"
+    "deadline_iso": "unknown",
+    "how_to_apply": "PROGRAM PAGE: https://gh.usembassy.gov/education-culture/public-affairs-small-grants/ No open call posted. EMAIL PASAccraGrant@state.gov to ask when the next Annual Program Statement is issued. When live, step 1 is a short Statement of Interest, not a full proposal."
   },
   {
-    "priority": 2,
+    "priority": 3,
     "name": "U.S. African Development Foundation (USADF)",
     "funder_type": "U.S. Government (independent federal agency)",
-    "status": "OPEN - country-specific calls issued periodically",
+    "status": "NOT ACCEPTING APPLICATIONS - per USADF's own apply page",
     "amount": "Up to $250,000",
     "deadline": "Varies by country call - check usadf.gov for the current Ghana call",
     "eligibility": "Applicant must be a 100% African-owned enterprise, cooperative, producer group or processor in an eligible country. Give to Africa is NOT directly eligible - the shea cooperative or MDF Ghana would be the grantee, with Give to Africa providing proposal and compliance support.",
-    "fit": "Climate Resilience / MDF Ghana. USADF's core business is exactly this: agricultural processors and women's producer groups building local value addition. Shea processing is squarely on-mission.",
+    "fit": "Strong on-mission fit - USADF funds exactly this kind of agricultural processor and women's producer group - but there is nothing to apply to at present.",
     "website": "https://usadf.gov",
     "email": "not publicly listed (each country call names its own submission address)",
     "phone": "not publicly listed",
     "link": "https://usadf.gov/resources",
     "next_step": "Confirm whether Ghana is in the current eligible-country list, then position the shea cooperative as applicant. Even at partner-support level this is the largest realistic U.S. government award on this list.",
-    "verification": "NEEDS VERIFICATION - sources conflict on whether Ghana is currently an eligible USADF country. One country list omitted Ghana; another listed it. Confirm with USADF directly before building a proposal.",
-    "deadline_iso": "unknown"
+    "verification": "CORRECTED Jul 29, 2026. Previously listed as open with periodic country calls. USADF's own apply page states applications are not being accepted at this time. Ghana eligibility also remains unconfirmed - sources conflict.",
+    "deadline_iso": "unknown",
+    "how_to_apply": "APPLY PAGE: https://www.usadf.gov/apply - but that page currently states applications are NOT being accepted. There is no open Ghana call to apply to right now. Check the page periodically; when a country call opens it names its own submission email address."
   },
   {
     "priority": 3,
@@ -116,7 +122,8 @@
     "link": "https://wphfund.org/call-for-proposals-for-rapid-response-window-i-rngo-partners/",
     "next_step": "Deprioritize unless Give to Africa adds programming in a conflict-affected country. Revisit only if the portfolio shifts.",
     "verification": "Window and closing date confirmed; grant size not confirmed",
-    "deadline_iso": "2026-12-31"
+    "deadline_iso": "2026-12-31",
+    "how_to_apply": "CALLS ARE POSTED AT: https://wphfund.org - open calls appear there as they launch, each with its own submission instructions. No standing portal. Weak fit for Ghana regardless."
   },
   {
     "priority": 2,
@@ -133,7 +140,8 @@
     "link": "https://www.africanwaterfacility.org/en/eligibility-criteria",
     "next_step": "Do not pursue directly. Keep on file in case a Ghanaian public-sector partner wants a water/sanitation component added to the shea community work.",
     "verification": "Eligibility categories and rolling process confirmed; exact ceiling inconsistent across sources",
-    "deadline_iso": "rolling"
+    "deadline_iso": "rolling",
+    "how_to_apply": "APPLICATION PROCESS: https://www.africanwaterfacility.org/en/application-process No deadline - rolling. Step 1 is a 500-word project summary sent to AWF, then a concept note, then a full template if you pass screening. Project budget must be EUR 50,000-5,000,000. Takes 3-6 months. Note you are NOT a listed eligible recipient - a Ghanaian public agency or basin organization must lead."
   },
   {
     "priority": 3,
@@ -150,7 +158,8 @@
     "link": "https://www.undp.org/ghana/press-releases/2026-call-proposals-gef-small-grant-programme-ghana",
     "next_step": "Put a calendar reminder for early February 2027. Confirm now that MDF Ghana's Registrar General and Social Welfare certificates are current - that paperwork is the usual disqualifier, and it takes months to fix.",
     "verification": "Amount, deadline, eligibility and priority districts confirmed across multiple listings",
-    "deadline_iso": "2027-03-13"
+    "deadline_iso": "2027-03-13",
+    "how_to_apply": "NO OPEN CALL - the 2026 round closed Mar 13. Calls are posted on the UNDP Ghana site and the country page at https://sgp.undp.org (Ghana). CONTACT: the 2026 call published akosua.bireduaa.aninakwa@undp.org for enquiries - email to confirm the 2027 timetable. MDF Ghana must be the applicant and needs valid Registrar General + Social Welfare certificates."
   },
   {
     "priority": 3,
@@ -167,7 +176,8 @@
     "link": "https://www.international.gc.ca/world-monde/funding-financement/cfli-fcil/ghana.aspx?lang=eng",
     "next_step": "Email ghanacfli@international.gc.ca now to ask to be notified when the 2027 call opens, and ask what the 2027 thematic priorities will be. This is one of the few government funders on this list where Give to Africa can be the direct applicant.",
     "verification": "Amounts, deadline, eligibility and contact email confirmed",
-    "deadline_iso": "2027-04-30"
+    "deadline_iso": "2027-04-30",
+    "how_to_apply": "NO OPEN CALL - 2026 round closed May 10. COUNTRY PAGE: https://www.international.gc.ca/world-monde/funding-financement/cfli-fcil/ghana.aspx?lang=eng When open, apply either through the Collaboration@International (C@I) portal - which needs a Government of Canada GCKey username first - or by emailing the completed application form and budget to ghanacfli@international.gc.ca. A gender-based analysis is mandatory. Email now to be notified for 2027."
   },
   {
     "priority": 3,
@@ -184,7 +194,8 @@
     "link": "https://www.common-fund.org/call-for-proposals",
     "next_step": "Watch for the 29th call announcement. Before applying, decide whether MDF Ghana's factory model can service debt - if not, this is the wrong instrument regardless of fit.",
     "verification": "Amounts, deadline, eligibility and instrument type confirmed",
-    "deadline_iso": "unknown"
+    "deadline_iso": "unknown",
+    "how_to_apply": "CALL PAGE: https://www.common-fund.org/call-for-proposals - the application form is downloadable there when a call is open. The 28th call closed Apr 1, 2026. Two-stage; English only; requires a 3-year operating track record. Mostly loans, not grants."
   },
   {
     "priority": 3,
@@ -201,7 +212,8 @@
     "link": "https://www.un.org/democracyfund/en/apply-for-funding",
     "next_step": "Check the UNDEF site monthly from October onward. The window is short and there is no extension, so a draft concept must exist before it opens.",
     "verification": "Grant ceiling and eligibility confirmed; 2026 round dates not yet published",
-    "deadline_iso": "unknown"
+    "deadline_iso": "unknown",
+    "how_to_apply": "APPLY VIA THE OPPS PORTAL: https://www.un.org/democracyfund/en/content/how-apply-online-project-proposal-system-opps You must REGISTER YOUR ORGANIZATION FIRST to receive a login - do that before the window opens, since the window is short (historically about a month, often November). Technical support: undefproposal@un.org. Draft offline using their blank proposal form, then paste in."
   },
   {
     "priority": 3,
@@ -218,7 +230,8 @@
     "link": "https://africanngos.org/2026/06/09/african-ngo-funding-opportunities-june-july-2026/",
     "next_step": "Verify the real deadline and whether a U.S.-based sponsor is eligible before investing effort. If only locally led orgs qualify, redirect this to fiscal sponsorship cohort members.",
     "verification": "NEEDS VERIFICATION - deadline and grant size both inconsistent across sources; funder's own site not confirmed",
-    "deadline_iso": "unknown"
+    "deadline_iso": "unknown",
+    "how_to_apply": "NO VERIFIED APPLICATION URL FOUND. This entry came from an aggregator roundup and the funder's own grants page could not be confirmed. Do not spend time on it until you verify the funder, the real deadline, and whether a US-based sponsor is eligible."
   },
   {
     "priority": 4,
@@ -235,7 +248,8 @@
     "link": "https://africa.unwomen.org/en/programme-implementation/2026/06/call-for-proposals-for-civil-society-partnerships-for-implementation-of-the-spotlight-initiative-africa-regional-programme-siarp-20",
     "next_step": "Missed for this cycle. Worth tracking UN Women Africa's calls generally - the multi-country eligibility structure suits Give to Africa's cross-border model better than most funders'.",
     "verification": "Amounts, deadline and eligibility confirmed",
-    "deadline_iso": "2026-07-27"
+    "deadline_iso": "2026-07-27",
+    "how_to_apply": "CLOSED - deadline passed Jul 27, 2026. Future UN Women Africa calls are posted at https://africa.unwomen.org under programme implementation."
   },
   {
     "priority": 4,
@@ -252,7 +266,8 @@
     "link": "https://www.fas.usda.gov/newsroom/usda-publishes-fy-2026-notices-funding-opportunity-food-progress",
     "next_step": "Not viable now - award sizes are far above Give to Africa's current capacity and Ghana is off the priority list. Revisit only as a sub-awardee to a large prime.",
     "verification": "Amounts, deadline and priority countries confirmed",
-    "deadline_iso": "2026-07-06"
+    "deadline_iso": "2026-07-06",
+    "how_to_apply": "CLOSED for FY2026. Future rounds post on grants.gov and at https://www.fas.usda.gov/programs/food-progress - not viable at your current scale regardless."
   },
   {
     "priority": 4,
@@ -269,7 +284,8 @@
     "link": "https://www.fas.usda.gov/newsroom/stakeholder-notice-usda-publishes-fy-2026-notice-funding-opportunity-mcgovern-dole-program",
     "next_step": "Skip. Listed so the FY2027 priority-country announcement can be checked - if Ghana is added, reassess.",
     "verification": "Deadline and priority countries confirmed",
-    "deadline_iso": "2026-06-22"
+    "deadline_iso": "2026-06-22",
+    "how_to_apply": "CLOSED for FY2026. Future rounds post on grants.gov and at fas.usda.gov. Ghana is not a priority country - watch the FY2027 priority-country announcement before investing any time."
   },
   {
     "priority": 4,
@@ -286,7 +302,8 @@
     "link": "https://www.segalfamilyfoundation.org/what-we-do/invest/grantmaking/",
     "next_step": "Do not submit a proposal - it will not be read. Instead, map who in Give to Africa's network already holds a Segal relationship and pursue a warm referral. Their African-led portfolio overlaps heavily with YENDAA's target causes.",
     "verification": "Referral-only model and grant range confirmed",
-    "deadline_iso": "none"
+    "deadline_iso": "none",
+    "how_to_apply": "NO APPLICATION ROUTE - Segal does not accept unsolicited applications and works purely by referral. Do not submit anything. Map who in your network can make a warm introduction."
   },
   {
     "priority": 3,
@@ -303,7 +320,8 @@
     "phone": "not publicly listed",
     "link": "https://invest-for-jobs.com/en/call-for-proposals-march-april-2026",
     "next_step": "Email the CfP address now to ask to be notified when the 2027 window opens and to confirm whether a U.S. 501(c)(3) can apply directly or must partner with MDF Ghana. Start modelling the factory job-creation numbers - that is the metric IFE selects on.",
-    "verification": "Amounts, deadline, cost-coverage tiers, eligibility and contact email confirmed across KfW/GTAI/Invest-for-Jobs listings"
+    "verification": "Amounts, deadline, cost-coverage tiers, eligibility and contact email confirmed across KfW/GTAI/Invest-for-Jobs listings",
+    "how_to_apply": "NO OPEN GHANA CALL - the Ghana window closed Jun 1, 2026. A different window (Cote d'Ivoire, Egypt, Morocco) runs Apr 15 - Jun 30, 2026, which shows the cycle is live and rotating. ALL CALLS: https://invest-for-jobs.com/en/calls-for-proposals-overview Applications are submitted ONLY through the SmartME online platform - set up an account and watch the tutorials now: https://invest-for-jobs.com/en/introduction-to-smartme Stage 1 is a concept note scored on jobs created. Email cfp-ife.2026@invest-for-jobs.com to be notified."
   },
   {
     "priority": 2,
@@ -320,7 +338,8 @@
     "phone": "not publicly listed",
     "link": "https://www.undp.org/ghana/projects/ghana-shea-landscapes-emission-reductions-project-gslerp",
     "next_step": "Do NOT look for an application portal - there isn't one. Instead join / engage the Global Shea Alliance as a member and get known to the GSA private-sector companies funding the PPPs. Ask GSA directly whether partner intake will reopen before the project closes (~2027) and what a successor project looks like. The W+ Standard adoption is also worth tracking - it is a credential Give to Africa's cooperatives could carry.",
-    "verification": "CORRECTED Jul 29, 2026. Previously listed as an open rolling EOI - that was wrong. The call for proposals is an undated archived page; project timeline (2020 approval, 7 years) and the 17 already-selected implementing partners confirm the window closed years ago."
+    "verification": "CORRECTED Jul 29, 2026. Previously listed as an open rolling EOI - that was wrong. The call for proposals is an undated archived page; project timeline (2020 approval, 7 years) and the 17 already-selected implementing partners confirm the window closed years ago.",
+    "how_to_apply": "NO APPLICATION ROUTE - the call is archived and the 17 implementing partner slots are filled. Do not look for a portal. Engage the Global Shea Alliance (globalshea.com) as a member and ask whether partner intake reopens before the project ends around 2027."
   },
   {
     "priority": 3,
@@ -337,7 +356,8 @@
     "phone": "not publicly listed",
     "link": "https://wacsi.org/call-for-applications-match-funding-for-civil-society-organisations-in-ghana-2026/",
     "next_step": "Calendar for March 2027. Worth approaching WACSI now as a relationship rather than an applicant - they are a regional hub for exactly the West African CSOs YENDAA wants to list.",
-    "verification": "Amount, match requirement, partners and deadline confirmed"
+    "verification": "Amount, match requirement, partners and deadline confirmed",
+    "how_to_apply": "NO OPEN CALL - the 2026 round closed Apr 27. CALL PAGE: https://wacsi.org/call-for-applications-match-funding-for-civil-society-organisations-in-ghana-2026/ The Terms of Reference and application form download from wacsi.org when a round is live. Ghana-registered CSOs only, and you must raise 50% locally first."
   },
   {
     "priority": 2,
@@ -354,7 +374,8 @@
     "phone": "not publicly listed",
     "link": "https://africandiasporanetwork.org/african-diaspora-innovation-fund-afdif/",
     "next_step": "Look at the Builders of Africa's Future application cycle as the actual entry point. ADN is also a natural partner audience for YENDAA independent of the grant.",
-    "verification": "Fund structure, partner and grant ceiling confirmed; no application deadline published"
+    "verification": "Fund structure, partner and grant ceiling confirmed; no application deadline published",
+    "how_to_apply": "NO OPEN APPLICATION FORM. The pipeline is drawn from African Diaspora Network programs, principally Builders of Africa's Future. FUND PAGE: https://africandiasporanetwork.org/african-diaspora-innovation-fund-afdif/ The real route is applying to a BAF cohort when it opens, not a direct grant application."
   },
   {
     "priority": 2,
@@ -371,7 +392,8 @@
     "phone": "not publicly listed",
     "link": "https://www.beiersdorf.com/newsroom/press-information/all-press-releases/2026/01/29-aak-and-beiersdorf-extend-partnership",
     "next_step": "Approach AAK's sustainable sourcing team as a supply-chain partner, not a grantseeker. The pitch is that Give to Africa's cooperatives can supply verified, traceable shea - which is what AAK is buying. Corporate procurement budgets dwarf CSR budgets.",
-    "verification": "Partnership, scale and program activities confirmed via Beiersdorf press release; no grant mechanism exists"
+    "verification": "Partnership, scale and program activities confirmed via Beiersdorf press release; no grant mechanism exists",
+    "how_to_apply": "NOT A GRANT - there is no application form and never will be. This is corporate sourcing. The route is business development: approach AAK's sustainable sourcing team about supplying traceable shea. Treat it as a customer conversation, not a proposal."
   },
   {
     "priority": 2,
@@ -388,6 +410,7 @@
     "phone": "not publicly listed",
     "link": "https://www.bond.org.uk/resources-support/funding/",
     "next_step": "Add FCDO Funder Finder to the daily monitor's source rotation. Consider contacting the FCDO Ghana country office directly, which Bond specifically recommends for country-level funds.",
-    "verification": "Mechanism and guidance confirmed; NO specific open opportunity found"
+    "verification": "Mechanism and guidance confirmed; NO specific open opportunity found",
+    "how_to_apply": "NO SPECIFIC CALL. Search the FCDO Funder Finder and the UK government funding portal for live opportunities, and see Bond's funding page: https://www.bond.org.uk/resources-support/funding/ Bond specifically advises contacting the FCDO Ghana country office directly, since some funds are distributed at country level."
   }
 ]

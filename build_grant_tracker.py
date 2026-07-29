@@ -47,6 +47,7 @@ COLUMNS = [
     ("Website", "website", 26),
     ("Program Contact Email", "email", 26),
     ("Phone", "phone", 16),
+    ("HOW TO APPLY", "how_to_apply", 52),
     ("Link (source checked)", "link", 40),
     ("Recommended Next Step", "next_step", 40),
     ("Verification", "verification", 30),
@@ -104,8 +105,14 @@ def build():
                 c.font = Font(name=FONT, size=10, bold=True)
             elif key == "status":
                 c.fill = band
-            elif key == "verification" and str(val).startswith("NEEDS VERIFICATION"):
+            elif key == "verification" and str(val).startswith(("NEEDS VERIFICATION", "CORRECTED")):
                 c.font = Font(name=FONT, size=10, bold=True, color="C00000")
+            elif key == "how_to_apply":
+                text = str(val)
+                if text.startswith(("NO ", "CLOSED", "NOT A GRANT")):
+                    c.font = Font(name=FONT, size=10, color="C00000")
+                elif text.startswith("APPLY"):
+                    c.font = Font(name=FONT, size=10, bold=True, color="1F6F3D")
         ws.row_dimensions[i].height = 96
 
     for col, (_, _, w) in enumerate(COLUMNS, start=1):
