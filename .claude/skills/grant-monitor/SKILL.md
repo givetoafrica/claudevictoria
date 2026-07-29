@@ -104,15 +104,22 @@ Non-negotiable, and the reason this tracker is trustworthy:
 
 ## Reporting
 
-End with a short digest — this is what Victoria reads:
+**Always write opportunities out in the chat reply. Never deliver them only as an
+attached file, and do not call SendUserFile for the workbook.** Victoria reads
+these in the conversation. The .xlsx is committed to the repo as a working record
+she can open when she wants it — it is not the delivery mechanism.
 
-- **New:** each addition, one line, with amount and deadline.
+End with a short digest, written out in full:
+
+- **Urgent first:** any deadline inside 14 days, before anything else.
+- **New:** each addition — name, amount, deadline, why it fits, next step.
 - **Deadlines approaching:** anything inside 30 days, soonest first.
 - **Changed:** re-bands and status changes worth knowing about.
 - **Nothing new:** say exactly that, name the searches run, and stop.
 
-Lead with anything urgent. If a deadline is inside 14 days, that goes first,
-before the new finds.
+When the user asks to see the pipeline, list the opportunities in the reply —
+grouped by band, with amount, deadline and contact inline. A quiet day is still
+two lines of text, not a file.
 
 ## Tool notes
 
