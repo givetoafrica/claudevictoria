@@ -93,6 +93,21 @@ Non-negotiable, and the reason this tracker is trustworthy:
   bodies are common. If a call is only visible on aggregator sites and never on
   the funder's own domain, flag it and say so. Never surface anything asking an
   applicant to pay a fee.
+- **Prove a call is LIVE before listing it as open.** This is the failure mode
+  that has actually bitten this tracker. Aggregator sites host undated archived
+  calls that read exactly like current ones, and a closed call presented as open
+  sends Victoria hunting for an application portal that does not exist. Before
+  writing `status: OPEN`, confirm at least one of:
+  - a stated deadline in the future, or
+  - the call appearing on the funder's own domain with a current date, or
+  - explicit "applications open" language tied to the current cycle.
+
+  And actively look for evidence the door already closed: a parent project with a
+  fixed multi-year term, named implementing partners already selected, or progress
+  reports describing delivery rather than recruitment. A big multi-year programme
+  in mid-delivery is almost never still recruiting partners. When the route is a
+  relationship rather than an application, say `NO OPEN CALL` in the status and put
+  the real next step — who to contact and why — in `next_step`.
 - **Fit means a specific program.** Write which of the four programs it matches
   and why, not "good fit for Give to Africa." If the fit is weak, say it is weak —
   band 4 exists for that, and an honest "skip this" saves more time than a
