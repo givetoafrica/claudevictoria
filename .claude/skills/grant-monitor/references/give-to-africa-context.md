@@ -15,11 +15,25 @@ technology, and innovation."
    *Matches:* digital/civic infrastructure, community philanthropy, local resource
    mobilization, fintech-adjacent, transparency and verification.
 
-2. **Climate Resilience Program** — partnership with the Minerals Development Fund building shea butter
-   factories in rural northern Ghana (80/20 funding split, 4-to-1 government match).
-   Includes a PPE procurement push for ~1,000 women in shea-gathering communities.
+2. **Climate Resilience Program** — partnership with the **Minerals Development Fund
+   (MDF)** of Ghana, mdf.gov.gh, developing an integrated shea processing facility in
+   rural northern Ghana (80/20 funding split, 4-to-1 government match). The facility is
+   at concept and design stage and will use solar generation to power both processing
+   and community water supply. Includes a PPE procurement push for ~1,000 women in
+   shea-gathering communities.
+   **MDF is NOT an NGO.** It is a Ghanaian statutory public fund established by the
+   Minerals Development Fund Act, 2016 (Act 912), sitting under the Ministry of Lands
+   and Natural Resources and capitalised by 20% of national mineral royalties, mandated
+   to fund development in mining-affected communities. Always describe it as a statutory
+   public fund or government institution — never "local partner" or "NGO". This
+   government co-financing relationship is the single strongest credential in the
+   portfolio, especially for multilateral and bilateral funders assessing whether an
+   applicant can work with national institutions.
+   Design partners on the facility: **Sunyani Technical University** (Ghana) and the
+   **University of Cincinnati** (USA, prospective).
    *Matches:* climate adaptation, agriculture and commodity value chains, women's
-   economic empowerment, job creation, Northern Ghana / Savannah zone geography.
+   economic empowerment, job creation, rural institutions and governance, Northern
+   Ghana / Savannah zone geography.
    This is the program with the most fundable surface area.
 
 3. **Fiscal Sponsorship** — Model C only, 10% administrative fee, Africa-based
@@ -46,13 +60,15 @@ registered applicant. Sort every opportunity into one of three routes and say wh
 - **Direct** — Give to Africa applies as itself. US foundations, US federal
   programs, and the minority of bilateral funds that accept international NGOs
   (Canada's CFLI is the confirmed example).
-- **Partner-fronted** — the Minerals Development Fund or a shea cooperative is the applicant of
-  record, Give to Africa provides proposal, technical and compliance support.
-  Required by: US Embassy Accra Self-Help, USADF, UNDP/GEF Small Grants Ghana,
-  and most Ghana government-adjacent funds.
-
-Other named partners: **Sunyani Technical University** (Ghana) and the **University of
-Cincinnati** (USA), both on facility design concepts.
+- **Partner-fronted** — a Ghana-registered entity is the applicant of record and Give
+  to Africa provides proposal, technical and compliance support. For small community
+  grants that means a shea cooperative or a Ghanaian NGO — note that MDF, as a statutory
+  public fund, is a co-financier and government counterpart, not a substitute applicant
+  for NGO-only calls. Required by: US Embassy Accra Self-Help, USADF, UNDP/GEF Small
+  Grants Ghana, and most Ghana government-adjacent funds.
+- **Consortium** — for large research or policy grants, an academic institution leads
+  and Give to Africa is field partner. Live example: the IFAD RSPA call, with the
+  University of Cincinnati as intended lead and Sunyani Technical University as co-lead.
 - **Relationship, not application** — referral-only funders (Segal) and corporate
   partners (AAK/Beiersdorf). Do not send a proposal; map the warm path instead.
 
