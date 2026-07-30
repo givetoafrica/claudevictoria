@@ -15,7 +15,7 @@ technology, and innovation."
    *Matches:* digital/civic infrastructure, community philanthropy, local resource
    mobilization, fintech-adjacent, transparency and verification.
 
-2. **Climate Resilience Program** — partnership with MDF Ghana building shea butter
+2. **Climate Resilience Program** — partnership with the Minerals Development Fund building shea butter
    factories in rural northern Ghana (80/20 funding split, 4-to-1 government match).
    Includes a PPE procurement push for ~1,000 women in shea-gathering communities.
    *Matches:* climate adaptation, agriculture and commodity value chains, women's
@@ -35,7 +35,7 @@ technology, and innovation."
 ## Narrative hooks
 
 - Urgency from the post-USAID funding collapse and its effect on African civil society
-- MDF Ghana's 4-to-1 government match as a leverage story
+- the Minerals Development Fund's 4-to-1 government match as a leverage story
 - YENDAA as under-served infrastructure: verified, transparent giving to African-led causes
 
 ## Eligibility reality — the first filter on any opportunity
@@ -46,10 +46,13 @@ registered applicant. Sort every opportunity into one of three routes and say wh
 - **Direct** — Give to Africa applies as itself. US foundations, US federal
   programs, and the minority of bilateral funds that accept international NGOs
   (Canada's CFLI is the confirmed example).
-- **Partner-fronted** — MDF Ghana or a shea cooperative is the applicant of
+- **Partner-fronted** — the Minerals Development Fund or a shea cooperative is the applicant of
   record, Give to Africa provides proposal, technical and compliance support.
   Required by: US Embassy Accra Self-Help, USADF, UNDP/GEF Small Grants Ghana,
   and most Ghana government-adjacent funds.
+
+Other named partners: **Sunyani Technical University** (Ghana) and the **University of
+Cincinnati** (USA), both on facility design concepts.
 - **Relationship, not application** — referral-only funders (Segal) and corporate
   partners (AAK/Beiersdorf). Do not send a proposal; map the warm path instead.
 
