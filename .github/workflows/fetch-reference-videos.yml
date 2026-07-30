@@ -1,0 +1,50 @@
+name: Fetch Reference Videos
+
+on:
+  push:
+    branches:
+      - claude/youtube-channel-analysis-j2tu40
+    paths:
+      - "scripts/fetch_video_meta.py"
+      - ".github/workflows/fetch-reference-videos.yml"
+      - "data/reference-videos/ids.txt"
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "Comma-separated YouTube video IDs"
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install yt-dlp
+
+      - name: Fetch reference video metadata
+        run: |
+          IDS="${{ inputs.ids }}"
+          if [ -z "$IDS" ]; then
+            IDS=$(tr '\n' ',' < data/reference-videos/ids.txt | sed 's/,$//')
+          fi
+          python scripts/fetch_video_meta.py --ids "$IDS"
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/reference-videos/
+          git diff --cached --quiet || git commit -m "Add fetched reference video metadata"
+          git pull --rebase origin ${{ github.ref_name }} || true
+          git push
