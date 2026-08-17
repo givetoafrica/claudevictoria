@@ -1,3 +1,11 @@
+# Media generation scripts
+
+Two independent pipelines live here:
+
+- **Gathos** (below) — prompt-to-clip generation, stitched with ffmpeg.
+- **Pictory** — script-to-video with AI voiceover, stock footage, and captions,
+  plus optional YouTube publishing. See [PICTORY.md](PICTORY.md).
+
 # Gathos scripts
 
 Wraps the [Gathos](https://gathos.com) media-generation API. Runs from
