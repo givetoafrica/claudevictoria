@@ -1,0 +1,131 @@
+name: Pictory - Generate Video
+
+# Renders a narration script into a finished video via the Pictory API, and
+# optionally publishes it to YouTube.
+#
+# Runs here rather than in a dev sandbox because GitHub Actions runners have
+# normal outbound internet access to api.pictory.ai.
+#
+# Required repository secrets: PICTORY_CLIENT_ID, PICTORY_CLIENT_SECRET,
+# PICTORY_USER_ID. Publishing additionally needs YOUTUBE_CLIENT_ID,
+# YOUTUBE_CLIENT_SECRET, YOUTUBE_REFRESH_TOKEN. See scripts/PICTORY.md.
+
+on:
+  workflow_dispatch:
+    inputs:
+      video_name:
+        description: "Video name (also the YouTube title unless overridden)"
+        required: true
+        type: string
+      script_path:
+        description: "Path to a script file in the repo. Takes precedence over script_text."
+        required: false
+        default: ""
+        type: string
+      script_text:
+        description: "Narration script. Separate scenes with a blank line."
+        required: false
+        default: ""
+        type: string
+      voice:
+        description: "Pictory AI voice name"
+        required: false
+        default: "Jackson"
+        type: string
+      background_music:
+        description: "Add automatic background music"
+        required: false
+        default: true
+        type: boolean
+      dry_run:
+        description: "Print the request body without calling Pictory (spends no credits)"
+        required: false
+        default: false
+        type: boolean
+      publish_to_youtube:
+        description: "Upload the render to YouTube after it finishes"
+        required: false
+        default: false
+        type: boolean
+      youtube_privacy:
+        description: "YouTube visibility for the upload"
+        required: false
+        default: "private"
+        type: choice
+        options: ["private", "unlisted", "public"]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests google-api-python-client google-auth
+
+      # Inputs go through the environment, never through shell interpolation --
+      # a script containing quotes or backticks would otherwise break the run
+      # or execute as shell.
+      - name: Assemble script file
+        env:
+          SCRIPT_PATH: ${{ inputs.script_path }}
+          SCRIPT_TEXT: ${{ inputs.script_text }}
+        run: |
+          if [ -n "$SCRIPT_PATH" ]; then
+            cp "$SCRIPT_PATH" script.txt
+          elif [ -n "$SCRIPT_TEXT" ]; then
+            printf '%s' "$SCRIPT_TEXT" > script.txt
+          else
+            echo "::error::Provide either script_path or script_text."
+            exit 1
+          fi
+          echo "--- script ($(wc -l < script.txt) lines) ---"
+          cat script.txt
+
+      - name: Generate video
+        env:
+          PICTORY_CLIENT_ID: ${{ secrets.PICTORY_CLIENT_ID }}
+          PICTORY_CLIENT_SECRET: ${{ secrets.PICTORY_CLIENT_SECRET }}
+          PICTORY_USER_ID: ${{ secrets.PICTORY_USER_ID }}
+          PICTORY_API_URL: ${{ secrets.PICTORY_API_URL }}
+          VIDEO_NAME: ${{ inputs.video_name }}
+          VOICE: ${{ inputs.voice }}
+          BACKGROUND_MUSIC: ${{ inputs.background_music }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          ARGS=(--script-file script.txt
+                --name "$VIDEO_NAME"
+                --voice "$VOICE"
+                --background-music "$BACKGROUND_MUSIC"
+                --out output.mp4)
+          if [ "$DRY_RUN" = "true" ]; then
+            ARGS+=(--dry-run)
+          fi
+          python scripts/pictory_make_video.py "${ARGS[@]}"
+
+      - name: Upload video artifact
+        if: ${{ inputs.dry_run != true }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pictory-video
+          path: output.mp4
+          retention-days: 14
+
+      - name: Publish to YouTube
+        if: ${{ inputs.publish_to_youtube == true && inputs.dry_run != true }}
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          VIDEO_NAME: ${{ inputs.video_name }}
+          PRIVACY: ${{ inputs.youtube_privacy }}
+        run: |
+          python scripts/youtube_upload.py \
+            --file output.mp4 \
+            --title "$VIDEO_NAME" \
+            --description-file script.txt \
+            --privacy "$PRIVACY"
