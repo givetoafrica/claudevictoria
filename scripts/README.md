@@ -122,3 +122,30 @@ Locally, with ffmpeg installed:
 python scripts/render_ambient_video.py \
     --audio beds/accra-rain.wav --hours 8 --out out/accra-rain-8h.mp4
 ```
+
+# Thumbnail generator
+
+`make_thumbnail.py` composes a 1280x720 thumbnail for the rain/night
+ambience series — corrugated roof, one lit window, rain, mist — entirely
+procedurally, so the series shares a visual identity without every
+thumbnail being one file with different text dropped on it. `--seed`
+varies the rain and treeline, so sibling videos differ on purpose.
+
+Three deliberate choices, worth keeping if this is edited:
+
+- **Dark**, because a thumbnail is a promise. A bright thumbnail on a video
+  someone opens at midnight to fall asleep is a mismatch.
+- **One warm window** as the only saturated thing in frame. Competitors in
+  this niche lean vivid; a near-black frame with a single amber point
+  stands out precisely by not competing on brightness.
+- **Very few words, set large.** In a phone sidebar the thumbnail is around
+  120px wide — anything smaller than this type is decoration, not
+  information.
+
+```
+pip install pillow
+python scripts/make_thumbnail.py \
+    --line1 "RAIN ON A" --line2 "TIN ROOF" \
+    --badge "3 HOURS  ·  DARK SCREEN" \
+    --out out/thumb-tin-roof.png
+```
