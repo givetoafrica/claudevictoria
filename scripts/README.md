@@ -112,6 +112,7 @@ From the **Actions** tab, **Render Ambient Video → Run workflow**, with:
 - `title` — optional working title, echoed in the log
 
 The finished `.mp4` is uploaded as the `ambient-video` artifact (14 days).
+The job installs ffmpeg itself; `ubuntu-latest` no longer ships it.
 Pushes that touch the renderer run a smoke test instead, rendering three
 minutes from generated pink noise to prove the ffmpeg graph still works.
 

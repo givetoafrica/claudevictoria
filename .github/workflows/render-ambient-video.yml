@@ -40,8 +40,12 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Confirm ffmpeg is present
-        run: ffmpeg -version | head -1
+      # ubuntu-latest no longer ships ffmpeg, so it has to be installed.
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          ffmpeg -version | head -1
 
       - name: Smoke test
         if: github.event_name == 'push'

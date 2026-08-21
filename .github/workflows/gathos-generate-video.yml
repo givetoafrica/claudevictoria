@@ -34,7 +34,12 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install requests
+        run: |
+          pip install requests
+          # gathos_generate_video.py concatenates multi-clip renders with
+          # ffmpeg, which ubuntu-latest does not ship.
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
 
       - name: Generate video
         env:

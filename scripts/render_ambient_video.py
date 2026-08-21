@@ -14,7 +14,7 @@ Audio is looped to fill the duration. Two seams matter and both are handled:
 a short crossfade hides the loop point, and a fade in/out at the extremes
 stops the video opening or closing on a click.
 
-Requires ffmpeg (present on GitHub Actions runners; see the workflow).
+Requires ffmpeg. The workflow installs it — ubuntu-latest no longer ships it.
 
 Usage:
     python scripts/render_ambient_video.py \
@@ -49,7 +49,7 @@ def _require_ffmpeg():
     for tool in ("ffmpeg", "ffprobe"):
         if not shutil.which(tool):
             raise RenderError(
-                f"{tool} not found. It ships with GitHub Actions runners; "
+                f"{tool} not found. The workflow installs it via apt; "
                 "locally, install it via your package manager."
             )
 
