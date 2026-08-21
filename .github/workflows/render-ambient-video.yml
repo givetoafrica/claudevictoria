@@ -1,0 +1,105 @@
+name: Render Ambient Video
+
+# Renders a long-form black-screen ambience video from an audio bed.
+# Runs here rather than locally because the runner has ffmpeg and the
+# spare disk an 8-hour render wants.
+
+on:
+  workflow_dispatch:
+    inputs:
+      audio:
+        description: "Path to the audio bed in this repo (e.g. beds/accra-rain.wav)"
+        required: true
+        type: string
+      hours:
+        description: "Target duration in hours"
+        required: false
+        default: "8"
+        type: string
+      title:
+        description: "Working title (echoed in the log, not burned into the video)"
+        required: false
+        type: string
+  # Smoke test on changes to the renderer itself: proves the ffmpeg graph
+  # still produces a playable file of the right length, without needing a
+  # real audio bed in the repo.
+  push:
+    branches:
+      - claude/youtube-audit-asmr-strategy-4f8wjz
+    paths:
+      - ".github/workflows/render-ambient-video.yml"
+      - "scripts/render_ambient_video.py"
+      - "scripts/synthesize_rain_bed.py"
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # ubuntu-latest no longer ships ffmpeg, so it has to be installed.
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          ffmpeg -version | head -1
+
+      - name: Install python deps
+        run: pip install --quiet numpy scipy
+
+      # On a push we build a real deliverable, not just a health check: a
+      # short preview to judge the audio by ear, and the full-length video
+      # alongside it so a good preview needs no second run.
+      - name: Synthesize bed and render
+        if: github.event_name == 'push'
+        run: |
+          mkdir -p out
+          python scripts/synthesize_rain_bed.py \
+            --seconds 300 --intensity 900 --seed 11 \
+            --out out/tin-roof-bed.wav
+
+          python scripts/render_ambient_video.py \
+            --audio out/tin-roof-bed.wav --hours 0.05 \
+            --out out/PREVIEW-3min.mp4
+          python scripts/render_ambient_video.py \
+            --audio out/tin-roof-bed.wav --hours 3 \
+            --out out/rain-tin-roof-3h.mp4
+
+          # Catch a graph that silently truncates: 3h must actually be 3h.
+          dur=$(ffprobe -v error -show_entries format=duration \
+            -of default=nw=1:nk=1 out/rain-tin-roof-3h.mp4)
+          python - "$dur" <<'PY'
+          import sys
+          actual = float(sys.argv[1])
+          if abs(actual - 10800) > 10:
+              sys.exit(f"duration {actual}s is not within 10s of the requested 10800s")
+          print(f"duration OK: {actual:.1f}s")
+          PY
+          ls -lh out/
+
+      # The bed is small and worth keeping; the wav is not, so it is dropped.
+      - name: Drop intermediate wav
+        if: github.event_name == 'push'
+        run: rm -f out/tin-roof-bed.wav
+
+      - name: Render
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          mkdir -p out
+          python scripts/render_ambient_video.py \
+            --audio "${{ inputs.audio }}" \
+            --hours "${{ inputs.hours }}" \
+            --title "${{ inputs.title }}" \
+            --out "out/render.mp4"
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ambient-video
+          path: out/*.mp4
+          retention-days: 14
+          compression-level: 0
