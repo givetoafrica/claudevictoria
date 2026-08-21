@@ -1,0 +1,83 @@
+name: Render Ambient Video
+
+# Renders a long-form black-screen ambience video from an audio bed.
+# Runs here rather than locally because the runner has ffmpeg and the
+# spare disk an 8-hour render wants.
+
+on:
+  workflow_dispatch:
+    inputs:
+      audio:
+        description: "Path to the audio bed in this repo (e.g. beds/accra-rain.wav)"
+        required: true
+        type: string
+      hours:
+        description: "Target duration in hours"
+        required: false
+        default: "8"
+        type: string
+      title:
+        description: "Working title (echoed in the log, not burned into the video)"
+        required: false
+        type: string
+  # Smoke test on changes to the renderer itself: proves the ffmpeg graph
+  # still produces a playable file of the right length, without needing a
+  # real audio bed in the repo.
+  push:
+    branches:
+      - claude/youtube-audit-asmr-strategy-4f8wjz
+    paths:
+      - ".github/workflows/render-ambient-video.yml"
+      - "scripts/render_ambient_video.py"
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Confirm ffmpeg is present
+        run: ffmpeg -version | head -1
+
+      - name: Smoke test
+        if: github.event_name == 'push'
+        run: |
+          mkdir -p out
+          # A 20s pink-noise bed stands in for a real ambience recording.
+          ffmpeg -y -f lavfi -i "anoisesrc=d=20:c=pink:r=48000" \
+            -c:a pcm_s16le out/test-bed.wav
+          python scripts/render_ambient_video.py \
+            --audio out/test-bed.wav --hours 0.05 --out out/smoke.mp4
+
+          duration=$(ffprobe -v error -show_entries format=duration \
+            -of default=nw=1:nk=1 out/smoke.mp4)
+          echo "rendered duration: ${duration}s (expected ~180)"
+          # Tolerate encoder rounding, catch a graph that silently truncates.
+          python - "$duration" <<'PY'
+          import sys
+          actual = float(sys.argv[1])
+          if abs(actual - 180) > 5:
+              sys.exit(f"duration {actual}s is not within 5s of the requested 180s")
+          print("duration OK")
+          PY
+
+      - name: Render
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          mkdir -p out
+          python scripts/render_ambient_video.py \
+            --audio "${{ inputs.audio }}" \
+            --hours "${{ inputs.hours }}" \
+            --title "${{ inputs.title }}" \
+            --out "out/render.mp4"
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ambient-video
+          path: out/*.mp4
+          retention-days: 14
