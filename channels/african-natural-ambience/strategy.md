@@ -126,3 +126,86 @@ about two weeks, and both change what #1, #4 and #5 should be.
    discovered at upload time.
 3. **Disclosure** — YouTube's altered-content disclosure applies to realistic
    synthetic footage of real places. Plan for it rather than being caught by it.
+
+---
+
+# What the first tracking run changed — 2026-08-21
+
+The first run produced real numbers, and they revise several judgements above.
+Full data: `tracking/report-2026-08-21.md`.
+
+## The channel already exists and is publishing
+
+7 subscribers, 10 uploads in roughly five days, all long-form, median 23
+views. Several of the ideas proposed above were already in production before
+this document was written. What follows replaces the slate, it does not add
+to it.
+
+| Channel | Subs | Median views | Median length | Uploads/30d |
+|---|---:|---:|---:|---:|
+| African Natural Ambience | 7 | 23 | 7h00m | 10 |
+| Blue Reef 4K | 2,690 | **10,000** | **1h38m** | **36** |
+| Dynasty Electrik | 103,000 | 34,500 | 1h12m | 7 |
+| Screenbience | 17,100 | 530 | 11h04m | 9 |
+| Asmr Create | 377 | 362 | 1m41s | 1 |
+
+## Three findings that change what to do
+
+### 1. Stop making 8-hour videos
+
+Blue Reef 4K — the nearest competitor, and the one to beat — has a median
+video length of **1h38m** and publishes **36 times a month**. It earns a
+median 10,000 views on 2,690 subscribers, meaning almost all its traffic is
+algorithmic rather than subscriber-driven.
+
+That is the opposite of this channel's shape: 8-hour videos at 10 a month.
+The 8-hour format costs roughly five times the render for one upload slot,
+and the competitor's revealed strategy says the length is not what is
+winning. Earlier advice in this document to target 4–8 hours came from
+general web guidance; the direct competitor's own data contradicts it.
+
+**Move to ~1.5 hours and raise cadence.**
+
+### 2. Title for intent, not for place
+
+Dynasty Electrik has 103,000 subscribers, and every one of its top outliers
+is titled for a *state the viewer wants* rather than a location: "Nervous
+System Healing", "528Hz", "Heart Awakening". Blue Reef 4K's two biggest
+outliers (298,000 and 179,000 views) both carry "8K HDR | Dolby Vision™" —
+a technical-spec claim, not a place.
+
+This channel's titles lead with places: "Zambezi River Sounds", "Namibia
+Village at Sunset". Places are good branding and weak search intent. Nobody
+searches "Zambezi".
+
+The same split shows up internally — "Fall Asleep Faster / Dark Screen"
+is running at 30 views/day against "Zambezi River Sounds" at 1.3 — but at
+4 to 60 views per video that internal comparison is noise on its own. It is
+worth acting on because two much larger channels show the same pattern at
+scale, not because of the difference between 30 views and 4.
+
+**Formula: intent first, texture second, spec third, place last.**
+
+### 3. Cut the off-lane uploads
+
+"2 Hour Focus Timer Progress Ring", "Funny Countdown for Meditation",
+"4 Hours Underwater Sea & Sky" are not African ambience. The underwater one
+competes directly with Blue Reef 4K, whose median is 10,000 views — an
+unwinnable fight on this channel's terms, and one that costs the channel the
+single thing distinguishing it.
+
+The "Sleep Session 01 / Focus Session 02" numbering is also dead title
+space: it means nothing to a searcher and consumes characters that intent
+keywords need.
+
+## Revised priority
+
+1. **Rain is the validated vein.** The two best organic performers are both
+   African rain. The tin-roof/named-city version proposed above is the
+   differentiated form of a thing already working — build that next.
+2. **Re-title the existing ten.** Cheapest possible experiment: no new
+   render, and it tests the intent-first hypothesis directly on videos that
+   already exist.
+3. **Drop to ~1.5 hours, raise cadence toward daily.**
+4. Hold the forced-choice Shorts idea until the long-form titling is fixed —
+   discovery pointed at weak titles wastes the traffic.
