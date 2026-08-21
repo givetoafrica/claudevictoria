@@ -3,12 +3,25 @@ name: Competitor Tracker
 # Weekly snapshot of what the competition is publishing, and which of their
 # videos broke out. History is the point — a single snapshot tells you who is
 # big, a run of them tells you what is working right now.
+#
+# Uses yt-dlp rather than the YouTube Data API, matching
+# scripts/fetch_channel_videos.py: no API key, no quota.
 
 on:
   schedule:
     # Mondays 07:00 UTC. Early enough in the week to plan the week's uploads.
     - cron: "0 7 * * 1"
   workflow_dispatch:
+  # Until this lands on main, schedule and manual dispatch are unavailable
+  # (GitHub only registers those from the default branch). The path filter
+  # keeps the job's own data commits from retriggering it.
+  push:
+    branches:
+      - claude/youtube-audit-asmr-strategy-4f8wjz
+    paths:
+      - ".github/workflows/competitor-tracker.yml"
+      - "scripts/competitor_tracker.py"
+      - "channels/african-natural-ambience/competitors.json"
 
 permissions:
   contents: write
@@ -21,11 +34,12 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install yt-dlp
 
       - name: Snapshot competitors
-        env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
           python scripts/competitor_tracker.py \
             --config channels/african-natural-ambience/competitors.json \
