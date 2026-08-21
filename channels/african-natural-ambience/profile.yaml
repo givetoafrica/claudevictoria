@@ -1,0 +1,98 @@
+# Channel Profile — African Natural Ambience
+# Format matches youtube-video-factory's assets/channel-profiles/_template.yaml,
+# so this file can be copied into that skill and used for generation directly.
+# Source: youtube.com/@AfricanNaturalAmbience
+# STATUS: fields marked NEEDS INPUT must be confirmed before generation.
+
+channel_name: "African Natural Ambience"
+target_audience: >-
+  Two audiences, deliberately. (1) Sleep/focus/study listeners worldwide who
+  want long-form nature ambience — the same job BlueReef4K does for reefs.
+  (2) African diaspora listeners for whom these specific soundscapes are
+  memory, not just texture. The second audience is the differentiator: they
+  subscribe and comment, where the first only listens.
+format: "both"                 # long-form is the product; Shorts are discovery
+video_length_target: "long_form: 1-3 hours (test), 8 hours (proven topics); shorts: 30-60 seconds"
+
+brand:
+  colors:
+    primary: ""                # NEEDS INPUT
+    secondary: ""              # NEEDS INPUT
+  tone: "calm, unhurried, reverent toward place; never hyped, never narrated over"
+  taboo_topics:
+    - "Poverty framing, 'safari exotica', or any treatment of Africa as scenery rather than places"
+    - "Generic pan-'Africa' labelling — every video names a specific ecosystem or place"
+    - "Wildlife distress, hunting, or predation shown for shock value"
+  made_for_kids: false
+
+characters: []                 # No cast — this channel has no on-screen characters
+
+visual_rules:
+  - "Every video is anchored to a named, real ecosystem (Serengeti, Okavango, Congo Basin, Simien Highlands) — never an unplaced 'African landscape'"
+  - "Species shown must actually occur in the named ecosystem. Wrong-continent or wrong-biome wildlife is the fastest way to lose this audience's trust"
+  - "No people in frame — this is a place, not a travelogue"
+  - "Camera stays still or moves very slowly; anything with cut rhythm reads as a trailer, not ambience"
+
+voice:
+  provider: ""                 # No narration on long-form. NEEDS INPUT if Shorts get voiceover
+  voice_id_map: {}
+
+audio:
+  # For an ambience channel the audio IS the product. This section is not
+  # cosmetic — it is the main production constraint.
+  bed: "field-recording-style nature soundscape, no music, no narration"
+  music_policy: >-
+    MusicSesame (lifetime, channel-level Content ID clearance) is a STOCK MUSIC
+    library, not a nature-sound library. Use it only for the music-led sub-format
+    and for Shorts. It does not solve the core need, which is authentic African
+    ambience audio.
+  sourcing: "NEEDS INPUT — decide and record the licence for every nature audio source before the first upload"
+
+script_structure:
+  # Long-form ambience has no script. It has an arc — that is what stops it
+  # being a loop, and a loop is what the inauthentic-content policy penalises.
+  - segment: "establishing"
+    target_seconds: 120
+  - segment: "arc_body"
+    target_seconds: 0          # the bulk; audio must develop, not repeat
+  - segment: "resolution"
+    target_seconds: 300
+
+seo:
+  primary_keywords:
+    - "african savanna sounds"
+    - "jungle ambience"
+    - "safari sounds for sleeping"
+    - "rainforest ambience"
+    - "nature sounds for sleep"
+    - "african nature sounds"
+  audience_search_terms:
+    - "8 hours nature sounds"
+    - "no music"               # a genuine search qualifier in this niche
+    - "sleep sounds black screen"
+    - "serengeti at night"
+    - "rain sounds for sleeping"
+    - "study ambience"
+  avoid_terms:
+    - "asmr triggers"          # pulls the whisper/mouth-sound audience this channel cannot serve
+    - "tribal"                 # othering, and pulls the wrong intent entirely
+    - "exotic"
+
+reference_style_notes: |
+  Competitive position: nearest true rival is BlueReef4K (long-form 4K
+  underwater ambience) — same job, different biome. Screenbience is a format
+  reference only (screensaver/motion-wallpaper utility positioning, reuse
+  allowed with credit). Dynasty Electrik is a human sound-healer duo with
+  weekly live streams; a personality brand this channel structurally cannot
+  and should not copy. AsmrCreate00 sits in the AI ASMR wave, which is a
+  different niche from ambience despite the surface overlap.
+
+  Strategic bet: African soundscapes are covered by scattered one-off videos
+  but no channel owns the category at brand scale. The trade is reach for
+  defensibility — "rain sounds" has a larger addressable audience than
+  "rain in Accra", but no differentiation and no reason to subscribe.
+
+  Policy constraint: YouTube's July 2026 "inauthentic content" rule penalises
+  templated, mass-produced uploads at the CHANNEL level. For this channel that
+  means each video must be a distinct named place with a developing arc, not
+  the same loop reskinned. This is a production rule, not a nice-to-have.

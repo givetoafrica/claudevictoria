@@ -1,0 +1,27 @@
+{
+  "channel": "African Natural Ambience",
+  "handle": "AfricanNaturalAmbience",
+  "notes": "Handles are resolved via the YouTube Data API's forHandle lookup, with a search fallback. If a handle changes, fix it here — nothing else needs to change.",
+  "competitors": [
+    {
+      "handle": "AfricanNaturalAmbience",
+      "note": "Our own channel. Tracked so every competitor number has our baseline next to it."
+    },
+    {
+      "handle": "Screenbience",
+      "note": "Aesthetic screensavers, motion wallpapers and background animations. Visual-first, utility positioning; explicitly allows reuse with credit."
+    },
+    {
+      "handle": "AsmrCreate00",
+      "note": "AI-generated ASMR. Closest to the Veo-era AI ASMR wave. Positioning unverified — confirm on first successful run."
+    },
+    {
+      "handle": "BlueReef4K.04",
+      "note": "4K underwater/reef ambience, long-form. The nearest true competitor: same job (long-form nature ambience for sleep and focus), different biome."
+    },
+    {
+      "handle": "dynastyelectrik",
+      "note": "Human sound-healer duo (crystal sound baths, weekly live streams). A personality brand, not a faceless one — tracked as a format reference, not a like-for-like rival."
+    }
+  ]
+}

@@ -50,3 +50,41 @@ image-to-image are only partially confirmed (only `{"prompt": ...}` is
 documented) — see the module docstring in `gathos_client.py`. If a call
 fails, `GathosError` prints the full raw response so a wrong field-name
 guess is a one-line fix, not a mystery.
+
+# Competitor tracker
+
+`competitor_tracker.py` snapshots the ambience/ASMR competitors listed in
+`channels/african-natural-ambience/competitors.json` via the YouTube Data
+API v3, and flags **outliers** — videos beating their own channel's median
+view count by 3x or more. Raw views tell you a channel is big; the
+multiplier against its own median tells you a specific hook or format broke
+out, which is the part worth copying.
+
+## Setup
+
+Add one repository secret:
+
+- `YOUTUBE_API_KEY` — free from console.cloud.google.com (enable "YouTube
+  Data API v3", then create an API key)
+
+Quota cost is a few units per channel per run against a default daily quota
+of 10,000, so the weekly schedule is nowhere near the limit.
+
+## Running
+
+Runs automatically Mondays at 07:00 UTC, or from the **Actions** tab via
+**Competitor Tracker → Run workflow**. Each run writes two files into
+`channels/african-natural-ambience/tracking/` — a full JSON snapshot and a
+readable markdown report — commits them, and also uploads them as a
+workflow artifact (90 days).
+
+Locally, with the key set:
+
+```
+YOUTUBE_API_KEY=... python scripts/competitor_tracker.py \
+    --config channels/african-natural-ambience/competitors.json \
+    --out channels/african-natural-ambience/tracking
+```
+
+Note that this needs outbound access to `googleapis.com`, which some
+sandboxed dev environments block — the GitHub Actions runner does not.

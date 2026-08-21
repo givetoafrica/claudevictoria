@@ -1,0 +1,52 @@
+name: Competitor Tracker
+
+# Weekly snapshot of what the competition is publishing, and which of their
+# videos broke out. History is the point — a single snapshot tells you who is
+# big, a run of them tells you what is working right now.
+
+on:
+  schedule:
+    # Mondays 07:00 UTC. Early enough in the week to plan the week's uploads.
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Snapshot competitors
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          python scripts/competitor_tracker.py \
+            --config channels/african-natural-ambience/competitors.json \
+            --out channels/african-natural-ambience/tracking
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: competitor-report
+          path: channels/african-natural-ambience/tracking/
+          retention-days: 90
+
+      - name: Commit snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add channels/african-natural-ambience/tracking/
+          # Nothing to commit when a run lands on the same day as a previous one.
+          if git diff --staged --quiet; then
+            echo "No new tracking data to commit."
+          else
+            git commit -m "Competitor tracking snapshot $(date -u +%Y-%m-%d)"
+            git push
+          fi
