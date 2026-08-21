@@ -149,3 +149,27 @@ python scripts/make_thumbnail.py \
     --badge "3 HOURS  ·  DARK SCREEN" \
     --out out/thumb-tin-roof.png
 ```
+
+# Rain bed synthesizer
+
+`synthesize_rain_bed.py` models rain on corrugated metal: broadband hiss for
+distant drops, a low body for weight, individual impacts convolved with
+resonant panel modes (this is what makes it *metal* rather than rain on
+grass), slow gusts, and two short reflections so the listener is under the
+roof rather than out in the open.
+
+**This is modelled rain, not a field recording.** Do not label output from it
+as a recording of a real place. It exists so the pipeline can produce finished
+videos while real audio is sourced.
+
+The bed is loop-safe by construction: the tail is crossfaded into the head and
+the gust envelope is exactly periodic, so a 5-minute bed repeated through a
+3-hour video has no seam.
+
+```
+pip install numpy scipy
+python scripts/synthesize_rain_bed.py --seconds 300 --intensity 900 \
+    --out beds/tin-roof.wav
+```
+
+`--intensity` is drop impacts per second: ~300 light, ~900 steady, ~1600 heavy.
