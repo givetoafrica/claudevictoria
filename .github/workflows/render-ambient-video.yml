@@ -26,6 +26,7 @@ on:
   push:
     branches:
       - claude/youtube-audit-asmr-strategy-4f8wjz
+      - claude/youtube-channel-inspiration-1exnkw
     paths:
       - ".github/workflows/render-ambient-video.yml"
       - "scripts/render_ambient_video.py"

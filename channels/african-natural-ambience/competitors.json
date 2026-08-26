@@ -1,11 +1,23 @@
 {
   "channel": "African Natural Ambience",
   "handle": "AfricanNaturalAmbience",
-  "notes": "Handles are resolved via the YouTube Data API's forHandle lookup, with a search fallback. If a handle changes, fix it here — nothing else needs to change.",
+  "notes": "Handles are resolved by yt-dlp against youtube.com/@<handle>/videos. If a handle changes, fix it here — nothing else needs to change. A handle that fails to resolve is reported as an error row rather than failing the run.",
   "competitors": [
     {
       "handle": "AfricanNaturalAmbience",
       "note": "Our own channel. Tracked so every competitor number has our baseline next to it."
+    },
+    {
+      "handle": "AfricanVillageAmbienceASMR",
+      "note": "Second channel of ours, named by Victoria as the one she wants grown. Tracked to establish whether it is a separate slate from AfricanNaturalAmbience or a rename."
+    },
+    {
+      "handle": "RainlitVillage",
+      "note": "Named by Victoria as the channel she wants to model. Village rain ambience — the closest thing to a like-for-like target this list has ever had, and much closer than BlueReef4K. Format reference and benchmark."
+    },
+    {
+      "handle": "rainyvillagee",
+      "note": "Rainy Village. Same lane as RainlitVillage, tracked so the lane has more than one data point and one channel's quirks are not read as the format's rules."
     },
     {
       "handle": "Screenbience",
@@ -17,7 +29,7 @@
     },
     {
       "handle": "BlueReef4K.04",
-      "note": "4K underwater/reef ambience, long-form. The nearest true competitor: same job (long-form nature ambience for sleep and focus), different biome."
+      "note": "4K underwater/reef ambience, long-form. Same job (long-form nature ambience for sleep and focus), different biome. Demoted from 'nearest competitor' now that the village-rain channels are tracked."
     },
     {
       "handle": "dynastyelectrik",
