@@ -78,8 +78,11 @@ def build_audio_filter(source_seconds, target_seconds):
     """Loop the bed to target_seconds, hiding the seam and the edges.
 
     A plain loop clicks audibly at every repeat, which is exactly the kind
-    of detail a sleep listener notices. Overlapping the tail of each pass
-    with the head of the next removes it.
+    of detail a sleep listener notices. That seam is fixed in the *bed*, not
+    here -- synthesize_rain_bed.py crossfades its own tail into its head, so
+    the file is loop-safe by construction. This function only fades the very
+    start and end of the finished video, so it never opens or closes on a
+    click. Feeding it a bed that is not loop-safe will click at every repeat.
     """
     if source_seconds <= LOOP_CROSSFADE_SECONDS * 2:
         raise RenderError(

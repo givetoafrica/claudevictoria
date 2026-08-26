@@ -1,0 +1,42 @@
+{
+  "slug": "001-tin-roof-rain",
+  "working_title": "Heavy Rain on a Tin Roof — 90 minutes, dark screen",
+  "hours": 1.5,
+
+  "bed": {
+    "seconds": 300,
+    "intensity": 1400,
+    "seed": 23
+  },
+
+  "thumbnail": {
+    "line1": "RAIN ON A",
+    "line2": "TIN ROOF",
+    "badge": "90 MIN  ·  DARK SCREEN",
+    "seed": 23
+  },
+
+  "audio_provenance": "synthesized",
+
+  "packaging": {
+    "title": "Fall Asleep Fast 🌧️ Heavy Rain on a Tin Roof | 90 Minutes, Dark Screen, No Music",
+    "tags": [
+      "rain sounds for sleeping",
+      "rain on tin roof",
+      "black screen rain",
+      "dark screen sleep sounds",
+      "rain sounds no music",
+      "sleep sounds",
+      "rain ambience",
+      "tin roof rain sounds",
+      "rain for insomnia",
+      "90 minute sleep sounds",
+      "rain on metal roof",
+      "sleep aid rain",
+      "relaxing rain sounds",
+      "rain sounds for studying",
+      "corrugated roof rain"
+    ],
+    "hashtags": ["#rainsounds", "#blackscreen", "#sleepsounds"]
+  }
+}
