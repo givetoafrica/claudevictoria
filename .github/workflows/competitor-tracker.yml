@@ -53,7 +53,14 @@ jobs:
           path: channels/african-natural-ambience/tracking/
           retention-days: 90
 
+      # The push has to reconcile, not assume. This job runs against the ref
+      # as it was when the run was queued, and the branch moves underneath it
+      # -- a weekly schedule will eventually land on top of someone's push,
+      # and a plain `git push` then fails AFTER the scan, throwing away the
+      # run's data for a reason that has nothing to do with the data.
       - name: Commit snapshot
+        env:
+          BRANCH: ${{ github.ref_name }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -61,7 +68,26 @@ jobs:
           # Nothing to commit when a run lands on the same day as a previous one.
           if git diff --staged --quiet; then
             echo "No new tracking data to commit."
-          else
-            git commit -m "Competitor tracking snapshot $(date -u +%Y-%m-%d)"
-            git push
+            exit 0
           fi
+          git commit -m "Competitor tracking snapshot $(date -u +%Y-%m-%d)"
+
+          for attempt in 1 2 3; do
+            if git push origin "HEAD:$BRANCH"; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "push rejected, rebasing onto origin/$BRANCH (attempt $attempt)"
+            git fetch origin "$BRANCH"
+            # -X theirs favours the commit being replayed, i.e. this run's
+            # snapshot. Two runs on the same day write the same filenames, and
+            # the newer scan is the one worth keeping.
+            git rebase -X theirs "origin/$BRANCH" || {
+              git rebase --abort || true
+              echo "::error::could not rebase onto origin/$BRANCH"
+              exit 1
+            }
+            sleep $((attempt * 5))
+          done
+          echo "::error::push still rejected after 3 attempts"
+          exit 1
