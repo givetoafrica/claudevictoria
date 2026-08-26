@@ -290,8 +290,8 @@ def render_report(snapshot):
             "them describes neither.",
             "",
             "YouTube's Shorts tab returns no duration and no upload date under "
-            "flat extraction, so those two columns read `—` rather than a "
-            "number. View counts are real.",
+            "flat extraction, so median length reads `—` and cadence reads "
+            "`?`. Neither is a measurement of zero. View counts are real.",
             "",
             "| Channel | Scanned | Median views | Median length | Posted/30d |",
             "|---|---:|---:|---:|---:|",
