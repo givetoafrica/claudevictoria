@@ -10,8 +10,9 @@
   },
 
   "thumbnail": {
-    "line1": "RAIN ON A",
-    "line2": "TIN ROOF",
+    "_why": "The title already carries the searchable words (rain, tin roof, dark screen, no music) and thumbnail text is not indexed, so repeating them wastes the highest-leverage surface on the video. This asks the question the viewer is already living at 3am; the art answers it with one lit window.",
+    "line1": "STILL",
+    "line2": "AWAKE?",
     "badge": "90 MIN  ·  DARK SCREEN",
     "seed": 23
   },
