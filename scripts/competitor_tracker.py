@@ -195,7 +195,15 @@ def analyse(channel, videos, shorts=()):
 
 
 def _fmt_duration(seconds):
-    seconds = int(seconds or 0)
+    """Format a duration, distinguishing 'no data' from 'zero seconds'.
+
+    Flat extraction of the /shorts tab returns no duration at all, and
+    rendering that as "0m00s" reads as a measured fact about the videos
+    rather than a gap in what YouTube handed back.
+    """
+    if not seconds:
+        return "—"
+    seconds = int(seconds)
     if seconds >= 3600:
         return f"{seconds // 3600}h{(seconds % 3600) // 60:02d}m"
     return f"{seconds // 60}m{seconds % 60:02d}s"
@@ -280,6 +288,10 @@ def render_report(snapshot):
             "Kept apart from the long-form numbers above on purpose. A channel "
             "running both has two view distributions, and one median across "
             "them describes neither.",
+            "",
+            "YouTube's Shorts tab returns no duration and no upload date under "
+            "flat extraction, so those two columns read `—` rather than a "
+            "number. View counts are real.",
             "",
             "| Channel | Scanned | Median views | Median length | Posted/30d |",
             "|---|---:|---:|---:|---:|",

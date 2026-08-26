@@ -370,3 +370,123 @@ existing channel at it.
   before the link.** Nothing here accounts for it.
 - **Nobody has listened to the synthesized rain bed yet.** It is verified by
   measurement only.
+
+---
+
+# The Shorts data, and what it overturns — 2026-08-26 (second run)
+
+The first run of the day could only read `/videos`. That made Rainlit Village
+look like a channel with two uploads and 498,000 subscribers, which was true
+and useless. The tracker now reads `/shorts` as well, and the numbers are not
+close.
+
+## Rainlit Village is a Ghibli-style cooking channel
+
+| Channel | Shorts scanned | Median views per Short |
+|---|---:|---:|
+| **Rainlit Village** | 45 | **472,000** |
+| Dynasty Electrik | 54 | 3,000 |
+| Asmr Create | 60 | 1,900 |
+| **African Village Ambience (ours)** | 18 | **1,100** |
+| Rainy Village | 60 | 894 |
+
+Its top five Shorts:
+
+| Views | Title |
+|---:|---|
+| **153,000,000** | Fresh Paneer Butter Masala & Naan on a Rainy Day 🌧️🍛 \| Village Cooking #ghiblistyle #asmr |
+| 36,000,000 | Cooking Rajma Chawal on a Rainy Day 🌧️ \| #ghiblistyle #asmr #shorts |
+| 25,000,000 | Cozy Rainy Day & Homemade Butter Chicken 🌧️🍛❤️ #ghiblistyle #asmr #shorts |
+| 18,000,000 | A Cozy Rainy Morning in an Indian Village 🌧️ \| Idli & Filter Coffee #ghiblistyle #shorts |
+| 13,000,000 | 🌧️Cooking Traditional Pulihora (tamarind rice) on a monsoon rainy day #ghiblistyle #asmr |
+
+One video has **153 million views**. The formula does not vary: *one named
+regional dish, cooked, on a rainy day, in an animated village, tagged
+`#ghiblistyle #asmr #shorts`.* The rain is the atmosphere. **The food is the
+subject.** That is the whole channel, and it is what 498,000 subscribers were
+built on.
+
+## Our own Shorts already outperform our long-form by 52x
+
+This is the finding that should change what gets made this week.
+
+| Format | Median views |
+|---|---:|
+| Long-form (13 uploads, median 8h00m) | **21** |
+| Shorts (18 uploads) | **1,100** |
+
+Top Shorts on the channel: "unboxing relaxing sound" (16,000), "Coconut
+counting ASMR satisfying" (3,900), "unboxing relaxing part 2" (2,400),
+"Satisfying Avocado Cutting 🥑" (1,800).
+
+Two things follow, and they point the same way:
+
+1. **The channel can already reach people. It is doing it on Shorts, and
+   almost all of the production effort is going somewhere else.** An 8-hour
+   render earns 4–25 views. A Short earns a median of 1,100 and has earned
+   16,000.
+2. **The Shorts that work are generic.** Unboxing, coconut counting, avocado
+   cutting — satisfying-content filler that any channel could post. They pull
+   views and give nobody a reason to subscribe to *this* channel. That is why
+   16,000 views converted into a channel with 19 subscribers.
+
+Rainlit Village solves exactly that problem: its Shorts are unmistakably one
+channel, because every one of them is the same specific thing.
+
+## The plan, revised
+
+### Do this first: African village cooking Shorts
+
+This is the "same format, in Africa" idea, it is now the best-evidenced move
+available, and **it needs no new tooling to start** — it needs a decision about
+what to film or generate, not a credential.
+
+The formula, transposed honestly rather than copied:
+
+- **One named dish per Short.** Jollof rice, egusi soup, injera and shiro,
+  ugali and sukuma wiki, waakye, suya, chapati and beans, fufu and light soup.
+  The specificity is the point — "Paneer Butter Masala" does the work that
+  "Indian food" would not.
+- **Rain as the setting, not the subject.** Rain on a tin roof over a coal pot.
+- **A named place**, the way theirs says "an Indian Village": a Ghanaian
+  compound, a Kenyan highland kitchen, a Lagos courtyard.
+- **Consistent visual treatment**, so 45 Shorts read as one channel.
+- **Cooking sounds, no narration.**
+
+What must not be taken: their scripts, their artwork, their characters, or
+their channel name. `#ghiblistyle` is also somebody's studio — describe the
+look, don't invoke the brand.
+
+The gate is real and small: video generation in this repo has never once
+succeeded, because `GATHOS_VIDEO_KEY` has never been set as a repository
+secret. Both attempts failed on exactly that. Setting it is the first task.
+
+### Keep long-form, but stop over-investing in it
+
+The 90-minute rain episode is built and is worth publishing — rain is the one
+long-form vein with any pull, and 90 minutes costs a fifth of an 8-hour render.
+But the data says long-form is not currently where this channel's audience is,
+and it should stop consuming the bulk of the effort until Shorts have built a
+subscriber base to send somewhere.
+
+Retitling the existing catalogue in Rainy Village's register — sound plus
+desired state, no emoji, no place, no hour count, no "Session 03" — remains the
+cheapest experiment available and still costs nothing.
+
+### What changed from the first revision, and why
+
+The earlier conclusion — "model Blue Reef 4K, go to 90 minutes, publish daily"
+— was right about long-form and wrong about priority. It was drawn from
+long-form channels only, because Shorts were invisible to the tracker. Blue
+Reef 4K is still the right model *for the long-form slate*. It is no longer the
+right model for the channel.
+
+## Limits of this data
+
+- The Shorts tab returns no duration and no upload date under flat extraction,
+  so Shorts cadence is unknown. View counts are real.
+- 45 Shorts were scanned for Rainlit Village against a 60 cap, so this is most
+  of what it has posted, not a sample of a much larger back catalogue.
+- Nobody has listened to the synthesized rain bed.
+- Victoria named a second inspiration channel and the message was cut off
+  before the link. Nothing here accounts for it.
