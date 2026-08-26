@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T16:46:05.407328+00:00",
+  "generated_at": "2026-08-26T16:53:34.452523+00:00",
   "outlier_multiplier": 3.0,
   "channels": [
     {
@@ -157,164 +157,63 @@
           "is_outlier": false
         }
       ],
-      "tracked_because": "Our own channel. Tracked so every competitor number has our baseline next to it."
-    },
-    {
-      "channel_id": "UCZuABrnuUKp42i2VsgocmtA",
-      "title": "African Village Ambience",
-      "handle": "AfricanVillageAmbienceASMR",
-      "subscribers": 19,
-      "median_views_recent": 21,
-      "median_duration_seconds": 28801,
-      "uploads_last_30_days": 13,
-      "shorts_share": 0.0,
-      "videos_scanned": 13,
-      "videos": [
-        {
-          "video_id": "XjVr61onByo",
-          "title": "African Heavy Rain for Deep Sleep | 8 HOURS \u2014 Sleep Session 01 | No Mid-Roll Ads",
-          "uploaded": "2026-08-16",
-          "age_days": 10,
-          "views": 69,
-          "views_per_day": 6.9,
-          "duration_seconds": 28801,
-          "outlier_multiplier": 3.29,
-          "is_outlier": true
-        },
-        {
-          "video_id": "5OKACUXSikk",
-          "title": "2 Hour Focus Timer Progress Ring",
-          "uploaded": "2026-08-19",
-          "age_days": 7,
-          "views": 44,
-          "views_per_day": 6.3,
-          "duration_seconds": 7201,
-          "outlier_multiplier": 2.1,
-          "is_outlier": false
-        },
-        {
-          "video_id": "YC0gV-fzwLo",
-          "title": "African Rainforest Sounds for Deep Sleep | 8 HOURS \u2014 Sleep Session 02 | No Mid-Roll Ads",
-          "uploaded": "2026-08-17",
-          "age_days": 9,
-          "views": 41,
-          "views_per_day": 4.6,
-          "duration_seconds": 28801,
-          "outlier_multiplier": 1.95,
-          "is_outlier": false
-        },
-        {
-          "video_id": "dZQoupCvpnQ",
-          "title": "Fall Asleep Faster \ud83c\udf27\ufe0f Heavy African Night Rain | Dark Screen \u2014 8 Hours",
-          "uploaded": "2026-08-21",
-          "age_days": 5,
-          "views": 31,
-          "views_per_day": 6.2,
-          "duration_seconds": 28801,
-          "outlier_multiplier": 1.48,
-          "is_outlier": false
-        },
-        {
-          "video_id": "NyTa8lSazv8",
-          "title": "10 Hours of Waterfall Sounds | Wli Village, Ghana | Deep Sleep & Relaxation",
-          "uploaded": "2026-08-25",
-          "age_days": 1,
-          "views": 25,
-          "views_per_day": 25.0,
-          "duration_seconds": 36001,
-          "outlier_multiplier": 1.19,
-          "is_outlier": false
-        },
-        {
-          "video_id": "m2FNVpjWSpk",
-          "title": "Namibia Village at Sunset for Deep Sleep | 8 HOURS \u2014 Sleep Session 03",
-          "uploaded": "2026-08-18",
-          "age_days": 8,
-          "views": 25,
-          "views_per_day": 3.1,
-          "duration_seconds": 28801,
-          "outlier_multiplier": 1.19,
-          "is_outlier": false
-        },
-        {
-          "video_id": "tEjlSXb2qTg",
-          "title": "Funny Countdown for Meditation & Focus | 5 HOURS \u2014 Focus Session 02",
-          "uploaded": "2026-08-18",
-          "age_days": 8,
-          "views": 21,
-          "views_per_day": 2.6,
-          "duration_seconds": 18000,
-          "outlier_multiplier": 1.0,
-          "is_outlier": false
-        },
-        {
-          "video_id": "OpUim-GVD6g",
-          "title": "African Meditation Timer | 2 HOURS \u2014 Meditation Session 01 | No Mid-Roll Ads",
-          "uploaded": "2026-08-17",
-          "age_days": 9,
-          "views": 13,
-          "views_per_day": 1.4,
-          "duration_seconds": 7201,
-          "outlier_multiplier": 0.62,
-          "is_outlier": false
-        },
-        {
-          "video_id": "3Wn0Uf9Hf7k",
-          "title": "8 Hour Beautiful Africa Nature Equilibrium",
-          "uploaded": "2026-08-21",
-          "age_days": 5,
-          "views": 10,
-          "views_per_day": 2.0,
-          "duration_seconds": 28801,
-          "outlier_multiplier": 0.48,
-          "is_outlier": false
-        },
-        {
-          "video_id": "iNqmKIYpREk",
-          "title": "African Nature Sounds for Deep Relaxation & Focus | Calm Currents | 10 Hours",
-          "uploaded": "2026-08-25",
-          "age_days": 1,
-          "views": 5,
-          "views_per_day": 5.0,
-          "duration_seconds": 36001,
-          "outlier_multiplier": 0.24,
-          "is_outlier": false
-        },
-        {
-          "video_id": "eheMmotgwAE",
-          "title": "5 Hours of Waterfall Sounds | Semonkong Village, Lesotho | Deep Sleep & Focus",
-          "uploaded": "2026-08-25",
-          "age_days": 1,
-          "views": 4,
-          "views_per_day": 4.0,
-          "duration_seconds": 18001,
-          "outlier_multiplier": 0.19,
-          "is_outlier": false
-        },
-        {
-          "video_id": "Zc4Ib30_FFM",
-          "title": "4 Hours Underwater Sea & Sky | Calming Ocean Sounds for Sleep, Meditation & Focus",
-          "uploaded": "2026-08-20",
-          "age_days": 6,
-          "views": 4,
-          "views_per_day": 0.7,
-          "duration_seconds": 14401,
-          "outlier_multiplier": 0.19,
-          "is_outlier": false
-        },
-        {
-          "video_id": "xhL1Fyn6fpA",
-          "title": "Zambezi River Sounds & Gentle Crickets 6 Hour",
-          "uploaded": "2026-08-18",
-          "age_days": 8,
-          "views": 4,
-          "views_per_day": 0.5,
-          "duration_seconds": 21601,
-          "outlier_multiplier": 0.19,
-          "is_outlier": false
-        }
-      ],
-      "tracked_because": "Second channel of ours, named by Victoria as the one she wants grown. Tracked to establish whether it is a separate slate from AfricanNaturalAmbience or a rename."
+      "shorts": {
+        "scanned": 18,
+        "median_views": 1100.0,
+        "median_duration_seconds": 0.0,
+        "published_last_30_days": null,
+        "top": [
+          {
+            "video_id": "G9ZaL5d7EGM",
+            "title": "unboxing relaxing sound #shorts   .subscribe now",
+            "uploaded": null,
+            "age_days": null,
+            "views": 16000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "3LG06vN5ZFg",
+            "title": "Coconut counting ASMR satisfying #shorts ##trendingshorts #asmr subscribe for more",
+            "uploaded": null,
+            "age_days": null,
+            "views": 3900,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "GC9Jj9SyU7M",
+            "title": "unboxing relaxing part 2 subscribe now for more #shorts",
+            "uploaded": null,
+            "age_days": null,
+            "views": 2400,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "fFLfQ0KJnAQ",
+            "title": "Satisfying Avocado Cutting \ud83e\udd51 | Relaxing 10-Second Reset #Shorts",
+            "uploaded": null,
+            "age_days": null,
+            "views": 1800,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "Me_koQ6d2rw",
+            "title": "which of this Room will you sleep mind is \ud83c\udf4b #shorts #onlycooltheroomsyouneed #relax #bedroom",
+            "uploaded": null,
+            "age_days": null,
+            "views": 1600,
+            "views_per_day": null,
+            "duration_seconds": 0
+          }
+        ]
+      },
+      "tracked_because": "Our own channel, now titled 'African Village Ambience'. Tracked so every competitor number has our baseline next to it. The 2026-08-26 run resolved this handle and @AfricanVillageAmbienceASMR to the same channel id (UCZuABrnuUKp42i2VsgocmtA) \u2014 it is one channel that was renamed, not two.",
+      "also_reachable_as": [
+        "AfricanVillageAmbienceASMR"
+      ]
     },
     {
       "channel_id": "UC3LiwRzbujN4lhkcCWDc9Zg",
@@ -350,7 +249,60 @@
           "is_outlier": false
         }
       ],
-      "tracked_because": "Named by Victoria as the channel she wants to model. Village rain ambience \u2014 the closest thing to a like-for-like target this list has ever had, and much closer than BlueReef4K. Format reference and benchmark."
+      "shorts": {
+        "scanned": 45,
+        "median_views": 472000,
+        "median_duration_seconds": 0,
+        "published_last_30_days": null,
+        "top": [
+          {
+            "video_id": "a4tHx-tr5_g",
+            "title": "Fresh Paneer Butter Masala & Naan on a Rainy Day \ud83c\udf27\ufe0f\ud83c\udf5b | Village Cooking #ghiblistyle #asmr #shorts",
+            "uploaded": null,
+            "age_days": null,
+            "views": 153000000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "xNlEy3hJTaY",
+            "title": "Cooking Rajma Chawal on a Rainy Day \ud83c\udf27\ufe0f | #ghiblistyle #asmr #shorts",
+            "uploaded": null,
+            "age_days": null,
+            "views": 36000000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "95Kr0F485go",
+            "title": "Cozy Rainy Day & Homemade Butter Chicken \ud83c\udf27\ufe0f\ud83c\udf5b\u2764\ufe0f #ghiblistyle #asmr #shorts",
+            "uploaded": null,
+            "age_days": null,
+            "views": 25000000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "SC_kCgXvlKU",
+            "title": "A Cozy Rainy Morning in an Indian Village \ud83c\udf27\ufe0f | Idli & Filter Coffee #ghiblistyle #shorts #asmr",
+            "uploaded": null,
+            "age_days": null,
+            "views": 18000000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "FiBJWtN1EEA",
+            "title": "\ud83c\udf27\ufe0fCooking Traditional Pulihora (tamarind rice) on a monsoon rainy day # #ghiblistyle #asmr #shorts",
+            "uploaded": null,
+            "age_days": null,
+            "views": 13000000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          }
+        ]
+      },
+      "tracked_because": "Named by Victoria as the channel she wants to model. NOT a long-form ambience channel: 498k subs on ~7-minute AI/anime Indian village life videos (cooking in the rain), with the subscriber base built on Shorts. Tracked as an aspiration to understand rather than a format to copy \u2014 see strategy.md."
     },
     {
       "channel_id": "UChd8-3zcYfTNKrUFv8f1vbQ",
@@ -1024,7 +976,60 @@
           "is_outlier": false
         }
       ],
-      "tracked_because": "Rainy Village. Same lane as RainlitVillage, tracked so the lane has more than one data point and one channel's quirks are not read as the format's rules."
+      "shorts": {
+        "scanned": 60,
+        "median_views": 894.0,
+        "median_duration_seconds": 0.0,
+        "published_last_30_days": null,
+        "top": [
+          {
+            "video_id": "7hYNMIQX_yg",
+            "title": "The noise and sound of rain. Thunderclaps. #rain #rainsounds",
+            "uploaded": null,
+            "age_days": null,
+            "views": 4400,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "IZQs83MmDSY",
+            "title": "Listen to the rain on the forest path, relax, reduce anxiety, and sleep deeply",
+            "uploaded": null,
+            "age_days": null,
+            "views": 3500,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "JM_BaVNQRkw",
+            "title": "Listen to the rain on the forest path, relax, reduce anxiety, and sleep",
+            "uploaded": null,
+            "age_days": null,
+            "views": 3000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "-dQgHm6yw4Q",
+            "title": "The sound of rain #rain #rainsounds",
+            "uploaded": null,
+            "age_days": null,
+            "views": 2700,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "xRRQcblUjrA",
+            "title": "The noise of thunderstorms and summer rain",
+            "uploaded": null,
+            "age_days": null,
+            "views": 2500,
+            "views_per_day": null,
+            "duration_seconds": 0
+          }
+        ]
+      },
+      "tracked_because": "Rainy Village. The actual like-for-like: ~1 hour rain ambience, plain intent-first titles, 865 subs. Dormant (0 uploads in 30 days), which makes its back catalogue a clean read on what the format earns without a publishing schedule confounding it."
     },
     {
       "channel_id": "UCSK_La8kEuULav8WHdRyN4w",
@@ -1800,13 +1805,66 @@
           "is_outlier": false
         }
       ],
+      "shorts": {
+        "scanned": 60,
+        "median_views": 1900.0,
+        "median_duration_seconds": 0.0,
+        "published_last_30_days": null,
+        "top": [
+          {
+            "video_id": "S0oW6wBkpxU",
+            "title": "ASMR cutting plum #asmr #fruit #satisfyling #shortvideo",
+            "uploaded": null,
+            "age_days": null,
+            "views": 37000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "N87IQ42Ve7I",
+            "title": "ASMR cutting papaya #asmr #fruit #satisfyling #shortvideo",
+            "uploaded": null,
+            "age_days": null,
+            "views": 37000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "Cj88EvPG5jM",
+            "title": "ASMR cutting Red guava #asmr #fruit #satisfyling #shortvideo",
+            "uploaded": null,
+            "age_days": null,
+            "views": 37000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "klM6AzMUIGQ",
+            "title": "ASMR cutting red custardapple #asmr #fruit #satisfyling #shortvideo",
+            "uploaded": null,
+            "age_days": null,
+            "views": 36000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "2XHd6eqwa-w",
+            "title": "ASMR cutting Black soursop #asmr #fruit #satisfyling #shortvideo",
+            "uploaded": null,
+            "age_days": null,
+            "views": 36000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          }
+        ]
+      },
       "tracked_because": "AI-generated ASMR. Closest to the Veo-era AI ASMR wave. Positioning unverified \u2014 confirm on first successful run."
     },
     {
       "channel_id": "UCGJMsuYK9Jf8Pcr94vOF89Q",
       "title": "Blue Reef 4K",
       "handle": "BlueReef4K.04",
-      "subscribers": 2950,
+      "subscribers": 2960,
       "median_views_recent": 10000,
       "median_duration_seconds": 5878,
       "uploads_last_30_days": 41,
@@ -2214,8 +2272,8 @@
           "title": "Amazing 8K Ocean Adventure \ud83d\udc33 Dive Deep & Explore Stunning Sea Creatures in a 8K Aquarium",
           "uploaded": "2026-08-26",
           "age_days": 1,
-          "views": 705,
-          "views_per_day": 705.0,
+          "views": 716,
+          "views_per_day": 716.0,
           "duration_seconds": 5587,
           "outlier_multiplier": 0.07,
           "is_outlier": false
@@ -2272,11 +2330,11 @@
       "title": "Dynasty Electrik",
       "handle": "dynastyelectrik",
       "subscribers": 103000,
-      "median_views_recent": 33000,
-      "median_duration_seconds": 4361,
+      "median_views_recent": 35000.0,
+      "median_duration_seconds": 4354.5,
       "uploads_last_30_days": 6,
       "shorts_share": 0.0,
-      "videos_scanned": 41,
+      "videos_scanned": 42,
       "videos": [
         {
           "video_id": "cAPHP3qCTR8",
@@ -2286,7 +2344,7 @@
           "views": 318000,
           "views_per_day": 3494.5,
           "duration_seconds": 4337,
-          "outlier_multiplier": 9.64,
+          "outlier_multiplier": 9.09,
           "is_outlier": true
         },
         {
@@ -2297,7 +2355,7 @@
           "views": 263000,
           "views_per_day": 1461.1,
           "duration_seconds": 4080,
-          "outlier_multiplier": 7.97,
+          "outlier_multiplier": 7.51,
           "is_outlier": true
         },
         {
@@ -2308,7 +2366,18 @@
           "views": 179000,
           "views_per_day": 590.8,
           "duration_seconds": 4106,
-          "outlier_multiplier": 5.42,
+          "outlier_multiplier": 5.11,
+          "is_outlier": true
+        },
+        {
+          "video_id": "997r49ue7wk",
+          "title": "Aphrodite\u2019s Crystal Healing Sanctuary - 528Hz Miracle Love Frequency",
+          "uploaded": "2026-04-27",
+          "age_days": 121,
+          "views": 164000,
+          "views_per_day": 1355.4,
+          "duration_seconds": 4193,
+          "outlier_multiplier": 4.69,
           "is_outlier": true
         },
         {
@@ -2319,7 +2388,7 @@
           "views": 114000,
           "views_per_day": 419.1,
           "duration_seconds": 4689,
-          "outlier_multiplier": 3.45,
+          "outlier_multiplier": 3.26,
           "is_outlier": true
         },
         {
@@ -2330,7 +2399,7 @@
           "views": 110000,
           "views_per_day": 1833.3,
           "duration_seconds": 4489,
-          "outlier_multiplier": 3.33,
+          "outlier_multiplier": 3.14,
           "is_outlier": true
         },
         {
@@ -2341,8 +2410,8 @@
           "views": 100000,
           "views_per_day": 826.4,
           "duration_seconds": 4246,
-          "outlier_multiplier": 3.03,
-          "is_outlier": true
+          "outlier_multiplier": 2.86,
+          "is_outlier": false
         },
         {
           "video_id": "otRKp-g6fSA",
@@ -2352,7 +2421,7 @@
           "views": 89000,
           "views_per_day": 585.5,
           "duration_seconds": 4555,
-          "outlier_multiplier": 2.7,
+          "outlier_multiplier": 2.54,
           "is_outlier": false
         },
         {
@@ -2363,7 +2432,7 @@
           "views": 88000,
           "views_per_day": 2933.3,
           "duration_seconds": 4369,
-          "outlier_multiplier": 2.67,
+          "outlier_multiplier": 2.51,
           "is_outlier": false
         },
         {
@@ -2374,7 +2443,7 @@
           "views": 80000,
           "views_per_day": 661.2,
           "duration_seconds": 4242,
-          "outlier_multiplier": 2.42,
+          "outlier_multiplier": 2.29,
           "is_outlier": false
         },
         {
@@ -2385,7 +2454,7 @@
           "views": 76000,
           "views_per_day": 1266.7,
           "duration_seconds": 4433,
-          "outlier_multiplier": 2.3,
+          "outlier_multiplier": 2.17,
           "is_outlier": false
         },
         {
@@ -2396,7 +2465,7 @@
           "views": 75000,
           "views_per_day": 355.5,
           "duration_seconds": 4347,
-          "outlier_multiplier": 2.27,
+          "outlier_multiplier": 2.14,
           "is_outlier": false
         },
         {
@@ -2407,7 +2476,7 @@
           "views": 65000,
           "views_per_day": 361.1,
           "duration_seconds": 4105,
-          "outlier_multiplier": 1.97,
+          "outlier_multiplier": 1.86,
           "is_outlier": false
         },
         {
@@ -2418,7 +2487,7 @@
           "views": 61000,
           "views_per_day": 252.1,
           "duration_seconds": 4606,
-          "outlier_multiplier": 1.85,
+          "outlier_multiplier": 1.74,
           "is_outlier": false
         },
         {
@@ -2429,7 +2498,7 @@
           "views": 58000,
           "views_per_day": 637.4,
           "duration_seconds": 4604,
-          "outlier_multiplier": 1.76,
+          "outlier_multiplier": 1.66,
           "is_outlier": false
         },
         {
@@ -2440,7 +2509,7 @@
           "views": 49000,
           "views_per_day": 180.1,
           "duration_seconds": 4887,
-          "outlier_multiplier": 1.48,
+          "outlier_multiplier": 1.4,
           "is_outlier": false
         },
         {
@@ -2451,7 +2520,7 @@
           "views": 44000,
           "views_per_day": 1466.7,
           "duration_seconds": 4266,
-          "outlier_multiplier": 1.33,
+          "outlier_multiplier": 1.26,
           "is_outlier": false
         },
         {
@@ -2462,7 +2531,7 @@
           "views": 40000,
           "views_per_day": 165.3,
           "duration_seconds": 4361,
-          "outlier_multiplier": 1.21,
+          "outlier_multiplier": 1.14,
           "is_outlier": false
         },
         {
@@ -2473,7 +2542,7 @@
           "views": 38000,
           "views_per_day": 211.1,
           "duration_seconds": 4144,
-          "outlier_multiplier": 1.15,
+          "outlier_multiplier": 1.09,
           "is_outlier": false
         },
         {
@@ -2484,7 +2553,7 @@
           "views": 37000,
           "views_per_day": 406.6,
           "duration_seconds": 4384,
-          "outlier_multiplier": 1.12,
+          "outlier_multiplier": 1.06,
           "is_outlier": false
         },
         {
@@ -2495,7 +2564,7 @@
           "views": 37000,
           "views_per_day": 243.4,
           "duration_seconds": 4768,
-          "outlier_multiplier": 1.12,
+          "outlier_multiplier": 1.06,
           "is_outlier": false
         },
         {
@@ -2506,7 +2575,7 @@
           "views": 33000,
           "views_per_day": 1650.0,
           "duration_seconds": 4489,
-          "outlier_multiplier": 1.0,
+          "outlier_multiplier": 0.94,
           "is_outlier": false
         },
         {
@@ -2517,7 +2586,7 @@
           "views": 31000,
           "views_per_day": 516.7,
           "duration_seconds": 4348,
-          "outlier_multiplier": 0.94,
+          "outlier_multiplier": 0.89,
           "is_outlier": false
         },
         {
@@ -2528,7 +2597,7 @@
           "views": 29000,
           "views_per_day": 483.3,
           "duration_seconds": 4218,
-          "outlier_multiplier": 0.88,
+          "outlier_multiplier": 0.83,
           "is_outlier": false
         },
         {
@@ -2539,7 +2608,7 @@
           "views": 28000,
           "views_per_day": 184.2,
           "duration_seconds": 4534,
-          "outlier_multiplier": 0.85,
+          "outlier_multiplier": 0.8,
           "is_outlier": false
         },
         {
@@ -2550,7 +2619,7 @@
           "views": 27000,
           "views_per_day": 111.6,
           "duration_seconds": 4613,
-          "outlier_multiplier": 0.82,
+          "outlier_multiplier": 0.77,
           "is_outlier": false
         },
         {
@@ -2561,7 +2630,7 @@
           "views": 26000,
           "views_per_day": 171.1,
           "duration_seconds": 4307,
-          "outlier_multiplier": 0.79,
+          "outlier_multiplier": 0.74,
           "is_outlier": false
         },
         {
@@ -2572,7 +2641,7 @@
           "views": 26000,
           "views_per_day": 123.2,
           "duration_seconds": 4115,
-          "outlier_multiplier": 0.79,
+          "outlier_multiplier": 0.74,
           "is_outlier": false
         },
         {
@@ -2583,7 +2652,7 @@
           "views": 25000,
           "views_per_day": 138.9,
           "duration_seconds": 4306,
-          "outlier_multiplier": 0.76,
+          "outlier_multiplier": 0.71,
           "is_outlier": false
         },
         {
@@ -2594,7 +2663,7 @@
           "views": 23000,
           "views_per_day": 84.6,
           "duration_seconds": 4425,
-          "outlier_multiplier": 0.7,
+          "outlier_multiplier": 0.66,
           "is_outlier": false
         },
         {
@@ -2605,7 +2674,7 @@
           "views": 21000,
           "views_per_day": 173.6,
           "duration_seconds": 4519,
-          "outlier_multiplier": 0.64,
+          "outlier_multiplier": 0.6,
           "is_outlier": false
         },
         {
@@ -2616,7 +2685,7 @@
           "views": 20000,
           "views_per_day": 666.7,
           "duration_seconds": 4369,
-          "outlier_multiplier": 0.61,
+          "outlier_multiplier": 0.57,
           "is_outlier": false
         },
         {
@@ -2627,7 +2696,7 @@
           "views": 19000,
           "views_per_day": 208.8,
           "duration_seconds": 4275,
-          "outlier_multiplier": 0.58,
+          "outlier_multiplier": 0.54,
           "is_outlier": false
         },
         {
@@ -2638,7 +2707,7 @@
           "views": 19000,
           "views_per_day": 157.0,
           "duration_seconds": 4158,
-          "outlier_multiplier": 0.58,
+          "outlier_multiplier": 0.54,
           "is_outlier": false
         },
         {
@@ -2649,7 +2718,7 @@
           "views": 19000,
           "views_per_day": 62.7,
           "duration_seconds": 4141,
-          "outlier_multiplier": 0.58,
+          "outlier_multiplier": 0.54,
           "is_outlier": false
         },
         {
@@ -2660,7 +2729,7 @@
           "views": 18000,
           "views_per_day": 1384.6,
           "duration_seconds": 3617,
-          "outlier_multiplier": 0.55,
+          "outlier_multiplier": 0.51,
           "is_outlier": false
         },
         {
@@ -2671,7 +2740,7 @@
           "views": 18000,
           "views_per_day": 85.3,
           "duration_seconds": 4178,
-          "outlier_multiplier": 0.55,
+          "outlier_multiplier": 0.51,
           "is_outlier": false
         },
         {
@@ -2682,7 +2751,7 @@
           "views": 18000,
           "views_per_day": 74.4,
           "duration_seconds": 4524,
-          "outlier_multiplier": 0.55,
+          "outlier_multiplier": 0.51,
           "is_outlier": false
         },
         {
@@ -2693,7 +2762,7 @@
           "views": 18000,
           "views_per_day": 66.2,
           "duration_seconds": 4592,
-          "outlier_multiplier": 0.55,
+          "outlier_multiplier": 0.51,
           "is_outlier": false
         },
         {
@@ -2704,7 +2773,7 @@
           "views": 14000,
           "views_per_day": 233.3,
           "duration_seconds": 4469,
-          "outlier_multiplier": 0.42,
+          "outlier_multiplier": 0.4,
           "is_outlier": false
         },
         {
@@ -2715,7 +2784,7 @@
           "views": 13000,
           "views_per_day": 53.7,
           "duration_seconds": 4517,
-          "outlier_multiplier": 0.39,
+          "outlier_multiplier": 0.37,
           "is_outlier": false
         },
         {
@@ -2726,10 +2795,63 @@
           "views": 8000,
           "views_per_day": 2000.0,
           "duration_seconds": 4198,
-          "outlier_multiplier": 0.24,
+          "outlier_multiplier": 0.23,
           "is_outlier": false
         }
       ],
+      "shorts": {
+        "scanned": 54,
+        "median_views": 3000.0,
+        "median_duration_seconds": 0.0,
+        "published_last_30_days": null,
+        "top": [
+          {
+            "video_id": "501O-O5DItw",
+            "title": "Lemurian Light Codes \ud83e\udddc\ud83c\udffb\u200d\u2640\ufe0f\u2728\ud83d\udc2c #lightlanguage #lemuria #mermaid #ascension",
+            "uploaded": null,
+            "age_days": null,
+            "views": 27000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "I4PcMq7cUYc",
+            "title": "Light Language 432Hz DNA Activation \u2728 Star Codes",
+            "uploaded": null,
+            "age_days": null,
+            "views": 24000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "9P24lAlxwwg",
+            "title": "Rivers of Light to cleanse your auric field and relieve stress \ud83c\udf08\ud83d\udca6\u2728 #energyhealing #lightlanguage",
+            "uploaded": null,
+            "age_days": null,
+            "views": 11000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "YoNeadrjc_4",
+            "title": "Diamond Light Codes \ud83d\udc8e 432Hz DNA Activation - Crystal Clarity",
+            "uploaded": null,
+            "age_days": null,
+            "views": 10000,
+            "views_per_day": null,
+            "duration_seconds": 0
+          },
+          {
+            "video_id": "DfhWYFto2b8",
+            "title": "Violet Flame Alchemy \ud83d\udc9c\ud83d\udd6f\ufe0ftransforming stuck energy and revitalizing your energetic field \ud83d\ude4c",
+            "uploaded": null,
+            "age_days": null,
+            "views": 7500,
+            "views_per_day": null,
+            "duration_seconds": 0
+          }
+        ]
+      },
       "tracked_because": "Human sound-healer duo (crystal sound baths, weekly live streams). A personality brand, not a faceless one \u2014 tracked as a format reference, not a like-for-like rival."
     }
   ]
