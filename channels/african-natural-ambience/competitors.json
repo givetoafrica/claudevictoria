@@ -1,23 +1,23 @@
 {
   "channel": "African Natural Ambience",
   "handle": "AfricanNaturalAmbience",
-  "notes": "Handles are resolved by yt-dlp against youtube.com/@<handle>/videos. If a handle changes, fix it here — nothing else needs to change. A handle that fails to resolve is reported as an error row rather than failing the run.",
+  "notes": "Handles are resolved by yt-dlp against youtube.com/@<handle>/videos. If a handle changes, fix it here — nothing else needs to change. A handle that fails to resolve is reported as an error row rather than failing the run, and two handles resolving to one channel are collapsed into one row with the extras listed as aliases.",
   "competitors": [
     {
       "handle": "AfricanNaturalAmbience",
-      "note": "Our own channel. Tracked so every competitor number has our baseline next to it."
+      "note": "Our own channel, now titled 'African Village Ambience'. Tracked so every competitor number has our baseline next to it. The 2026-08-26 run resolved this handle and @AfricanVillageAmbienceASMR to the same channel id (UCZuABrnuUKp42i2VsgocmtA) — it is one channel that was renamed, not two."
     },
     {
       "handle": "AfricanVillageAmbienceASMR",
-      "note": "Second channel of ours, named by Victoria as the one she wants grown. Tracked to establish whether it is a separate slate from AfricanNaturalAmbience or a rename."
+      "note": "Alias of the entry above — same channel id. Kept in the list so that if the old handle is ever released and reassigned, the tracker says so instead of silently reporting a stranger's numbers as ours."
     },
     {
       "handle": "RainlitVillage",
-      "note": "Named by Victoria as the channel she wants to model. Village rain ambience — the closest thing to a like-for-like target this list has ever had, and much closer than BlueReef4K. Format reference and benchmark."
+      "note": "Named by Victoria as the channel she wants to model. NOT a long-form ambience channel: 498k subs on ~7-minute AI/anime Indian village life videos (cooking in the rain), with the subscriber base built on Shorts. Tracked as an aspiration to understand rather than a format to copy — see strategy.md."
     },
     {
       "handle": "rainyvillagee",
-      "note": "Rainy Village. Same lane as RainlitVillage, tracked so the lane has more than one data point and one channel's quirks are not read as the format's rules."
+      "note": "Rainy Village. The actual like-for-like: ~1 hour rain ambience, plain intent-first titles, 865 subs. Dormant (0 uploads in 30 days), which makes its back catalogue a clean read on what the format earns without a publishing schedule confounding it."
     },
     {
       "handle": "Screenbience",

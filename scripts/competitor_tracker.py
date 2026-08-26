@@ -222,6 +222,17 @@ def render_report(snapshot):
                 f"{_fmt_duration(video['duration_seconds'])})"
             )
 
+    aliased = [c for c in tracked if c.get("also_reachable_as")]
+    if aliased:
+        lines += ["", "## Handles pointing at the same channel", ""]
+        for channel in aliased:
+            others = ", ".join(f"`@{h}`" for h in channel["also_reachable_as"])
+            lines.append(
+                f"- **{channel['title']}** is tracked as `@{channel['handle']}` "
+                f"and is also reachable as {others} — one channel, counted "
+                "once."
+            )
+
     errors = [c for c in snapshot["channels"] if "error" in c]
     if errors:
         lines += ["", "## Could not be tracked", ""]
@@ -247,12 +258,29 @@ def main():
         "channels": [],
     }
 
+    # A channel can be reachable under more than one handle -- an old handle
+    # kept alive after a rename resolves to the same channel as the new one.
+    # Tracking both would double every row it appears in and, worse, count
+    # its uploads twice in the recency list, so the first handle to resolve
+    # wins and later aliases are recorded as aliases instead.
+    seen_channel_ids = {}
+
     for entry in config["competitors"]:
         handle = entry["handle"]
         try:
             channel, videos = fetch_channel(handle)
+            channel_id = channel.get("channel_id")
+            if channel_id and channel_id in seen_channel_ids:
+                first = seen_channel_ids[channel_id]
+                first.setdefault("also_reachable_as", []).append(handle)
+                print(f"@{handle} is the same channel as @{first['handle']} "
+                      f"({channel_id}) -- recorded as an alias, not tracked "
+                      f"twice", file=sys.stderr)
+                continue
             record = analyse(channel, videos)
             record["tracked_because"] = entry.get("note", "")
+            if channel_id:
+                seen_channel_ids[channel_id] = record
             snapshot["channels"].append(record)
             print(f"tracked @{handle}: {len(videos)} uploads", file=sys.stderr)
         except TrackerError as exc:
