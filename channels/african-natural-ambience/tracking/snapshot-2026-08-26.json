@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T16:56:13.549482+00:00",
+  "generated_at": "2026-08-26T17:01:46.478287+00:00",
   "outlier_multiplier": 3.0,
   "channels": [
     {
@@ -1696,8 +1696,8 @@
           "title": "Luxury Spa Ambience Background in 4K | Candles, Water & Tropical Decor Screensaver",
           "uploaded": "2026-08-21",
           "age_days": 5,
-          "views": 107,
-          "views_per_day": 21.4,
+          "views": 108,
+          "views_per_day": 21.6,
           "duration_seconds": 39277,
           "outlier_multiplier": 0.2,
           "is_outlier": false
@@ -2129,10 +2129,10 @@
           "title": "Explore Atlantic Ocean 4K Ultra HD \ud83d\udc20 Vibrant Tropical Fish & Relaxing Piano for Rest and Relaxation",
           "uploaded": "2026-08-16",
           "age_days": 10,
-          "views": 8800,
-          "views_per_day": 880.0,
+          "views": 8900,
+          "views_per_day": 890.0,
           "duration_seconds": 5881,
-          "outlier_multiplier": 0.88,
+          "outlier_multiplier": 0.89,
           "is_outlier": false
         },
         {
@@ -2272,8 +2272,8 @@
           "title": "Amazing 8K Ocean Adventure \ud83d\udc33 Dive Deep & Explore Stunning Sea Creatures in a 8K Aquarium",
           "uploaded": "2026-08-26",
           "age_days": 1,
-          "views": 728,
-          "views_per_day": 728.0,
+          "views": 735,
+          "views_per_day": 735.0,
           "duration_seconds": 5587,
           "outlier_multiplier": 0.07,
           "is_outlier": false
