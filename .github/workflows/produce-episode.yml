@@ -1,0 +1,71 @@
+name: Produce Episode
+
+# Builds one upload-ready episode -- video, thumbnail and packaging sheet --
+# from a spec in channels/african-natural-ambience/episodes/.
+#
+# Runs here rather than locally because the runner has ffmpeg, outbound
+# network and the disk a long render wants, none of which the sandboxed dev
+# environment has.
+
+on:
+  workflow_dispatch:
+    inputs:
+      spec:
+        description: "Path to the episode spec JSON"
+        required: true
+        default: "channels/african-natural-ambience/episodes/001-tin-roof-rain.json"
+        type: string
+  # No push trigger. Rendering is minutes of runner time per run, and a push
+  # trigger spends it on whatever commit the event was queued against --
+  # which, once a branch has moved on, is a render of superseded code that
+  # nobody will look at. Before this workflow reaches main, run it against a
+  # branch through the Actions API:
+  #
+  #   POST /repos/{owner}/{repo}/actions/workflows/produce-episode.yml/dispatches
+  #   {"ref": "<branch>", "inputs": {"spec": "<path to spec>"}}
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # ubuntu-latest no longer ships ffmpeg.
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          ffmpeg -version | head -1
+
+      - name: Install python deps
+        run: pip install --quiet numpy scipy pillow
+
+      - name: Produce episode
+        env:
+          SPEC: "${{ inputs.spec || 'channels/african-natural-ambience/episodes/001-tin-roof-rain.json' }}"
+        run: |
+          python scripts/produce_episode.py --spec "$SPEC" --out out
+          # The slug names every artefact, so later steps read it from the
+          # spec rather than globbing and hoping one .mp4 is in there.
+          echo "SLUG=$(python -c "import json,sys;print(json.load(open(sys.argv[1]))['slug'])" "$SPEC")" >> "$GITHUB_ENV"
+
+      # A 90-second cut, so the audio can be judged by ear without pulling
+      # the full render down first.
+      - name: Render audition clip
+        run: |
+          ffmpeg -y -v error -i "out/$SLUG.mp4" -t 90 -c copy out/AUDITION-90s.mp4
+          ls -lh out/
+
+      - name: Upload episode
+        uses: actions/upload-artifact@v4
+        with:
+          name: episode
+          path: out/
+          retention-days: 30
+          # mp4 and png are both already compressed; zipping again only
+          # costs runner time.
+          compression-level: 0

@@ -10,8 +10,13 @@ the signal worth copying.
 
 Data comes from yt-dlp, matching scripts/fetch_channel_videos.py -- no API
 key, no quota. Flat extraction gives title, view count, upload timestamp
-and duration for a whole channel in one pass, which is everything the
-outlier maths needs.
+and duration for a whole tab in one pass, which is everything the outlier
+maths needs.
+
+Both /videos and /shorts are read, and kept apart. A channel running both
+formats has two view distributions, and a single median across them
+describes neither -- which is how a Shorts-driven channel first reads as a
+channel with two uploads.
 
 Two caveats worth knowing when reading a report:
   - Flat-extraction upload timestamps are approximate (yt-dlp derives them
@@ -46,8 +51,8 @@ class TrackerError(RuntimeError):
     pass
 
 
-def fetch_channel(handle, max_scan=UPLOADS_PER_CHANNEL):
-    """Handle -> (channel metadata, list of videos), via yt-dlp."""
+def _extract_tab(handle, tab, max_scan):
+    """Read one channel tab (/videos or /shorts) via yt-dlp flat extraction."""
     try:
         from yt_dlp import YoutubeDL
         from yt_dlp.utils import DownloadError
@@ -57,8 +62,7 @@ def fetch_channel(handle, max_scan=UPLOADS_PER_CHANNEL):
             "(the workflow does this automatically)."
         ) from exc
 
-    clean = handle.lstrip("@").rstrip(".")
-    url = f"https://www.youtube.com/@{clean}/videos"
+    url = f"https://www.youtube.com/@{handle}/{tab}"
     opts = {
         "quiet": True,
         "no_warnings": True,
@@ -72,7 +76,7 @@ def fetch_channel(handle, max_scan=UPLOADS_PER_CHANNEL):
         with YoutubeDL(opts) as ydl:
             info = ydl.extract_info(url, download=False)
     except DownloadError as exc:
-        raise TrackerError(f"yt-dlp could not read @{clean}: {exc}") from exc
+        raise TrackerError(f"yt-dlp could not read @{handle}/{tab}: {exc}") from exc
 
     now = datetime.now(timezone.utc)
     videos = []
@@ -102,15 +106,43 @@ def fetch_channel(handle, max_scan=UPLOADS_PER_CHANNEL):
 
     channel = {
         "channel_id": info.get("channel_id"),
-        "title": info.get("channel") or info.get("title") or clean,
-        "handle": clean,
+        "title": info.get("channel") or info.get("title") or handle,
+        "handle": handle,
         "subscribers": info.get("channel_follower_count"),
     }
     return channel, videos
 
 
-def analyse(channel, videos):
-    """Attach outlier multipliers and summarise the channel's shape."""
+def fetch_channel(handle, max_scan=UPLOADS_PER_CHANNEL):
+    """Handle -> (channel metadata, long-form videos, shorts).
+
+    Both tabs are read, and they are kept apart rather than merged. A channel
+    running both formats has two completely different view distributions, and
+    averaging them produces a median that describes neither -- which is how
+    Rainlit Village first read as a channel with two uploads when the
+    subscriber base had in fact been built on Shorts.
+    """
+    clean = handle.lstrip("@").rstrip(".")
+    channel, videos = _extract_tab(clean, "videos", max_scan)
+
+    # A channel with no Shorts has no /shorts tab, which is a fact about the
+    # channel rather than a failure to record.
+    try:
+        _, shorts = _extract_tab(clean, "shorts", max_scan)
+    except TrackerError as exc:
+        print(f"no readable /shorts for @{clean}: {exc}", file=sys.stderr)
+        shorts = []
+
+    return channel, videos, shorts
+
+
+def analyse(channel, videos, shorts=()):
+    """Attach outlier multipliers and summarise the channel's shape.
+
+    Shorts are summarised separately and deliberately excluded from the
+    long-form medians: a channel publishing both has two audiences and two
+    view distributions, and one median across them describes neither.
+    """
     view_counts = [v["views"] for v in videos] or [0]
     median_views = statistics.median(view_counts)
 
@@ -127,7 +159,11 @@ def analyse(channel, videos):
     durations = [v["duration_seconds"] for v in videos] or [0]
     dated = [v for v in videos if v["age_days"] is not None]
     recent = [v for v in dated if v["age_days"] <= 30]
-    shorts = [v for v in videos if v["duration_seconds"] and v["duration_seconds"] <= 60]
+    # Short uploads that sit on the /videos tab, which is not the same set as
+    # the /shorts tab -- hence a distinct name from the `shorts` parameter.
+    brief_uploads = [
+        v for v in videos if v["duration_seconds"] and v["duration_seconds"] <= 60
+    ]
 
     record = dict(channel)
     record.update({
@@ -136,15 +172,38 @@ def analyse(channel, videos):
         # None rather than 0 when no upload carried a date -- an unknown
         # cadence and a cadence of zero are very different findings.
         "uploads_last_30_days": len(recent) if dated else None,
-        "shorts_share": round(len(shorts) / len(videos), 2) if videos else 0.0,
+        "shorts_share": round(len(brief_uploads) / len(videos), 2) if videos else 0.0,
         "videos_scanned": len(videos),
         "videos": sorted(videos, key=lambda v: v["views"], reverse=True),
     })
+
+    if shorts:
+        short_views = [v["views"] for v in shorts]
+        short_dated = [v for v in shorts if v["age_days"] is not None]
+        record["shorts"] = {
+            "scanned": len(shorts),
+            "median_views": statistics.median(short_views),
+            "median_duration_seconds": statistics.median(
+                [v["duration_seconds"] for v in shorts]),
+            "published_last_30_days": (
+                len([v for v in short_dated if v["age_days"] <= 30])
+                if short_dated else None
+            ),
+            "top": sorted(shorts, key=lambda v: v["views"], reverse=True)[:5],
+        }
     return record
 
 
 def _fmt_duration(seconds):
-    seconds = int(seconds or 0)
+    """Format a duration, distinguishing 'no data' from 'zero seconds'.
+
+    Flat extraction of the /shorts tab returns no duration at all, and
+    rendering that as "0m00s" reads as a measured fact about the videos
+    rather than a gap in what YouTube handed back.
+    """
+    if not seconds:
+        return "—"
+    seconds = int(seconds)
     if seconds >= 3600:
         return f"{seconds // 3600}h{(seconds % 3600) // 60:02d}m"
     return f"{seconds // 60}m{seconds % 60:02d}s"
@@ -222,6 +281,51 @@ def render_report(snapshot):
                 f"{_fmt_duration(video['duration_seconds'])})"
             )
 
+    with_shorts = [c for c in tracked if c.get("shorts")]
+    if with_shorts:
+        lines += [
+            "", "## Shorts", "",
+            "Kept apart from the long-form numbers above on purpose. A channel "
+            "running both has two view distributions, and one median across "
+            "them describes neither.",
+            "",
+            "YouTube's Shorts tab returns no duration and no upload date under "
+            "flat extraction, so median length reads `—` and cadence reads "
+            "`?`. Neither is a measurement of zero. View counts are real.",
+            "",
+            "| Channel | Scanned | Median views | Median length | Posted/30d |",
+            "|---|---:|---:|---:|---:|",
+        ]
+        for channel in with_shorts:
+            short = channel["shorts"]
+            lines.append(
+                f"| {channel['title']} | {short['scanned']} "
+                f"| {short['median_views']:,.0f} "
+                f"| {_fmt_duration(short['median_duration_seconds'])} "
+                f"| {_fmt_int(short['published_last_30_days'])} |"
+            )
+        lines += ["", "### Best-performing Shorts", ""]
+        for channel in with_shorts:
+            for video in channel["shorts"]["top"]:
+                title = (video["title"] or "").replace("|", "\\|")[:90]
+                lines.append(
+                    f"- **{channel['title']}** — [{title}]"
+                    f"(https://youtu.be/{video['video_id']}) "
+                    f"({video['views']:,} views, "
+                    f"{_fmt_duration(video['duration_seconds'])})"
+                )
+
+    aliased = [c for c in tracked if c.get("also_reachable_as")]
+    if aliased:
+        lines += ["", "## Handles pointing at the same channel", ""]
+        for channel in aliased:
+            others = ", ".join(f"`@{h}`" for h in channel["also_reachable_as"])
+            lines.append(
+                f"- **{channel['title']}** is tracked as `@{channel['handle']}` "
+                f"and is also reachable as {others} — one channel, counted "
+                "once."
+            )
+
     errors = [c for c in snapshot["channels"] if "error" in c]
     if errors:
         lines += ["", "## Could not be tracked", ""]
@@ -247,14 +351,32 @@ def main():
         "channels": [],
     }
 
+    # A channel can be reachable under more than one handle -- an old handle
+    # kept alive after a rename resolves to the same channel as the new one.
+    # Tracking both would double every row it appears in and, worse, count
+    # its uploads twice in the recency list, so the first handle to resolve
+    # wins and later aliases are recorded as aliases instead.
+    seen_channel_ids = {}
+
     for entry in config["competitors"]:
         handle = entry["handle"]
         try:
-            channel, videos = fetch_channel(handle)
-            record = analyse(channel, videos)
+            channel, videos, shorts = fetch_channel(handle)
+            channel_id = channel.get("channel_id")
+            if channel_id and channel_id in seen_channel_ids:
+                first = seen_channel_ids[channel_id]
+                first.setdefault("also_reachable_as", []).append(handle)
+                print(f"@{handle} is the same channel as @{first['handle']} "
+                      f"({channel_id}) -- recorded as an alias, not tracked "
+                      f"twice", file=sys.stderr)
+                continue
+            record = analyse(channel, videos, shorts)
             record["tracked_because"] = entry.get("note", "")
+            if channel_id:
+                seen_channel_ids[channel_id] = record
             snapshot["channels"].append(record)
-            print(f"tracked @{handle}: {len(videos)} uploads", file=sys.stderr)
+            print(f"tracked @{handle}: {len(videos)} uploads, "
+                  f"{len(shorts)} shorts", file=sys.stderr)
         except TrackerError as exc:
             # One unreadable channel must not lose the whole run's data.
             snapshot["channels"].append({"handle": handle, "error": str(exc)})
