@@ -18,7 +18,6 @@ on:
   push:
     branches:
       - claude/youtube-audit-asmr-strategy-4f8wjz
-      - claude/youtube-channel-inspiration-1exnkw
     paths:
       - ".github/workflows/competitor-tracker.yml"
       - "scripts/competitor_tracker.py"
