@@ -1,4 +1,4 @@
-# @insiderforce Reel Style Study (visual, spacing, motion)
+# @insiderforce Reel Style Study (visual, spacing, motion), for NonprofitsDaily Reels
 
 ## Evidence basis
 
@@ -84,28 +84,40 @@ Coordinates are percent of the visible Reel area (width 540, height ≈1010 betw
 6. **Payoff:** "someone comments it on … they get your link in their DMs".
 7. **CTA in the caption** (not shown on screen): "Comment 'HUMAN' and I'll send you the ebook …". Note that the on-screen keyword is `VOLT` while the caption keyword is `HUMAN`. The Reel therefore teaches the mechanism with one keyword and runs its own funnel with another.
 
-## 7. Replication spec for Give to Africa / NonprofitDaily / Philips / YENDAA
+## 7. Replication spec for NonprofitsDaily Reels
 
-Use the structure, not the brand. Do not reuse their coral starburst or watermark pattern or their wording.
+Primary target: **NonprofitsDaily**. Use the structure, not their brand. Do not reuse the coral starburst, the `insiderforce.io` watermark pattern, their wording, or their logos and people images.
 
 | Spec | Value |
 |---|---|
-| Canvas | 1080×1920, safe margins: sides 6–8%, bottom 14% (caption + watermark), right 12% (action rail) |
-| Bands | Headline 7–19%, hero 19–67%, key-phrase pill 77–84%, watermark ≈89% |
-| Background | Light neutral, dot grid at ≈5% opacity |
+| Canvas | 1080x1920. Safe margins: sides 6-8%, bottom 14% (caption + watermark), right 12% (action rail) |
+| Bands | Headline 7-19%, hero 19-67%, key-phrase pill 77-84%, watermark about 89% |
+| Background | Light neutral with a dot grid at about 5% opacity |
 | Type | One grotesque family, two weights (regular and heavy), sentence case |
-| Highlight | One dark rounded pill per scene, white text, same shadow as cards |
-| Accent | One brand shape per org (Give to Africa: a warm, culturally grounded motif the org chooses) |
-| Motion | Left-to-right text mask reveal, ghosted neighbor words, hero swaps every 1–2 s |
-| Length | 15–20 s for a mechanism demo |
-| CTA | Keyword in caption **and** on screen, same keyword both places (the reference Reel does not do this, and it probably costs conversions) |
+| Highlight | One dark rounded pill per scene, white text, same shadow as the cards |
+| Accent | One NonprofitsDaily brand shape or color, to be chosen from your own brand kit (not established here) |
+| Motion | Left-to-right text mask reveal, ghosted neighbor words, hero swap every 1-2 s |
+| Length | 15-20 s |
+| CTA | Same keyword on screen and in the caption (the reference mismatches `VOLT` and `HUMAN`) |
 
-**Org adaptations**
+**Mapping their cover formulas to NonprofitsDaily topics (my suggestions, not from the recording)**
 
-- **Give to Africa:** hero objects should be real community photos with consent and a short factual line, not mock UI. Avoid savior framing (see the `give-to-africa:impact-story` skill). Use a pill for the one number or outcome.
-- **NonprofitDaily:** the "5 free X that fix Y" and "N things but you only need M" covers map directly to nonprofit tool lists and grant tips. Source-check every number.
-- **Philips Nonprofit Consulting:** the "17 year old …" credibility hook becomes a result-led hook ("The grant section funders skip first"). Use real, approved client results only.
-- **YENDAA:** needs a short brief from you before I can tailor it.
+| Reference formula | NonprofitsDaily version |
+|---|---|
+| "5 free [tools] that fix the biggest [problem] forever" | "5 free tools that fix the biggest nonprofit reporting problems" |
+| "[Thing] has over 100,000 X but you only need 5" | "There are thousands of grant sources but you only need 5 to start" |
+| "[Big name] did not see this coming" | A sector news hook, only with a source you can cite |
+| "[Competitor's] most profitable feature ... completely free" | A paid-tool comparison, only after verifying the real prices |
+| "17 year old ..." credibility hook | A result-led hook ("The grant section funders read first") |
+| Keyword in the caption, ebook delivered in DM | `GRANT` / `TEMPLATE` keyword delivers a checklist, with consent and opt-out |
+
+**NonprofitsDaily rules of thumb**
+- One idea and one CTA keyword per Reel.
+- Source-check every statistic and show the source in the caption.
+- Use mock UI for tool explainers, and real, consented imagery for any people.
+- Keep hero objects clear of the right-hand action rail.
+
+**Other organizations:** this spec transfers to Philips Nonprofit Consulting, Give to Africa and YENDAA with a different accent and subject matter, but I have not tailored it for them. I was wrong to treat Give to Africa as the main target.
 
 ## 8. Quality notes and cautions
 
@@ -116,6 +128,6 @@ Use the structure, not the brand. Do not reuse their coral starburst or watermar
 
 ## 9. Next steps I can do
 
-- Build a Canva or HTML template of this layout (bands, pill, watermark, safe zones) for each org.
-- Draft one Reel script per org in this structure.
+- Build a Canva or HTML template of this layout (bands, pill, watermark, safe zones) for NonprofitsDaily.
+- Draft a Reel script for NonprofitsDaily in this structure.
 - Extract further frames from the recording at 4 fps for exact animation timing.
