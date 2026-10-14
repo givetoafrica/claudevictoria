@@ -2,7 +2,7 @@
 
 **Built in (v1):** `hero.kind: "cartoon"` and `avatarMode: "cartoon"` in scripts/engine.html draw **Sunny**, a generic gold-sun mascot in the brand colors: lip sync from word timings, blinks, brow lift on `react`, sway and hands. No photo of Victoria is used or stored. Tune the look in plain words (bigger eyes, different colors, a hat for a holiday episode).
 
-Avatar rule (Victoria, Oct 2026): she does not want her own likeness used. The mascot appears as the corner avatar in **long videos only**; reels and shorts can use Sunny only as a full 2D scene.
+Avatar rule (Victoria, Oct 2026): she does not want her own likeness used. The mascot appears in **long videos only** (corner avatar or full scene). Reels and shorts never show an avatar or the mascot; the engine blocks it.
 
 ## Two ways to get 2D
 **A. Claude Design, then Claude Animation (manual, Victoria does this in her own account).** Victoria's notes describe: open Claude Design, choose Claude Animation, upload the raw clip, paste the universal prompt below, add changes, generate, review. I cannot operate that product from here and have not tested it. Tip from her notes: check audio timing, lip sync, character consistency and any text or logos that should stay.

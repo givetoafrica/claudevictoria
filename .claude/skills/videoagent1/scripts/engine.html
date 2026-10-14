@@ -150,7 +150,7 @@ const CONTENT = /*CONTENT*/ null;
     const hand = a > 0.05 ? Math.sin(t * 7) * 6 : Math.sin(t * 1.6) * 2;
     q('handL').setAttribute('transform', `translate(${hand * 0.5},${-hand - lift * 2})`); q('handR').setAttribute('transform', `translate(${-hand * 0.5},${hand - lift * 2})`);
   }
-  const avatarMode = C.avatarMode || (fmt === 'long' ? 'cartoon' : 'none');   // cartoon (mascot) | none. Reels default to none.
+  const avatarMode = fmt === 'long' ? (C.avatarMode || 'cartoon') : 'none';   // reels and shorts never show the mascot   // cartoon (mascot) | none. Reels default to none.
   let avToon = null;
   if (avatarMode === 'cartoon') { avToon = toonSVG(); document.getElementById('avtoon').innerHTML = avToon.svg.replace('viewBox="0 0 400 500"', 'viewBox="60 70 280 280"'); }
 
@@ -191,6 +191,7 @@ const CONTENT = /*CONTENT*/ null;
     if (h.kind === 'compare') return `<div class="card"><div class="opt"><span class="lbl">${esc(h.a.label)}</span><div class="val">${esc(h.a.value)}</div></div><div class="opt good"><span class="lbl">${esc(h.b.label)}</span><div class="val">${esc(h.b.value)}</div>${h.b.tag ? '<span class="tag">' + esc(h.b.tag) + '</span>' : ''}</div></div>`;
     if (h.kind === 'stat') return `<div class="card" style="text-align:center"><div class="big">${esc(h.number)}</div><div class="cap2">${esc(h.caption)}</div><div class="src">${esc(h.source || '')}</div></div>`;
     if (h.kind === 'myth') return `<div class="card"><div class="myth">${esc(h.myth)}</div><div class="fact">${esc(h.fact)}</div></div>`;
+    if (h.kind === 'cartoon' && fmt === 'reel') return '';
     if (h.kind === 'cartoon') { const T = toonSVG(); h.__id = T.id; return `<div class="toon">${T.svg}</div>`; }
     if (h.kind === 'follow') return `<div class="card" style="text-align:center"><div class="val" style="font-size:calc(var(--u)*5.4)">${esc(h.handle || '@nonprofitsdaily')}</div><div class="cap2">${esc(h.line || 'Follow for more nonprofit tips.')}</div></div>`;
     if (h.kind === 'quote') return `<div class="card"><div class="quote"><i>&ldquo;</i>${esc(h.text)}</div></div>`;
