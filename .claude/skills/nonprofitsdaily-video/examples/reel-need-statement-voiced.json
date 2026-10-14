@@ -74,7 +74,7 @@
       "hero": {
         "kind": "phone",
         "keyword": "NEED",
-        "notif": "Here is your free checklist. Reply STOP to opt out.",
+        "notif": "Here is your free checklist.",
         "notifKey": "send"
       }
     }

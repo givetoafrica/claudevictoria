@@ -167,11 +167,9 @@ const CONTENT = /*CONTENT*/ null;
       s.el.style.opacity = a; s.el.style.visibility = a > 0.001 ? 'visible' : 'hidden';
       if (a <= 0.001) return;
       const prog = clamp((t - s.t0) / (s.t1 - s.t0));
-      s.el.style.transform = `translateX(${(1 - inP) * 10 - outP * 10}cqw) scale(${1 + 0.05 * prog})`;
+      s.el.style.transform = `translateX(${(1 - inP) * 3 - outP * 3}cqw)`;
       // living background: drifting dot grid, breathing sun
-      s.gridEl.style.backgroundPosition = `${t * 14}px ${t * 9}px`;
-      const sp = spring((t - s.t0) / 0.9);
-      s.sunEl.style.transform = `translate(${Math.sin(t * 0.9 + i) * 2}cqw, ${Math.cos(t * 0.7 + i) * 2}cqw) scale(${(0.45 + 0.55 * sp) * (1 + 0.05 * Math.sin(t * 1.6))}) rotate(${t * 10}deg)`;
+      s.sunEl.style.transform = `scale(${0.7 + 0.3 * ease((t - s.t0) / 0.7)})`;
       // current chunk wipes in left to right
       let ci = 0; s.cs.forEach((c, k) => { if (t >= c - 0.05) ci = k; });
       s.chunkEls.forEach((c, k) => c.classList.toggle('on', k === ci));
@@ -181,42 +179,41 @@ const CONTENT = /*CONTENT*/ null;
         const e = s.wordEls[k]; if (!e) return;
         const on = t >= w.start; e.classList.toggle('d', on);
         const q = clamp((t - w.start) / 0.3);
-        e.style.transform = `scale(${on ? 1 + (w.k ? 0.16 : 0.07) * Math.sin(Math.PI * q) : 1})`;
         if (w.k) e.style.backgroundSize = `${on ? ease((t - w.start) / 0.4) * 100 : 0}% 0.16em`;
       });
       // hero springs in, then floats
       const hq = (t - s.t0 - 0.25) / 0.75, hp = spring(hq);
       if (s.heroEl) {
         s.heroEl.style.opacity = clamp(hq * 3);
-        s.heroEl.style.transform = `translateY(${(1 - hp) * 6 + Math.sin(t * 1.7 + i) * 0.45}cqh) scale(${0.82 + 0.18 * hp}) rotate(${(1 - hp) * 3 + Math.sin(t * 1.1 + i) * 0.35}deg)`;
+        s.heroEl.style.transform = `translateY(${(1 - ease(hq)) * 3}cqh)`;
       }
       // pill pops with a little tilt
       if (s.pillEl) {
         const pq = (t - s.t0 - 1.1) / 0.5, pp = spring(pq);
         s.pillEl.style.opacity = clamp(pq * 4);
-        s.pillEl.style.transform = `translateY(${(1 - pp) * 4}cqh) scale(${0.65 + 0.35 * pp}) rotate(${(1 - pp) * -5}deg)`;
+        s.pillEl.style.transform = `translateY(${(1 - ease(pq)) * 2}cqh)`;
       }
       // staggered items: rows slide up, comments rise, options come from both sides
       s.items.forEach((el, k) => {
-        const iq = (t - s.t0 - 0.6 - k * 0.16) / 0.5, ip = spring(iq), pres = clamp(iq * 4);
+        const iq = (t - s.t0 - 0.3) / 0.4, ip = 1, pres = clamp(iq * 2);
         if (el.classList.contains('row')) {
           const hasKey = !!el.dataset.key, on = el.keyWord ? t >= el.keyWord.start : !hasKey;
-          const bump = el.keyWord && on ? Math.sin(Math.PI * clamp((t - el.keyWord.start) / 0.45)) * 0.05 : 0;
+          const bump = 0;
           el.style.opacity = pres * (on ? 1 : 0.42);
           el.style.background = on && hasKey ? '#f3ebff' : 'transparent';
-          el.style.transform = `translateX(${(1 - ip) * 9}cqw) scale(${1 + bump})`;
+          el.style.transform = 'none';
         } else if (el.classList.contains('cm')) {
-          el.style.opacity = pres; el.style.transform = `translateY(${(1 - ip) * 5}cqw)`;
+          el.style.opacity = pres; el.style.transform = 'none';
         } else {
-          el.style.opacity = pres; el.style.transform = `translateX(${(k % 2 ? 1 : -1) * (1 - ip) * 12}cqw)`;
+          el.style.opacity = pres; el.style.transform = 'none';
         }
       });
       if (s.notifEl) {
         const kw = s.rows.find((r) => r.classList.contains('notif'));
         const start = kw && kw.keyWord ? kw.keyWord.start : Infinity;
-        const nq = (t - start) / 0.55, np = spring(nq);
-        s.notifEl.style.opacity = clamp(nq * 4);
-        s.notifEl.style.transform = `translateY(${(1 - np) * 14}cqw) scale(${0.85 + 0.15 * np})`;
+        const nq = (t - start) / 0.4;
+        s.notifEl.style.opacity = clamp(nq * 2);
+        s.notifEl.style.transform = `translateY(${(1 - ease(nq)) * 4}cqw)`;
       }
     });
     // Victoria avatar: idle bob, bigger hop and wiggle on a reaction
