@@ -21,21 +21,21 @@ html, body { background: #000; overflow: hidden; }
 .sc.dark { --bgA: #2a1f30; --bgB: #1C1421; }
 .sc.ivory { --bgA: #ffffff; --bgB: #EDE7DD; }
 .sc .scbg { position: absolute; inset: 0; background: radial-gradient(110% 80% at 45% 40%, var(--bgA), var(--bgB)); }
-.sc.dark, .sc.plum { --fg: var(--ivory); --fg2: var(--lav); --key: var(--gold); --ghost: #7a6a82; --mark: var(--gold); }
-.sc.ivory { --fg: var(--plum); --fg2: var(--grey); --key: var(--violet); --ghost: #c4bccb; --mark: var(--plum); }
+.sc.dark, .sc.plum { --ul: rgba(232,181,71,.45); --fg: var(--ivory); --fg2: var(--lav); --key: var(--gold); --ghost: #7a6a82; --mark: var(--gold); }
+.sc.ivory { --ul: rgba(108,31,224,.28); --fg: var(--plum); --fg2: var(--grey); --key: var(--violet); --ghost: #c4bccb; --mark: var(--plum); }
 .sun { position: absolute; width: calc(var(--u)*34); height: calc(var(--u)*34); border-radius: 50%; background: var(--sunc, var(--violet)); opacity: .9; }
 .sc.plum .sun, .sc.dark .sun { --sunc: var(--gold); opacity: .92; }
 .head { position: absolute; font-family: var(--serif); color: var(--fg); letter-spacing: -0.02em; line-height: 1.12; }
-.reel .head { left: calc(var(--u)*7); right: calc(var(--u)*12); top: 8%; text-align: center; font-size: calc(var(--u)*8); }
-.long .head { left: 6%; width: 50%; top: 24%; text-align: left; font-size: calc(var(--u)*9.4); }
+.reel .head { left: calc(var(--u)*7); right: calc(var(--u)*12); top: 7%; text-align: center; font-size: calc(var(--u)*9.6); }
+.long .head { left: 6%; width: 50%; top: 22%; text-align: left; font-size: calc(var(--u)*11.5); }
 .chunk { display: none; } .chunk.on { display: block; }
-.cw { color: var(--ghost); font-weight: 400; } .cw.k { font-weight: 700; } .cw.d { color: var(--fg); } .cw.k.d { color: var(--key); }
+.cw { display: inline-block; transform-origin: 50% 75%; color: var(--ghost); font-weight: 400; } .cw.k { font-weight: 700; background: linear-gradient(var(--ul), var(--ul)) no-repeat 0 90% / 0% 0.16em; } .cw.d { color: var(--fg); } .cw.k.d { color: var(--key); }
 .hero { position: absolute; display: flex; align-items: center; justify-content: center; }
-.reel .hero { left: 14%; right: 14%; top: 24%; bottom: 33%; }
-.long .hero { left: 60%; right: 6%; top: 18%; bottom: 18%; }
+.reel .hero { --u: calc(1cqw * 1.38); left: 6%; right: 6%; top: 21%; bottom: 29%; }
+.long .hero { --u: calc(1cqh * 1.3); left: 56%; right: 5%; top: 14%; bottom: 14%; }
 .card { background: #fff; color: var(--ink); border-radius: calc(var(--u)*4); width: 100%; padding: calc(var(--u)*4.2); box-shadow: calc(var(--u)*1.4) calc(var(--u)*2.4) calc(var(--u)*5) calc(var(--u)*-1) rgba(0,0,0,.45); font-size: calc(var(--u)*3.3); }
 .long .card { font-size: calc(var(--u)*3.3); }
-.row { display: flex; align-items: center; gap: calc(var(--u)*2.6); padding: calc(var(--u)*2.4) 0; border-top: 1px solid #e6e1ea; }
+.row { display: flex; align-items: center; gap: calc(var(--u)*2.6); padding: calc(var(--u)*2.4) calc(var(--u)*1.6); margin: 0 calc(var(--u)*-1.6); border-radius: calc(var(--u)*2); border-top: 1px solid #e6e1ea; }
 .row:first-child { border-top: 0; }
 .dot { width: calc(var(--u)*5.6); height: calc(var(--u)*5.6); flex: none; border-radius: calc(var(--u)*1.6); background: var(--lav); color: var(--plum); display: grid; place-items: center; font-weight: 700; font-size: calc(var(--u)*3); }
 .row b { display: block; font-size: calc(var(--u)*3.8); } .row small { color: #6d6475; font-size: calc(var(--u)*2.8); }
@@ -53,16 +53,16 @@ html, body { background: #000; overflow: hidden; }
 .cm span { display: block; color: #a597ad; font-size: calc(var(--u)*2.5); }
 .notif { position: absolute; left: calc(var(--u)*-4); right: calc(var(--u)*-4); bottom: calc(var(--u)*-7); background: var(--plum); color: #fff; border-radius: calc(var(--u)*4); padding: calc(var(--u)*3.4) calc(var(--u)*3.8); font-size: calc(var(--u)*3.2); line-height: 1.3; outline: calc(var(--u)*.4) solid rgba(255,255,255,.14); opacity: 0; }
 .notif small { display: block; color: var(--lav); font-size: calc(var(--u)*2.5); margin-bottom: calc(var(--u)*.8); } .notif em { font-style: normal; background: var(--gold); color: var(--ink); padding: 0 calc(var(--u)*1.2); border-radius: calc(var(--u)*1); font-weight: 700; }
-.pill { position: absolute; background: var(--ink); color: #fff; font-weight: 700; font-size: calc(var(--u)*7); letter-spacing: -0.02em; padding: calc(var(--u)*1.8) calc(var(--u)*4); border-radius: calc(var(--u)*2.4); white-space: nowrap; box-shadow: calc(var(--u)*1.2) calc(var(--u)*2) calc(var(--u)*3.6) calc(var(--u)*-.8) rgba(0,0,0,.5); opacity: 0; font-family: var(--sans); }
+.pill { position: absolute; background: var(--ink); color: #fff; font-weight: 700; font-size: calc(var(--u)*8.8); letter-spacing: -0.02em; padding: calc(var(--u)*2.2) calc(var(--u)*5); border-radius: calc(var(--u)*2.4); white-space: nowrap; box-shadow: calc(var(--u)*1.2) calc(var(--u)*2) calc(var(--u)*3.6) calc(var(--u)*-.8) rgba(0,0,0,.5); opacity: 0; font-family: var(--sans); }
 .sc.dark .pill, .sc.plum .pill { background: var(--gold); color: var(--ink); }
-.reel .pill { top: 80%; left: 50%; margin-left: 0; translate: -50% 0; max-width: 84%; }
+.reel .pill { top: 79%; left: 50%; margin-left: 0; translate: -50% 0; }
 .long .pill { top: 66%; left: 6%; font-size: calc(var(--u)*6.2); }
 .mark { position: absolute; font-weight: 700; letter-spacing: .32em; color: var(--mark); font-size: calc(var(--u)*2.6); text-transform: uppercase; }
 .reel .mark { left: 0; right: 0; top: 91%; text-align: center; } .long .mark { left: 6%; bottom: 6%; }
 .series { position: absolute; font-weight: 700; letter-spacing: .3em; font-size: calc(var(--u)*2.6); color: var(--key); text-transform: uppercase; }
 .reel .series { left: 7%; top: 4.2%; } .long .series { left: 6%; top: 16%; }
 #av { position: absolute; z-index: 5; }
-.reel #av { left: 5%; top: 69.5%; width: calc(var(--u)*17); height: calc(var(--u)*17); }
+.reel #av { left: 4%; top: 70%; width: calc(var(--u)*20); height: calc(var(--u)*20); }
 .long #av { right: 4%; bottom: 6%; width: calc(var(--u)*22); height: calc(var(--u)*22); }
 #av .ring { position: absolute; inset: 0; border-radius: 50%; background: var(--gold); display: grid; place-items: center; overflow: hidden; }
 #av img { position: absolute; inset: 4%; width: 92%; height: 92%; border-radius: 50%; object-fit: cover; }
@@ -90,7 +90,7 @@ const CONTENT = /*CONTENT*/ null;
   const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
   const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
   const img = document.getElementById('avimg');
-  img.onerror = () => { img.style.display = 'none'; };
+  let avMissing = false; img.onerror = () => { avMissing = true; };
   img.src = (C.avatar || '../assets/avatar.png');
 
   // ---- parse say text: chunks '|' and *bold* ----
@@ -150,42 +150,88 @@ const CONTENT = /*CONTENT*/ null;
   });
   const bub = document.getElementById('bub'), av = document.getElementById('av');
 
+  const easeOutBack = (x) => { x = clamp(x); const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+  const spring = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : easeOutBack(x));
   window.__total = total;
+  scenes.forEach((s) => { s.items = [...s.el.querySelectorAll('.row, .cm, .opt')]; s.sunEl = s.el.querySelector('.sun'); s.gridEl = s.el.querySelector('.grid'); s.notifEl = s.el.querySelector('.notif'); });
+
+  let fitted = false;
+  function fitPills() {
+    fitted = true; const maxW = st.clientWidth * (fmt === 'reel' ? 0.86 : 0.5);
+    scenes.forEach((s) => { const p = s.pillEl; if (!p) return; s.el.style.visibility = 'visible'; s.el.style.opacity = 0; const w = p.scrollWidth; if (w > maxW) p.style.fontSize = `calc(var(--u) * ${(8.8 * maxW / w).toFixed(2)})`; });
+  }
   window.__render = function (t) {
+    if (!fitted) fitPills();
     scenes.forEach((s, i) => {
-      const a = ease((t - s.t0) / 0.5) * (1 - ease((t - s.t1) / 0.35));
-      s.el.style.opacity = a;
-      s.el.style.visibility = a > 0.001 ? 'visible' : 'hidden';
-      s.el.style.transform = `translateY(${(1 - ease((t - s.t0) / 0.5)) * 2}cqh)`;
+      const inP = ease((t - s.t0) / 0.55), outP = ease((t - s.t1) / 0.4), a = inP * (1 - outP);
+      s.el.style.opacity = a; s.el.style.visibility = a > 0.001 ? 'visible' : 'hidden';
       if (a <= 0.001) return;
-      // current chunk
+      const prog = clamp((t - s.t0) / (s.t1 - s.t0));
+      s.el.style.transform = `translateX(${(1 - inP) * 10 - outP * 10}cqw) scale(${1 + 0.05 * prog})`;
+      // living background: drifting dot grid, breathing sun
+      s.gridEl.style.backgroundPosition = `${t * 14}px ${t * 9}px`;
+      const sp = spring((t - s.t0) / 0.9);
+      s.sunEl.style.transform = `translate(${Math.sin(t * 0.9 + i) * 2}cqw, ${Math.cos(t * 0.7 + i) * 2}cqw) scale(${(0.45 + 0.55 * sp) * (1 + 0.05 * Math.sin(t * 1.6))}) rotate(${t * 10}deg)`;
+      // current chunk wipes in left to right
       let ci = 0; s.cs.forEach((c, k) => { if (t >= c - 0.05) ci = k; });
       s.chunkEls.forEach((c, k) => c.classList.toggle('on', k === ci));
-      const p = ease((t - (s.cs[ci] - 0.05)) / 0.4);
-      s.chunkEls[ci].style.clipPath = `inset(0 ${(1 - p) * 100}% 0 0)`;
-      let wi = 0;
-      s.words.forEach((w, k) => { const e = s.wordEls[k]; if (e) e.classList.toggle('d', t >= w.start); });
-      const hp = ease((t - s.t0 - 0.3) / 0.6);
-      if (s.heroEl) { s.heroEl.style.opacity = hp; s.heroEl.style.transform = `translateY(${(1 - hp) * 3}cqh) scale(${0.94 + 0.06 * hp})`; }
-      if (s.pillEl) { const pp = ease((t - s.t0 - 1.3) / 0.45); s.pillEl.style.opacity = pp; s.pillEl.style.transform = `translateY(${(1 - pp) * 2}cqh)`; }
-      s.rows.forEach((r) => {
-        const on = r.keyWord ? t >= r.keyWord.start : !r.dataset.key;
-        if (r.classList.contains('notif')) { r.style.opacity = on ? ease((t - (r.keyWord ? r.keyWord.start : 0)) / 0.45) : 0; }
-        else r.style.opacity = on ? 1 : 0.4;
+      s.chunkEls[ci].style.clipPath = `inset(-20% ${(1 - ease((t - (s.cs[ci] - 0.05)) / 0.35)) * 100}% -20% 0)`;
+      // words: ink in, pop, key words get an underline sweep
+      s.words.forEach((w, k) => {
+        const e = s.wordEls[k]; if (!e) return;
+        const on = t >= w.start; e.classList.toggle('d', on);
+        const q = clamp((t - w.start) / 0.3);
+        e.style.transform = `scale(${on ? 1 + (w.k ? 0.16 : 0.07) * Math.sin(Math.PI * q) : 1})`;
+        if (w.k) e.style.backgroundSize = `${on ? ease((t - w.start) / 0.4) * 100 : 0}% 0.16em`;
       });
+      // hero springs in, then floats
+      const hq = (t - s.t0 - 0.25) / 0.75, hp = spring(hq);
+      if (s.heroEl) {
+        s.heroEl.style.opacity = clamp(hq * 3);
+        s.heroEl.style.transform = `translateY(${(1 - hp) * 6 + Math.sin(t * 1.7 + i) * 0.45}cqh) scale(${0.82 + 0.18 * hp}) rotate(${(1 - hp) * 3 + Math.sin(t * 1.1 + i) * 0.35}deg)`;
+      }
+      // pill pops with a little tilt
+      if (s.pillEl) {
+        const pq = (t - s.t0 - 1.1) / 0.5, pp = spring(pq);
+        s.pillEl.style.opacity = clamp(pq * 4);
+        s.pillEl.style.transform = `translateY(${(1 - pp) * 4}cqh) scale(${0.65 + 0.35 * pp}) rotate(${(1 - pp) * -5}deg)`;
+      }
+      // staggered items: rows slide up, comments rise, options come from both sides
+      s.items.forEach((el, k) => {
+        const iq = (t - s.t0 - 0.6 - k * 0.16) / 0.5, ip = spring(iq), pres = clamp(iq * 4);
+        if (el.classList.contains('row')) {
+          const hasKey = !!el.dataset.key, on = el.keyWord ? t >= el.keyWord.start : !hasKey;
+          const bump = el.keyWord && on ? Math.sin(Math.PI * clamp((t - el.keyWord.start) / 0.45)) * 0.05 : 0;
+          el.style.opacity = pres * (on ? 1 : 0.42);
+          el.style.background = on && hasKey ? '#f3ebff' : 'transparent';
+          el.style.transform = `translateX(${(1 - ip) * 9}cqw) scale(${1 + bump})`;
+        } else if (el.classList.contains('cm')) {
+          el.style.opacity = pres; el.style.transform = `translateY(${(1 - ip) * 5}cqw)`;
+        } else {
+          el.style.opacity = pres; el.style.transform = `translateX(${(k % 2 ? 1 : -1) * (1 - ip) * 12}cqw)`;
+        }
+      });
+      if (s.notifEl) {
+        const kw = s.rows.find((r) => r.classList.contains('notif'));
+        const start = kw && kw.keyWord ? kw.keyWord.start : Infinity;
+        const nq = (t - start) / 0.55, np = spring(nq);
+        s.notifEl.style.opacity = clamp(nq * 4);
+        s.notifEl.style.transform = `translateY(${(1 - np) * 14}cqw) scale(${0.85 + 0.15 * np})`;
+      }
     });
-    // avatar reaction
+    // Victoria avatar: idle bob, bigger hop and wiggle on a reaction
     let cur = scenes.find((s) => t >= s.t0 && t < s.t1) || scenes[scenes.length - 1];
     const rt = t - cur.t0 - 0.35;
+    let bob = Math.sin(t * 3.2) * 0.35, wig = 0;
     if (cur.react && rt > -0.01) {
       bub.textContent = cur.react;
-      const bp = ease(rt / 0.3), fade = 1 - clamp((rt - 1.6) / 0.3);
-      bub.style.opacity = bp * fade; bub.style.transform = `scale(${0.4 + 0.6 * bp})`;
-      const hop = rt < 0.6 ? Math.sin(Math.PI * clamp(rt / 0.5)) * 1.8 : 0;
-      const wig = rt > 0.3 && rt < 1.1 ? Math.sin((rt - 0.3) * 22) * 5 * (1 - (rt - 0.3) / 0.8) : 0;
-      av.style.transform = `translateY(${-hop}cqh) rotate(${wig}deg)`;
-    } else { bub.style.opacity = 0; av.style.transform = ''; }
-    av.style.opacity = cur.noAvatar ? 0 : 1;
+      const bp = spring(rt / 0.35), fade = 1 - clamp((rt - 1.6) / 0.3);
+      bub.style.opacity = clamp(rt * 6) * fade; bub.style.transform = `scale(${0.3 + 0.7 * bp}) rotate(${(1 - bp) * -10}deg)`;
+      if (rt < 0.7) bob -= Math.sin(Math.PI * clamp(rt / 0.6)) * 2.6;
+      if (rt > 0.3 && rt < 1.2) wig = Math.sin((rt - 0.3) * 24) * 6 * (1 - (rt - 0.3) / 0.9);
+    } else { bub.style.opacity = 0; }
+    av.style.transform = `translateY(${bob}cqh) rotate(${wig}deg)`;
+    av.style.opacity = (cur.noAvatar || avMissing) ? 0 : 1;
   };
   window.__render(0);
   // preview: open with ?play to run in a normal browser, ?t=12.5 to freeze a moment, ?safe to show safe zones
