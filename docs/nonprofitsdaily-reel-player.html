@@ -1,0 +1,274 @@
+<title>NonprofitsDaily Reel Player</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&display=swap">
+<style>
+/* Layout: one 9:16 reel frame centered, controls underneath. Everything inside the frame is sized in container units. */
+:root {
+  --bg: #f3f4f1; --panel: #ffffff; --fg: #16201e; --muted: #5d6865; --line: #d9ddd8;
+  --btn: #16201e; --btn-fg: #f3f4f1; --focus: #1d6fd8;
+  --font: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #0f1514; --panel: #182120; --fg: #eef2ef; --muted: #9aa8a4; --line: #2b3735; --btn: #eef2ef; --btn-fg: #0f1514; --focus: #6aa8ff; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #0f1514; --panel: #182120; --fg: #eef2ef; --muted: #9aa8a4; --line: #2b3735; --btn: #eef2ef; --btn-fg: #0f1514; --focus: #6aa8ff; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font); line-height: 1.5; padding-inline: 16px; padding-block: 24px 56px; }
+.wrap { max-width: 420px; margin-inline: auto; display: flex; flex-direction: column; gap: 16px; }
+h1 { font-size: 26px; line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
+p { margin: 0; } .muted { color: var(--muted); font-size: 14px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+button { font: inherit; cursor: pointer; }
+.main { font-weight: 700; padding: 11px 18px; border-radius: 10px; border: 0; background: var(--btn); color: var(--btn-fg); }
+.ghostbtn { padding: 10px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--fg); }
+.ctrl { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.prog { height: 6px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.prog i { display: block; height: 100%; width: 0; background: var(--fg); transition: width .25s linear; }
+.status { font-size: 13px; color: var(--muted); min-height: 20px; }
+.field { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 160px; }
+.field label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+select { font: inherit; padding: 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--fg); min-width: 0; width: 100%; }
+
+.frame {
+  --r-bg1: #f7f7f5; --r-bg2: #e9eae7; --r-ink: #181c1b; --r-ghost: #b4b9b7; --r-pill: #1d2321; --r-pill-fg: #ffffff;
+  --r-card: #ffffff; --r-line: #e3e5e2; --r-mark: #9aa09e; --accent: #0f8a7e; --accent-soft: #d3ece8;
+  position: relative; width: 100%; aspect-ratio: 9 / 16; container-type: size; overflow: hidden; border-radius: 20px;
+  background: radial-gradient(120% 80% at 50% 20%, var(--r-bg1), var(--r-bg2)); color: var(--r-ink);
+  box-shadow: 0 1px 0 var(--line), 0 18px 36px -20px rgba(0,0,0,.5);
+}
+.frame::before { content: ""; position: absolute; inset: 0; opacity: .5;
+  background-image: radial-gradient(circle, rgba(0,0,0,.16) 0.5cqw, transparent 0.55cqw); background-size: 5cqw 5cqw;
+  -webkit-mask-image: linear-gradient(#000, transparent 80%); mask-image: linear-gradient(#000, transparent 80%); }
+.sun { position: absolute; width: 32cqw; height: 32cqw; border-radius: 50%; background: var(--accent); transition: all .6s cubic-bezier(.2,.7,.2,1); }
+.mark { position: absolute; left: 0; right: 0; top: 89%; text-align: center; font-weight: 700; font-size: 4.6cqw; letter-spacing: -0.02em; color: var(--r-mark); }
+.sc { position: absolute; inset: 0; opacity: 0; transform: translateY(2cqw); transition: opacity .45s ease, transform .45s ease; pointer-events: none; }
+.sc.on { opacity: 1; transform: none; }
+.head { position: absolute; left: 7cqw; right: 12cqw; top: 7cqh; min-height: 22cqw; text-align: center; font-size: 7.6cqw; line-height: 1.12; letter-spacing: -0.03em; font-weight: 400; }
+.cw { color: var(--r-ghost); transition: color .2s; } .cw.k { font-weight: 700; } .cw.d { color: var(--r-ink); }
+.hero { position: absolute; left: 18cqw; right: 18cqw; top: 22%; bottom: 33%; display: flex; align-items: center; justify-content: center; }
+.card { background: var(--r-card); border-radius: 4cqw; box-shadow: 1.6cqw 2.4cqw 5cqw -1cqw rgba(0,0,0,.28), 0 0 0 .3cqw var(--r-line); padding: 4cqw; width: 100%; font-size: 3.1cqw; }
+.sc.on .hero > * { animation: pop .6s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes pop { from { opacity: 0; transform: scale(.94) translateY(2cqw); } to { opacity: 1; transform: none; } }
+.pill { position: absolute; top: 77%; left: 50%; transform: translateX(-50%); background: var(--r-pill); color: var(--r-pill-fg); font-weight: 700; font-size: 7.4cqw; letter-spacing: -0.02em; padding: 1.8cqw 4cqw; border-radius: 2.2cqw; white-space: nowrap; box-shadow: 1.2cqw 2cqw 3.6cqw -.8cqw rgba(0,0,0,.4); opacity: 0; transition: opacity .4s; }
+.pill.in { opacity: 1; }
+.row { display: flex; align-items: center; gap: 2.4cqw; padding: 2.2cqw 0; border-top: 1px solid var(--r-line); opacity: .45; transition: opacity .3s, background .3s; }
+.row:first-child { border-top: 0; } .row.hl { opacity: 1; }
+.dot { width: 5cqw; height: 5cqw; border-radius: 1.4cqw; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-weight: 700; font-size: 3.2cqw; flex: none; }
+.row b { display: block; font-size: 3.5cqw; } .row small { color: #6b7371; font-size: 2.6cqw; }
+.big { font-size: 9cqw; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.tag { display: inline-block; font-size: 2.6cqw; padding: .6cqw 2cqw; border-radius: 99px; background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+.vs { display: grid; gap: 3cqw; text-align: left; } .vs .opt { border-radius: 3cqw; padding: 3.2cqw; border: .3cqw solid var(--r-line); }
+.vs .opt.good { border-color: var(--accent); background: var(--accent-soft); } .vs .lbl { font-size: 2.7cqw; text-transform: uppercase; letter-spacing: .08em; color: #6b7371; }
+.phone { position: relative; width: 100%; background: #14191a; border-radius: 6cqw; padding: 2.6cqw; box-shadow: 1.6cqw 2.6cqw 5cqw -1cqw rgba(0,0,0,.4), inset 0 0 0 .5cqw #3b4244; }
+.cm { display: flex; gap: 2cqw; align-items: center; padding: 1.5cqw 0; color: #e9efee; font-size: 2.7cqw; }
+.cm i { width: 5cqw; height: 5cqw; border-radius: 50%; background: #3a4446; flex: none; } .cm span { color: #8e9c9a; font-size: 2.3cqw; display: block; }
+.notif { position: absolute; left: -4cqw; right: -4cqw; bottom: -6cqw; background: #1d2321; color: #fff; border-radius: 4cqw; padding: 3.2cqw 3.6cqw; font-size: 3cqw; line-height: 1.3; box-shadow: 1.6cqw 2.4cqw 5cqw -1cqw rgba(0,0,0,.5); opacity: 0; transform: translateY(3cqw); transition: all .5s cubic-bezier(.2,.7,.2,1); outline: .4cqw solid rgba(255,255,255,.12); }
+.notif.in { opacity: 1; transform: none; } .notif em { font-style: normal; background: var(--accent); padding: 0 1.2cqw; border-radius: 1cqw; }
+.notif small { display: block; color: #9fb0ad; font-size: 2.4cqw; margin-bottom: .8cqw; }
+.start { position: absolute; inset: 0; z-index: 9; display: grid; place-items: center; background: rgba(243,244,241,.72); backdrop-filter: blur(3px); }
+.start button { width: 22cqw; height: 22cqw; border-radius: 50%; border: 0; background: #1d2321; color: #fff; font-size: 9cqw; box-shadow: 0 2cqw 5cqw rgba(0,0,0,.4); }
+.start span { position: absolute; top: 62%; font-weight: 700; font-size: 4.4cqw; color: #1d2321; }
+.start.gone { display: none; }
+.cap { position: absolute; left: 6cqw; right: 12cqw; top: 93%; text-align: center; font-size: 2.6cqw; color: var(--r-mark); }
+@media (prefers-reduced-motion: reduce) { .sc, .sc.on .hero > *, .row, .notif, .pill { transition: none; animation: none; } }
+</style>
+
+<div class="wrap">
+  <h1>NonprofitsDaily Reel Player</h1>
+  <p class="muted">A 20-second sample reel that plays right here, with a voiceover from your device's built-in voice and word-by-word captions. Tap play. Placeholder tool names and copy.</p>
+
+  <div class="frame" id="frame" aria-label="Reel preview">
+    <div class="sun" id="sun" style="right:-17cqw;top:-17cqw"></div>
+
+    <section class="sc" id="s0">
+      <div class="head"></div>
+      <div class="hero"><div class="card vs">
+        <div class="opt"><span class="lbl">Typical paid tool</span><div class="big">$ / mo</div></div>
+        <div class="opt good"><span class="lbl">Free alternative</span><div class="big">$0</div><span class="tag">no billing</span></div>
+      </div></div>
+      <div class="pill">completely free</div>
+    </section>
+
+    <section class="sc" id="s1">
+      <div class="head"></div>
+      <div class="hero"><div class="card">
+        <div class="row"><span class="dot">1</span><div><b>Report builder</b><small>sample tool</small></div></div>
+        <div class="row"><span class="dot">2</span><div><b>Donor tracker</b><small>sample tool</small></div></div>
+        <div class="row"><span class="dot">3</span><div><b>Grant calendar</b><small>sample tool</small></div></div>
+      </div></div>
+      <div class="pill">5 free tools</div>
+    </section>
+
+    <section class="sc" id="s2">
+      <div class="head"></div>
+      <div class="hero"><div class="card">
+        <div class="row hl"><span class="dot">&#9679;</span><div><b>grant-tools</b><small>public, free to use</small></div></div>
+        <div class="row hl"><span class="dot">&#9679;</span><div><b>docs</b><small>setup guide</small></div></div>
+        <div class="row hl"><span class="dot">&#9679;</span><div><b>templates</b><small>reports, budgets</small></div></div>
+        <div class="row hl"><span class="dot">&#9679;</span><div><b>license</b><small>check before reuse</small></div></div>
+      </div></div>
+      <div class="pill">no subscription</div>
+    </section>
+
+    <section class="sc" id="s3">
+      <div class="head"></div>
+      <div class="hero"><div class="phone">
+        <div class="cm"><i></i><div>user_01<span>GRANT</span></div></div>
+        <div class="cm"><i></i><div>user_02<span>GRANT</span></div></div>
+        <div class="cm"><i></i><div>user_03<span>GRANT</span></div></div>
+        <div class="cm"><i></i><div>user_04<span>GRANT</span></div></div>
+        <div class="notif" id="notif"><small>NonprofitsDaily &middot; now</small>Here is your free checklist. Reply STOP to opt out.</div>
+      </div></div>
+      <div class="pill">comment GRANT</div>
+    </section>
+
+    <div class="mark">NonprofitsDaily</div>
+    <div class="cap" id="cap"></div>
+    <div class="start" id="start"><button id="go" type="button" aria-label="Play reel">&#9654;</button><span>Tap to play with sound</span></div>
+  </div>
+
+  <div class="prog" aria-hidden="true"><i id="bar"></i></div>
+  <div class="status" id="status" role="status"></div>
+  <div class="ctrl">
+    <button class="main" id="replay" type="button">Replay</button>
+    <button class="ghostbtn" id="mute" type="button" aria-pressed="false">Voice on</button>
+  </div>
+  <div class="ctrl">
+    <div class="field"><label for="voice">Voice</label><select id="voice"></select></div>
+    <div class="field"><label for="rate">Speed</label>
+      <select id="rate"><option value="0.95">Slower</option><option value="1.05" selected>Normal</option><option value="1.2">Faster</option></select></div>
+  </div>
+  <p class="muted">The voice comes from your browser or phone and sounds different on each device. For a polished voiceover, use the HeyGen version.</p>
+</div>
+
+<script>
+(function () {
+  var SCRIPT = [
+    { id: 's0', sun: 'right:-17cqw;top:-17cqw', say: 'Most nonprofits *pay* every month|for tools they could get|for *free*.' },
+    { id: 's1', sun: 'left:-17cqw;top:-17cqw', say: 'Here are five *free tools*|that fix your biggest|grant *reporting* problems.|*Report* builder.|*Donor* tracker.|*Grant* calendar.' },
+    { id: 's2', sun: 'right:-17cqw;bottom:-17cqw', say: 'No *subscription*,|no *catch*.' },
+    { id: 's3', sun: 'left:-17cqw;top:-17cqw', say: 'Want the full *checklist*?|Comment *GRANT*,|and we\'ll send it|straight to your *DMs*.' }
+  ];
+  // parse into scenes -> chunks -> words
+  SCRIPT.forEach(function (s) {
+    var inK = false;
+    s.chunks = s.say.split('|').map(function (c) {
+      return c.split(' ').map(function (w) {
+        var starts = w.charAt(0) === '*';
+        if (starts) inK = true;
+        var k = inK;
+        if (w.slice(starts ? 1 : 0).indexOf('*') >= 0) inK = false;
+        return { t: w.replace(/\*/g, ''), k: k };
+      });
+    });
+    s.words = [].concat.apply([], s.chunks);
+    s.text = s.words.map(function (w) { return w.t; }).join(' ').replace(/ ,/g, ',');
+  });
+  var $ = function (id) { return document.getElementById(id); };
+  var frame = $('frame'), sun = $('sun'), bar = $('bar'), statusEl = $('status'), notif = $('notif');
+  var voices = [], muted = false, running = 0, timers = [];
+  var hasSpeech = 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined';
+
+  function loadVoices() {
+    if (!hasSpeech) return;
+    voices = speechSynthesis.getVoices().filter(function (v) { return /^en/i.test(v.lang); });
+    var sel = $('voice'); sel.innerHTML = '';
+    var pref = /natural|aria|jenny|samantha|google us|zira|ava|allison|serena|karen/i, best = 0;
+    voices.forEach(function (v, i) { var o = document.createElement('option'); o.value = i; o.textContent = v.name + ' (' + v.lang + ')'; sel.appendChild(o); if (pref.test(v.name) && !best) best = i; });
+    if (voices.length) sel.value = best;
+  }
+  if (hasSpeech) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+
+  function esc(s) { return s.replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); }
+  function showChunk(sc, ci) {
+    var head = $(sc.id).querySelector('.head'), html = '';
+    sc.chunks[ci].forEach(function (w, wi) { html += '<span class="cw' + (w.k ? ' k' : '') + '" data-w="' + ci + '-' + wi + '">' + esc(w.t) + '</span> '; });
+    head.innerHTML = html;
+  }
+  function activateScene(i) {
+    SCRIPT.forEach(function (s, j) { $(s.id).classList.toggle('on', j === i); });
+    sun.style.cssText = SCRIPT[i].sun;
+    var sc = SCRIPT[i];
+    $(sc.id).querySelector('.pill').classList.remove('in');
+    setTimeout(function () { $(sc.id).querySelector('.pill').classList.add('in'); }, 1200);
+    if (sc.id === 's1') document.querySelectorAll('#s1 .row').forEach(function (r) { r.classList.remove('hl'); });
+    if (sc.id === 's3') notif.classList.remove('in');
+    showChunk(sc, 0);
+  }
+  function mark(sc, ci, wi) {
+    var span = $(sc.id).querySelector('[data-w="' + ci + '-' + wi + '"]');
+    if (span) span.classList.add('d');
+    var t = sc.chunks[ci][wi].t.toLowerCase().replace(/[^a-z]/g, '');
+    if (sc.id === 's1') { var idx = { builder: 0, tracker: 1, calendar: 2 }[t]; if (idx !== undefined) document.querySelectorAll('#s1 .row')[idx].classList.add('hl'); }
+    if (sc.id === 's3' && t === 'straight') notif.classList.add('in');
+  }
+  // sequence state: flat index across a scene
+  function flatPos(sc, n) { var c = 0; for (var ci = 0; ci < sc.chunks.length; ci++) { if (n < c + sc.chunks[ci].length) return [ci, n - c]; c += sc.chunks[ci].length; } return null; }
+
+  function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+  function playScene(i, token) {
+    if (token !== running) return;
+    if (i >= SCRIPT.length) { finish(); return; }
+    var sc = SCRIPT[i], rate = parseFloat($('rate').value) || 1.05, shown = -1, started = Date.now();
+    activateScene(i);
+    bar.style.width = ((i / SCRIPT.length) * 100) + '%';
+    statusEl.textContent = 'Scene ' + (i + 1) + ' of ' + SCRIPT.length;
+    var curChunk = 0;
+    function reveal(n) {
+      while (shown < n && shown < sc.words.length - 1) {
+        shown++; var p = flatPos(sc, shown);
+        if (p[0] !== curChunk) { curChunk = p[0]; showChunk(sc, curChunk); }
+        mark(sc, p[0], p[1]);
+      }
+    }
+    var done = false;
+    function next() { if (done || token !== running) return; done = true; clearTimers(); timers.push(setTimeout(function () { playScene(i + 1, token); }, 350)); }
+    var per = 0.4 / rate * 1000; // fallback ms per word
+    function timerReveal() {
+      if (token !== running || done) return;
+      reveal(Math.floor((Date.now() - started) / per));
+      if (shown >= sc.words.length - 1) { timers.push(setTimeout(next, per + 300)); return; }
+      timers.push(setTimeout(timerReveal, 80));
+    }
+    if (hasSpeech && !muted && voices.length) {
+      var u = new SpeechSynthesisUtterance(sc.text);
+      u.voice = voices[parseInt($('voice').value, 10) || 0]; u.rate = rate; u.pitch = 1.05; u.lang = u.voice ? u.voice.lang : 'en-US';
+      var offs = [], c = 0; sc.words.forEach(function (w) { offs.push(c); c += w.t.length + 1; });
+      var gotBoundary = false;
+      u.onboundary = function (e) {
+        if (e.name && e.name !== 'word') return; gotBoundary = true;
+        var n = 0; for (var k = 0; k < offs.length; k++) if (offs[k] <= e.charIndex) n = k; reveal(n);
+      };
+      u.onend = function () { reveal(sc.words.length - 1); next(); };
+      u.onerror = function () { started = Date.now(); timerReveal(); };
+      speechSynthesis.speak(u);
+      // if the voice gives no word events, fall back to timed captions while it speaks
+      timers.push(setTimeout(function () { if (!gotBoundary && !done) { started = Date.now() - 600; timerReveal(); } }, 700));
+    } else { timerReveal(); }
+  }
+  function finish() {
+    bar.style.width = '100%'; statusEl.textContent = 'Done. Tap Replay to watch again.';
+    running++;
+  }
+  function start() {
+    running++; clearTimers();
+    if (hasSpeech) speechSynthesis.cancel();
+    SCRIPT.forEach(function (s) { $(s.id).querySelectorAll('.cw').forEach(function (e) { e.classList.remove('d'); }); });
+    $('start').classList.add('gone');
+    var token = running;
+    if (hasSpeech && !voices.length) loadVoices();
+    playScene(0, token);
+  }
+  $('go').addEventListener('click', start);
+  $('replay').addEventListener('click', start);
+  $('mute').addEventListener('click', function () {
+    muted = !muted; this.textContent = muted ? 'Voice off' : 'Voice on'; this.setAttribute('aria-pressed', String(muted));
+    if (muted && hasSpeech) speechSynthesis.cancel();
+  });
+  if (!hasSpeech) { statusEl.textContent = 'This browser has no built-in voice. The reel will play with captions only.'; }
+  else { statusEl.textContent = 'Tap play to start.'; }
+  // resting state: show first scene fully so a preview thumbnail is not blank
+  activateScene(0); $('s0').querySelectorAll('.cw').forEach(function (e) { e.classList.add('d'); });
+  $('s0').querySelector('.pill').classList.add('in');
+})();
+</script>

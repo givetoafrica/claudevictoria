@@ -1,0 +1,291 @@
+<title>NonprofitsDaily Reel Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: control bar on top, a wrapping row of 9:16 scene frames, then the spec sheet.
+   Frames are fixed-design reel canvases (container units), so spacing stays proportional at any size. */
+:root {
+  --bg: #f3f4f1;
+  --panel: #ffffff;
+  --fg: #16201e;
+  --muted: #5d6865;
+  --line: #d9ddd8;
+  --chip: #e8ebe6;
+  --btn: #16201e;
+  --btn-fg: #f3f4f1;
+  --focus: #1d6fd8;
+  --font: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1514; --panel: #182120; --fg: #eef2ef; --muted: #9aa8a4; --line: #2b3735;
+    --chip: #24302e; --btn: #eef2ef; --btn-fg: #0f1514; --focus: #6aa8ff; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1514; --panel: #182120; --fg: #eef2ef; --muted: #9aa8a4; --line: #2b3735;
+  --chip: #24302e; --btn: #eef2ef; --btn-fg: #0f1514; --focus: #6aa8ff; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font); line-height: 1.5;
+  padding-inline: 16px; padding-block: 24px 64px; }
+.wrap { max-width: 1180px; margin-inline: auto; display: flex; flex-direction: column; gap: 28px; }
+h1 { font-size: clamp(26px, 5vw, 40px); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.02em; }
+h2 { font-size: 20px; margin: 0 0 10px; letter-spacing: -0.01em; }
+p { margin: 0; }
+.lede { color: var(--muted); max-width: 62ch; margin-top: 8px; }
+.bar { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px;
+  display: grid; gap: 14px 20px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); align-items: end; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field label, .lab { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+input[type="text"] { font: inherit; padding: 9px 10px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--bg); color: var(--fg); min-width: 0; width: 100%; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.swatches { display: flex; gap: 8px; }
+.sw { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--line); cursor: pointer; padding: 0; background: var(--c); }
+.sw[aria-pressed="true"] { border-color: var(--fg); box-shadow: 0 0 0 3px var(--panel), 0 0 0 5px var(--fg); }
+.btns { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+button.main { font: inherit; font-weight: 700; padding: 10px 16px; border-radius: 10px; border: 0; cursor: pointer;
+  background: var(--btn); color: var(--btn-fg); }
+.toggle { display: inline-flex; gap: 8px; align-items: center; font-size: 14px; cursor: pointer; }
+
+/* ---------- reel frames ---------- */
+.strip { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+.scene { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.cap { font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
+.cap b { color: var(--fg); }
+.frame {
+  --r-bg1: #f7f7f5; --r-bg2: #e9eae7; --r-ink: #181c1b; --r-ghost: #a8aeac; --r-pill: #1d2321; --r-pill-fg: #ffffff;
+  --r-card: #ffffff; --r-line: #e3e5e2; --r-mark: #9aa09e; --accent: #0f8a7e; --accent-soft: #d3ece8;
+  position: relative; width: 100%; aspect-ratio: 9 / 16; container-type: size; overflow: hidden; border-radius: 18px;
+  background: radial-gradient(120% 80% at 50% 20%, var(--r-bg1), var(--r-bg2));
+  color: var(--r-ink); box-shadow: 0 1px 0 var(--line), 0 14px 30px -18px rgba(0,0,0,.45);
+}
+.frame::before { /* faint dot grid */
+  content: ""; position: absolute; inset: 0; opacity: .5;
+  background-image: radial-gradient(circle, rgba(0,0,0,.16) 0.5cqw, transparent 0.55cqw);
+  background-size: 5cqw 5cqw; -webkit-mask-image: linear-gradient(#000, transparent 80%); mask-image: linear-gradient(#000, transparent 80%);
+}
+.sun { position: absolute; width: 32cqw; height: 32cqw; border-radius: 50%; background: var(--accent); }
+.sun.tl { left: -17cqw; top: -17cqw; } .sun.br { right: -17cqw; bottom: -17cqw; } .sun.tr { right: -17cqw; top: -17cqw; }
+.head { position: absolute; left: 7cqw; right: 12cqw; top: 7cqh; text-align: center; font-size: 7.6cqw; line-height: 1.12;
+  letter-spacing: -0.03em; display: flex; flex-direction: column; align-items: center; }
+.head .lt { font-weight: 400; } .head .hv { font-weight: 700; }
+.w { color: var(--r-ink); }
+.hero { position: absolute; left: 20cqw; right: 20cqw; top: 19%; bottom: 33%; display: flex; align-items: center; justify-content: center; }
+.card { background: var(--r-card); border-radius: 4cqw; box-shadow: 1.6cqw 2.4cqw 5cqw -1cqw rgba(0,0,0,.28), 0 0 0 .3cqw var(--r-line);
+  padding: 4cqw; width: 100%; font-size: 3.1cqw; }
+.pill { position: absolute; top: 77%; left: 50%; transform: translateX(-50%); background: var(--r-pill); color: var(--r-pill-fg);
+  font-weight: 700; font-size: 7.4cqw; letter-spacing: -0.02em; padding: 1.8cqw 4cqw; border-radius: 2.2cqw; white-space: nowrap;
+  box-shadow: 1.2cqw 2cqw 3.6cqw -.8cqw rgba(0,0,0,.4); max-width: 84cqw; overflow: hidden; text-overflow: ellipsis; }
+.mark { position: absolute; left: 0; right: 12cqw; top: 89%; text-align: center; font-weight: 700; font-size: 4.6cqw; letter-spacing: -0.02em; color: var(--r-mark); }
+
+/* card contents */
+.row { display: flex; align-items: center; gap: 2.4cqw; padding: 2.2cqw 0; border-top: 1px solid var(--r-line); }
+.row:first-child { border-top: 0; }
+.dot { width: 5cqw; height: 5cqw; border-radius: 1.4cqw; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-weight: 700; font-size: 3.2cqw; flex: none; }
+.row b { display: block; font-size: 3.5cqw; } .row small { color: #6b7371; font-size: 2.6cqw; }
+.big { font-size: 9cqw; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.tag { display: inline-block; font-size: 2.6cqw; padding: .6cqw 2cqw; border-radius: 99px; background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+.vs { display: grid; gap: 3cqw; text-align: left; }
+.vs .opt { border-radius: 3cqw; padding: 3.2cqw; border: .3cqw solid var(--r-line); }
+.vs .opt.good { border-color: var(--accent); background: var(--accent-soft); }
+.vs .lbl { font-size: 2.7cqw; text-transform: uppercase; letter-spacing: .08em; color: #6b7371; }
+.phone { width: 100%; background: #14191a; border-radius: 6cqw; padding: 2.6cqw; box-shadow: 1.6cqw 2.6cqw 5cqw -1cqw rgba(0,0,0,.4), inset 0 0 0 .5cqw #3b4244; }
+.cm { display: flex; gap: 2cqw; align-items: center; padding: 1.5cqw 0; color: #e9efee; font-size: 2.7cqw; }
+.cm i { width: 5cqw; height: 5cqw; border-radius: 50%; background: #3a4446; flex: none; }
+.cm span { color: #8e9c9a; font-size: 2.3cqw; display: block; }
+.notif { background: #1d2321; color: #fff; border-radius: 4cqw; padding: 3.4cqw 4cqw; font-size: 3.4cqw; line-height: 1.3; width: 100%;
+  box-shadow: 1.6cqw 2.4cqw 5cqw -1cqw rgba(0,0,0,.45); }
+.notif em { font-style: normal; background: var(--accent); padding: 0 1.2cqw; border-radius: 1cqw; }
+.notif small { display: block; color: #9fb0ad; font-size: 2.6cqw; margin-bottom: 1cqw; }
+
+/* safe-zone overlay */
+.sz { display: none; position: absolute; z-index: 5; pointer-events: none; background: repeating-linear-gradient(135deg, rgba(220,38,38,.22) 0 1.4cqw, rgba(220,38,38,.1) 1.4cqw 2.8cqw); outline: 1px dashed rgba(220,38,38,.8); }
+.sz.b { left: 0; right: 0; bottom: 0; height: 14%; } .sz.r { top: 0; bottom: 14%; right: 0; width: 12%; }
+.sz.l { top: 0; bottom: 14%; left: 0; width: 6%; }
+body.show-safe .sz { display: block; }
+.szl { display: none; position: absolute; z-index: 6; bottom: 5%; left: 0; right: 0; text-align: center; font: 500 2.6cqw var(--mono); color: #b91c1c; }
+body.show-safe .szl { display: block; }
+
+/* motion: left-to-right mask reveal, ghosted words, pop. Everything is fully visible at rest. */
+@keyframes wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes ghost { from { color: var(--r-ghost); } to { color: var(--r-ink); } }
+@keyframes pop { from { opacity: 0; transform: scale(.94) translateY(2cqw); } to { opacity: 1; transform: none; } }
+@keyframes pillin { from { opacity: 0; transform: translateX(-50%) translateY(2cqw); } to { opacity: 1; transform: translateX(-50%); } }
+.play .head .ln { animation: wipe .7s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i) * .35s); }
+.play .head .w { animation: ghost .5s both; animation-delay: calc(var(--i) * .35s); }
+.play .hero > * { animation: pop .6s cubic-bezier(.2,.7,.2,1) both; animation-delay: .5s; }
+.play .pill { animation: pillin .5s cubic-bezier(.2,.7,.2,1) both; animation-delay: 1.5s; }
+@media (prefers-reduced-motion: reduce) { .play * { animation: none !important; } }
+
+/* spec sheet */
+.spec { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.box { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; min-width: 0; }
+.tw { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 7px 8px; border-top: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); border-top: 0; }
+td:first-child { white-space: nowrap; font-weight: 700; }
+ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.note { font-size: 13px; color: var(--muted); }
+code { font-family: var(--mono); font-size: 12.5px; background: var(--chip); padding: 1px 6px; border-radius: 5px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>NonprofitsDaily Reel Template</h1>
+    <p class="lede">A 9:16 scene kit built from the spacing, type and motion rules in the @insiderforce study: one idea per scene, one dark pill per scene, one keyword. Colors and copy below are placeholders. Swap in your brand kit.</p>
+  </header>
+
+  <section class="bar" aria-label="Template controls">
+    <div class="field"><label for="hook">Hook headline (bold word last)</label>
+      <input type="text" id="hook" value="5 free tools that fix grant reporting"></div>
+    <div class="field"><label for="pilltxt">Pill phrase</label>
+      <input type="text" id="pilltxt" value="completely free"></div>
+    <div class="field"><label for="kw">CTA keyword</label>
+      <input type="text" id="kw" value="GRANT"></div>
+    <div class="field"><label for="brand">Watermark</label>
+      <input type="text" id="brand" value="NonprofitsDaily"></div>
+    <div class="field"><span class="lab">Accent (placeholder)</span>
+      <div class="swatches" id="sw">
+        <button class="sw" style="--c:#0f8a7e" data-a="#0f8a7e" data-s="#d3ece8" aria-label="Teal" aria-pressed="true"></button>
+        <button class="sw" style="--c:#d9731a" data-a="#d9731a" data-s="#fbe3cc" aria-label="Amber" aria-pressed="false"></button>
+        <button class="sw" style="--c:#4b5bd6" data-a="#4b5bd6" data-s="#dcdffa" aria-label="Indigo" aria-pressed="false"></button>
+        <button class="sw" style="--c:#c2406c" data-a="#c2406c" data-s="#f6d9e3" aria-label="Rose" aria-pressed="false"></button>
+      </div></div>
+    <div class="btns">
+      <button class="main" id="play" type="button">Play motion</button>
+      <label class="toggle"><input type="checkbox" id="safe"> Show safe zones</label>
+    </div>
+  </section>
+
+  <section class="strip" id="strip" aria-label="Five reel scenes">
+
+    <div class="scene"><div class="frame"><div class="sun tr"></div>
+      <div class="head" data-hook></div>
+      <div class="hero"><div class="card pop">
+        <div class="row"><span class="dot">1</span><div><b>Report builder</b><small>sample tool</small></div></div>
+        <div class="row"><span class="dot">2</span><div><b>Donor tracker</b><small>sample tool</small></div></div>
+        <div class="row"><span class="dot">3</span><div><b>Grant calendar</b><small>sample tool</small></div></div>
+      </div></div>
+      <div class="pill" data-pill>completely free</div>
+      <div class="mark" data-brand>NonprofitsDaily</div>
+      <i class="sz b"></i><i class="sz r"></i><i class="sz l"></i><span class="szl">caption + action rail</span>
+    </div><div class="cap"><span><b>1 Hook</b> number + claim</span><span>0-3 s</span></div></div>
+
+    <div class="scene"><div class="frame"><div class="sun tl"></div>
+      <div class="head"><span class="ln" style="--i:0"><span class="w lt" style="--i:0">most teams pay for</span></span><span class="ln" style="--i:1"><span class="w hv" style="--i:1">this every month</span></span></div>
+      <div class="hero"><div class="card vs pop">
+        <div class="opt"><span class="lbl">Typical paid tool</span><div class="big">$ / mo</div></div>
+        <div class="opt good"><span class="lbl">Free alternative</span><div class="big">$0</div><span class="tag">no billing</span></div>
+      </div></div>
+      <div class="pill" data-pill>completely free</div>
+      <div class="mark" data-brand>NonprofitsDaily</div>
+      <i class="sz b"></i><i class="sz r"></i><i class="sz l"></i><span class="szl">caption + action rail</span>
+    </div><div class="cap"><span><b>2 Contrast</b> paid vs free</span><span>3-7 s</span></div></div>
+
+    <div class="scene"><div class="frame"><div class="sun br"></div>
+      <div class="head"><span class="ln" style="--i:0"><span class="w lt" style="--i:0">it is an</span></span><span class="ln" style="--i:1"><span class="w hv" style="--i:1">open source</span> <span class="w lt" style="--i:1">project</span></span></div>
+      <div class="hero"><div class="card pop">
+        <div class="row"><span class="dot">&#9679;</span><div><b>repo / grant-tools</b><small>public, free to use</small></div></div>
+        <div class="row"><span class="dot">&#9679;</span><div><b>docs</b><small>setup guide</small></div></div>
+        <div class="row"><span class="dot">&#9679;</span><div><b>templates</b><small>reports, budgets</small></div></div>
+        <div class="row"><span class="dot">&#9679;</span><div><b>license</b><small>check before reuse</small></div></div>
+      </div></div>
+      <div class="pill">no subscription</div>
+      <div class="mark" data-brand>NonprofitsDaily</div>
+      <i class="sz b"></i><i class="sz r"></i><i class="sz l"></i><span class="szl">caption + action rail</span>
+    </div><div class="cap"><span><b>3 Proof</b> real, checkable object</span><span>7-11 s</span></div></div>
+
+    <div class="scene"><div class="frame"><div class="sun tr"></div>
+      <div class="head"><span class="ln" style="--i:0"><span class="w lt" style="--i:0">that watches your</span></span><span class="ln" style="--i:1"><span class="w hv" style="--i:1">comments</span> <span class="w lt" style="--i:1">for</span> <span class="w hv" style="--i:2" data-kw>GRANT</span></span></div>
+      <div class="hero"><div class="phone pop">
+        <div class="cm"><i></i><div>user_01<span>GRANT</span></div></div>
+        <div class="cm"><i></i><div>user_02<span>GRANT</span></div></div>
+        <div class="cm"><i></i><div>user_03<span>GRANT</span></div></div>
+        <div class="cm"><i></i><div>user_04<span>GRANT</span></div></div>
+      </div></div>
+      <div class="pill">you set a keyword</div>
+      <div class="mark" data-brand>NonprofitsDaily</div>
+      <i class="sz b"></i><i class="sz r"></i><i class="sz l"></i><span class="szl">caption + action rail</span>
+    </div><div class="cap"><span><b>4 Mechanism</b> mock UI, sample comments</span><span>11-16 s</span></div></div>
+
+    <div class="scene"><div class="frame"><div class="sun tl"></div>
+      <div class="head"><span class="ln" style="--i:0"><span class="w lt" style="--i:0">get the checklist in</span></span><span class="ln" style="--i:1"><span class="w hv" style="--i:1">your DMs</span></span></div>
+      <div class="hero"><div class="notif pop"><small>NonprofitsDaily &middot; now</small>Comment <em data-kw>GRANT</em> and we'll send the free checklist. Reply STOP to opt out.</div></div>
+      <div class="pill">comment <span data-kw>GRANT</span></div>
+      <div class="mark" data-brand>NonprofitsDaily</div>
+      <i class="sz b"></i><i class="sz r"></i><i class="sz l"></i><span class="szl">caption + action rail</span>
+    </div><div class="cap"><span><b>5 CTA</b> same keyword as caption</span><span>16-19 s</span></div></div>
+
+  </section>
+
+  <section class="spec" aria-label="Spec sheet">
+    <div class="box"><h2>Vertical bands</h2><div class="tw"><table>
+      <tr><th>Element</th><th>Position</th><th>Notes</th></tr>
+      <tr><td>Headline</td><td>7% to 19%</td><td>Light connectors, heavy key word, centered, about 70% width</td></tr>
+      <tr><td>Hero</td><td>19% to 67%</td><td>About 60% wide, 20% margin each side, soft shadow</td></tr>
+      <tr><td>Pill</td><td>77% to 84%</td><td>One per scene, appears last</td></tr>
+      <tr><td>Watermark</td><td>about 89%</td><td>Mid-gray, above the caption row</td></tr>
+    </table></div></div>
+    <div class="box"><h2>Safe zones</h2><ul>
+      <li>Bottom 14%: author row and caption.</li>
+      <li>Right 12%: like, comment, share rail.</li>
+      <li>Sides 6%: keep text inside.</li>
+      <li>Turn on <code>Show safe zones</code> to check any scene.</li></ul></div>
+    <div class="box"><h2>Motion</h2><ul>
+      <li>Headline lines wipe in left to right, 0.7 s, 0.35 s apart.</li>
+      <li>Words start ghost gray and settle to ink.</li>
+      <li>Hero pops in at 0.5 s. Pill lands last, at 1.5 s.</li>
+      <li>One idea every 3 to 5 s. Hero swaps, not hard cuts.</li></ul></div>
+    <div class="box"><h2>Rules to keep</h2><ul>
+      <li>One idea and one keyword per Reel.</li>
+      <li>Same keyword on screen and in the caption.</li>
+      <li>Source-check every claim. Show the source in the caption.</li>
+      <li>Mock UI for tools. Real, consented images for people.</li>
+      <li>Say what the DM is and include an opt-out.</li></ul>
+      <p class="note" style="margin-top:10px">All tool names, comments and numbers here are samples, not facts.</p></div>
+  </section>
+</div>
+
+<script>
+(function () {
+  var strip = document.getElementById('strip');
+  function esc(s) { return s.replace(/[&<>]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
+  function hook() {
+    var t = (document.getElementById('hook').value || '').trim().split(/\s+/);
+    var last = t.pop() || '';
+    var a = esc(t.join(' ')), b = esc(last);
+    document.querySelector('[data-hook]').innerHTML =
+      '<span class="ln" style="--i:0"><span class="w lt" style="--i:0">' + a + '</span></span>' +
+      '<span class="ln" style="--i:1"><span class="w hv" style="--i:1">' + b + '</span></span>';
+  }
+  function bind() {
+    document.querySelectorAll('[data-pill]').forEach(function (e) { e.textContent = document.getElementById('pilltxt').value; });
+    document.querySelectorAll('[data-brand]').forEach(function (e) { e.textContent = document.getElementById('brand').value; });
+    document.querySelectorAll('[data-kw]').forEach(function (e) { e.textContent = (document.getElementById('kw').value || 'KEYWORD').toUpperCase(); });
+  }
+  ['hook', 'pilltxt', 'kw', 'brand'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', function () { hook(); bind(); });
+  });
+  document.getElementById('sw').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    this.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    strip.querySelectorAll('.frame').forEach(function (f) {
+      f.style.setProperty('--accent', b.dataset.a); f.style.setProperty('--accent-soft', b.dataset.s);
+    });
+  });
+  document.getElementById('safe').addEventListener('change', function () {
+    document.body.classList.toggle('show-safe', this.checked);
+  });
+  document.getElementById('play').addEventListener('click', function () {
+    var frames = strip.querySelectorAll('.frame');
+    frames.forEach(function (f) { f.classList.remove('play'); });
+    void strip.offsetWidth;
+    frames.forEach(function (f) { f.classList.add('play'); });
+  });
+  hook(); bind();
+})();
+</script>

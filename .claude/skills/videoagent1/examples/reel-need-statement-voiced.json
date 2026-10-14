@@ -1,0 +1,299 @@
+{
+  "format": "reel",
+  "title": "The 3-sentence need statement (sample)",
+  "scenes": [
+    {
+      "bg": "plum",
+      "say": "Writing a *need* statement?|Use these *three* sentences.",
+      "pill": "3 sentences",
+      "react": "Aha!",
+      "sun": "right:-17cqw;top:-17cqw",
+      "hero": {
+        "kind": "list",
+        "items": [
+          {
+            "t": "Who you serve",
+            "s": "sentence one",
+            "key": "one"
+          },
+          {
+            "t": "The problem they face",
+            "s": "sentence two",
+            "key": "two"
+          },
+          {
+            "t": "Why it matters now",
+            "s": "sentence three",
+            "key": "three"
+          }
+        ]
+      }
+    },
+    {
+      "bg": "ivory",
+      "say": "*One*, who you serve.|*Two*, the problem they face.|*Three*, why it matters now.",
+      "pill": "short and specific",
+      "sun": "left:-17cqw;top:-17cqw",
+      "hero": {
+        "kind": "list",
+        "items": [
+          {
+            "t": "Who you serve",
+            "s": "name the people",
+            "key": "one"
+          },
+          {
+            "t": "The problem they face",
+            "s": "one clear problem",
+            "key": "two"
+          },
+          {
+            "t": "Why it matters now",
+            "s": "the cost of waiting",
+            "key": "three"
+          }
+        ]
+      }
+    },
+    {
+      "bg": "dark",
+      "say": "Copy this *template*|and fill in the blanks.",
+      "pill": "pause and screenshot",
+      "react": "Wow!",
+      "sun": "right:-17cqw;bottom:-17cqw",
+      "hero": {
+        "kind": "quote",
+        "text": "We serve ___ in ___. They face ___. This matters now because ___."
+      }
+    },
+    {
+      "bg": "plum",
+      "say": "Want the full *checklist*?|Comment *NEED*,|and we'll send it|to your *DMs*.",
+      "pill": "comment NEED",
+      "sun": "left:-17cqw;top:-17cqw",
+      "hero": {
+        "kind": "phone",
+        "keyword": "NEED",
+        "notif": "Here is your free checklist.",
+        "notifKey": "send"
+      }
+    }
+  ],
+  "timing": [
+    {
+      "w": "Writing",
+      "start": 0.08,
+      "end": 0.38
+    },
+    {
+      "w": "a",
+      "start": 0.42,
+      "end": 0.46
+    },
+    {
+      "w": "needs",
+      "start": 0.5,
+      "end": 0.72
+    },
+    {
+      "w": "statement?",
+      "start": 0.78,
+      "end": 1.2
+    },
+    {
+      "w": "Use",
+      "start": 1.72,
+      "end": 1.9
+    },
+    {
+      "w": "these",
+      "start": 1.96,
+      "end": 2.22
+    },
+    {
+      "w": "three",
+      "start": 2.26,
+      "end": 2.42
+    },
+    {
+      "w": "sentences.",
+      "start": 2.54,
+      "end": 3.18
+    },
+    {
+      "w": "One,",
+      "start": 3.78,
+      "end": 4.019
+    },
+    {
+      "w": "who",
+      "start": 4.54,
+      "end": 4.7
+    },
+    {
+      "w": "you",
+      "start": 4.76,
+      "end": 4.88
+    },
+    {
+      "w": "serve.",
+      "start": 4.94,
+      "end": 5.3
+    },
+    {
+      "w": "Two,",
+      "start": 5.82,
+      "end": 6.06
+    },
+    {
+      "w": "the",
+      "start": 6.56,
+      "end": 6.64
+    },
+    {
+      "w": "problem",
+      "start": 6.7,
+      "end": 7.12
+    },
+    {
+      "w": "they",
+      "start": 7.16,
+      "end": 7.32
+    },
+    {
+      "w": "face.",
+      "start": 7.36,
+      "end": 7.74
+    },
+    {
+      "w": "Three,",
+      "start": 8.26,
+      "end": 8.52
+    },
+    {
+      "w": "why",
+      "start": 9.14,
+      "end": 9.34
+    },
+    {
+      "w": "it",
+      "start": 9.38,
+      "end": 9.5
+    },
+    {
+      "w": "matters",
+      "start": 9.56,
+      "end": 9.9
+    },
+    {
+      "w": "now.",
+      "start": 10.02,
+      "end": 10.32
+    },
+    {
+      "w": "Copy",
+      "start": 10.9,
+      "end": 11.16
+    },
+    {
+      "w": "this",
+      "start": 11.22,
+      "end": 11.36
+    },
+    {
+      "w": "template",
+      "start": 11.42,
+      "end": 11.84
+    },
+    {
+      "w": "and",
+      "start": 11.88,
+      "end": 11.98
+    },
+    {
+      "w": "fill",
+      "start": 12.12,
+      "end": 12.24
+    },
+    {
+      "w": "in",
+      "start": 12.3,
+      "end": 12.38
+    },
+    {
+      "w": "the",
+      "start": 12.4,
+      "end": 12.48
+    },
+    {
+      "w": "blanks.",
+      "start": 12.5,
+      "end": 12.94
+    },
+    {
+      "w": "Want",
+      "start": 13.46,
+      "end": 13.58
+    },
+    {
+      "w": "the",
+      "start": 13.62,
+      "end": 13.7
+    },
+    {
+      "w": "full",
+      "start": 13.72,
+      "end": 13.84
+    },
+    {
+      "w": "checklist?",
+      "start": 13.92,
+      "end": 14.46
+    },
+    {
+      "w": "Comment",
+      "start": 14.84,
+      "end": 15.22
+    },
+    {
+      "w": "need",
+      "start": 15.38,
+      "end": 15.8
+    },
+    {
+      "w": "and",
+      "start": 16.079,
+      "end": 16.18
+    },
+    {
+      "w": "we'll",
+      "start": 16.219,
+      "end": 16.36
+    },
+    {
+      "w": "send",
+      "start": 16.42,
+      "end": 16.58
+    },
+    {
+      "w": "it",
+      "start": 16.62,
+      "end": 16.68
+    },
+    {
+      "w": "to",
+      "start": 16.72,
+      "end": 16.8
+    },
+    {
+      "w": "your",
+      "start": 16.84,
+      "end": 16.96
+    },
+    {
+      "w": "DMs",
+      "start": 17.0,
+      "end": 17.52
+    }
+  ]
+}

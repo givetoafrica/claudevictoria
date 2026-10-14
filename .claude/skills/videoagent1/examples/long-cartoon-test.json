@@ -1,0 +1,41 @@
+{
+  "format": "long",
+  "scenes": [
+    {
+      "bg": "plum",
+      "series": "Fundraising Series",
+      "say": "Why first-time donors *don't* come back.|It's usually not because|they *stopped caring*.",
+      "pill": "3 reasons",
+      "react": "Aha!",
+      "sun": "right:-8cqh;top:-17cqh",
+      "hero": {
+        "kind": "cartoon"
+      }
+    },
+    {
+      "bg": "ivory",
+      "say": "Fix those *three*,|and a first gift can become a *second*.",
+      "pill": "thank, report, wait",
+      "hero": {
+        "kind": "list",
+        "items": [
+          {
+            "t": "Thank them fast",
+            "s": "reason one",
+            "key": "Fix"
+          },
+          {
+            "t": "Say what the gift did",
+            "s": "reason two",
+            "key": "three"
+          },
+          {
+            "t": "Wait before the next ask",
+            "s": "reason three",
+            "key": "second"
+          }
+        ]
+      }
+    }
+  ]
+}
