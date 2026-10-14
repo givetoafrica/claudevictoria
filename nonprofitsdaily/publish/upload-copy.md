@@ -12,7 +12,7 @@ Titles are editorial judgment, not based on search-volume data.
 ## Description (paste-ready)
 It's mid-October. If your year-end appeal isn't written yet, you're not behind. This is a simple week-by-week plan to plan, write, send and follow up on a year-end fundraising appeal, built for small nonprofit teams.
 
-Get the free printable checklist: [ADD LINK HERE]
+Get the free printable checklist: https://sendfox.com/form/1jgope/3oyw99
 
 Chapters
 0:00 Your year-end appeal in 30 days
