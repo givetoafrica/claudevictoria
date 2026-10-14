@@ -1,0 +1,25 @@
+{
+  "format": "reel",
+  "scenes": [
+    {
+      "bg": "plum",
+      "say": "Most nonprofits think a *thank-you* is a receipt.",
+      "pill": "it is not",
+      "sun": "right:-17cqw;top:-17cqw",
+      "hero": {
+        "kind": "cartoon",
+        "outfit": "green"
+      }
+    },
+    {
+      "bg": "ivory",
+      "say": "A *real* thank-you names the result.",
+      "pill": "name the result",
+      "sun": "left:-17cqw;top:-17cqw",
+      "hero": {
+        "kind": "quote",
+        "text": "Your gift put 12 kids in the program this fall."
+      }
+    }
+  ]
+}

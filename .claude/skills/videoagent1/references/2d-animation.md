@@ -1,4 +1,6 @@
-# 2D animation (cartoon Victoria for long videos)
+# 2D animation (cartoon Victoria)
+
+**Built in (v1):** `hero.kind: "cartoon"` and `avatarMode: "cartoon"` in scripts/engine.html draw a flat vector Victoria (outfit `blue`, `green` or `plum`) with lip sync from word timings, blinks, brow lift on `react`, head sway and hands. Reference photos: assets/victoria/ (in the packaged skill only). Tune the look by asking in plain words (bigger eyes, different hair, other outfit colors).
 
 Avatar rule (Victoria, Oct 2026): the avatar appears in **long YouTube videos only**, not in reels or shorts.
 
