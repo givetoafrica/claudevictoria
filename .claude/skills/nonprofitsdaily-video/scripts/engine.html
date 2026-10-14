@@ -130,6 +130,7 @@ const CONTENT = /*CONTENT*/ null;
     if (h.kind === 'compare') return `<div class="card"><div class="opt"><span class="lbl">${esc(h.a.label)}</span><div class="val">${esc(h.a.value)}</div></div><div class="opt good"><span class="lbl">${esc(h.b.label)}</span><div class="val">${esc(h.b.value)}</div>${h.b.tag ? '<span class="tag">' + esc(h.b.tag) + '</span>' : ''}</div></div>`;
     if (h.kind === 'stat') return `<div class="card" style="text-align:center"><div class="big">${esc(h.number)}</div><div class="cap2">${esc(h.caption)}</div><div class="src">${esc(h.source || '')}</div></div>`;
     if (h.kind === 'myth') return `<div class="card"><div class="myth">${esc(h.myth)}</div><div class="fact">${esc(h.fact)}</div></div>`;
+    if (h.kind === 'follow') return `<div class="card" style="text-align:center"><div class="val" style="font-size:calc(var(--u)*5.4)">${esc(h.handle || '@nonprofitsdaily')}</div><div class="cap2">${esc(h.line || 'Follow for more nonprofit tips.')}</div></div>`;
     if (h.kind === 'quote') return `<div class="card"><div class="quote"><i>&ldquo;</i>${esc(h.text)}</div></div>`;
     if (h.kind === 'phone') return `<div class="phone">${[1, 2, 3, 4].map((n) => `<div class="cm"><i></i><div>user_0${n}<span>${esc(h.keyword)}</span></div></div>`).join('')}<div class="notif" data-key="${esc(h.notifKey || '')}"><small>@nonprofitsdaily &middot; now</small>${esc(h.notif || '')}</div></div>`;
     return '';
@@ -228,7 +229,7 @@ const CONTENT = /*CONTENT*/ null;
       if (rt > 0.3 && rt < 1.2) wig = Math.sin((rt - 0.3) * 24) * 6 * (1 - (rt - 0.3) / 0.9);
     } else { bub.style.opacity = 0; }
     av.style.transform = `translateY(${bob}cqh) rotate(${wig}deg)`;
-    av.style.opacity = (cur.noAvatar || avMissing) ? 0 : 1;
+    av.style.opacity = (cur.noAvatar || avMissing || fmt === 'reel') ? 0 : 1;
   };
   window.__render(0);
   // preview: open with ?play to run in a normal browser, ?t=12.5 to freeze a moment, ?safe to show safe zones

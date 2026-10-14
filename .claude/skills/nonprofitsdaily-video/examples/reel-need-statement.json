@@ -6,7 +6,6 @@
       "bg": "plum",
       "say": "Writing a *need statement*?|Use these *three* sentences.",
       "pill": "3 sentences",
-      "react": "Aha!",
       "sun": "right:-17cqw;top:-17cqw",
       "hero": {
         "kind": "list",
@@ -59,7 +58,6 @@
       "bg": "dark",
       "say": "Copy this *template*|and fill in the blanks.",
       "pill": "pause and screenshot",
-      "react": "Wow!",
       "sun": "right:-17cqw;bottom:-17cqw",
       "hero": {
         "kind": "quote",
@@ -68,14 +66,13 @@
     },
     {
       "bg": "plum",
-      "say": "Want the full *checklist*?|Comment *NEED*,|and we'll send it|to your *DMs*.",
-      "pill": "comment NEED",
+      "say": "Follow for *more* nonprofit tips.",
+      "pill": "follow for more",
       "sun": "left:-17cqw;top:-17cqw",
       "hero": {
-        "kind": "phone",
-        "keyword": "NEED",
-        "notif": "Here is your free checklist.",
-        "notifKey": "send"
+        "kind": "follow",
+        "handle": "@nonprofitsdaily",
+        "line": "Follow for more nonprofit tips."
       }
     }
   ]
