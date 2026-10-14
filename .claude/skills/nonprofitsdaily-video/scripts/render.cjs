@@ -31,7 +31,7 @@ const tmp = path.join(__dirname, '_render_' + process.pid + '.html'); fs.writeFi
   const ff = ['-y', '-f', 'image2pipe', '-framerate', String(fps), '-i', '-'];
   if (audio) ff.push('-i', audio);
   ff.push('-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', '-preset', 'veryfast', '-r', String(fps));
-  if (audio) ff.push('-c:a', 'aac', '-b:a', '192k', '-shortest');
+  if (audio) ff.push('-af', 'apad', '-c:a', 'aac', '-b:a', '192k', '-t', String((n / fps).toFixed(3)));
   ff.push('-movflags', '+faststart', outPath);
   const p = spawn('ffmpeg', ff, { stdio: ['pipe', 'ignore', 'inherit'] });
   const t0 = Date.now();
