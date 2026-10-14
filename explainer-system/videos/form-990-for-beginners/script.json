@@ -1,0 +1,142 @@
+{
+  "title": "Form 990 for Beginners",
+  "theme": "nonprofitsdaily",
+  "wordmark": "NONPROFITSDAILY",
+  "host": true,
+  "voice": { "provider": "elevenlabs", "voice_id": "fK3Sm9ujL18r46zw0ri0", "model": "eleven_v4" },
+  "outro": 3.5,
+  "scenes": [
+    { "id": "cold-open", "type": "kinetic",
+      "voiceover": "You can run a great program. Pay your bills. Serve your community every single day. And still lose your tax-exempt status. Not because of fraud. Not because of a lawsuit. Because of a form. I'm Victoria Philips of Philips Nonprofit Consulting. In this video, you'll learn which Form 990 your nonprofit files, when it's due, and how to make sure this never happens to you.",
+      "kicker": "NONPROFITSDAILY · FORM 990 FOR BEGINNERS",
+      "lines": [
+        { "text": "You can do everything right…", "color": "onDark", "at": "You can run" },
+        { "text": "…and still lose your 501(c)(3).", "color": "a3", "at": "still lose" },
+        { "text": "Because of a form.", "color": "a4", "at": "because of a#2" }
+      ],
+      "lower": { "text": "Victoria Philips", "sub": "Philips Nonprofit Consulting", "at": "Victoria Philips" } },
+
+    { "id": "big-stat", "type": "stat",
+      "voiceover": "Here is the number to remember. Three. If a nonprofit doesn't file its annual return three years in a row, the IRS revokes its tax-exempt status automatically. It happens by law. Getting it back means going through an application process. And while you wait, donors can lose the ability to deduct their gifts. So let's make sure you never get near that number.",
+      "big": { "text": "3", "at": "Three" },
+      "label": { "text": "years in a row without filing", "at": "three years in a row" },
+      "sub": { "text": "= tax-exempt status automatically revoked", "at": "revokes" },
+      "stamp": { "text": "REVOKED", "at": "automatically" } },
+
+    { "id": "myth-fact", "type": "mythfact", "bg": "light",
+      "voiceover": "Here is the biggest myth I hear from new founders. \"We barely raised anything this year, so we don't have to file.\" That's not true. Almost every 501(c)(3) files something with the IRS every year, even if you raised zero dollars. The main exceptions are churches and a few similar groups. If you're not sure you're one of them, assume you file.",
+      "myth": "We raised too little to file.",
+      "fact": "Almost every 501(c)(3) files something every year, even at $0.",
+      "note": "Main exceptions: churches and a few similar groups",
+      "mythAt": "we barely raised", "strikeAt": "that's not true", "factAt": "almost every", "noteAt": "main exceptions" },
+
+    { "id": "step1-form", "type": "steps",
+      "voiceover": "Step one. Look at your gross receipts. That means all the money that came in during the year, before you subtract any expenses. If your receipts are normally $50,000 or less, you file the Form 990-N. If you're under $200,000 in receipts and under $500,000 in assets, you can file the Form 990-EZ. Anything above that, you file the full Form 990. Always confirm the current limits on IRS.gov before you file.",
+      "title": "STEP 1: What are your gross receipts?",
+      "items": [
+        { "badge": "FORM 990-N", "text": "$50,000 or less", "at": "50,000 or less" },
+        { "badge": "FORM 990-EZ", "text": "Under $200,000 receipts and under $500,000 assets", "at": "under $200,000" },
+        { "badge": "FULL FORM 990", "text": "Anything above that", "at": "anything above" }
+      ],
+      "footnote": "Always confirm current limits on IRS.gov", "footAt": "always confirm" },
+
+    { "id": "postcard", "type": "steps",
+      "voiceover": "The 990-N is called the e-Postcard, and it takes about ten minutes. You file it online on the IRS website. You give your legal name and address, your EIN, your tax year, the name and address of a principal officer, your website if you have one, and you confirm your receipts are $50,000 or less. No financial statements. That's it.",
+      "title": "THE 990-N: ABOUT 10 MINUTES", "numbered": true,
+      "items": [
+        { "text": "Legal name and address", "at": "legal name" },
+        { "text": "Your EIN", "at": "your EIN" },
+        { "text": "Tax year", "at": "tax year" },
+        { "text": "Principal officer: name and address", "at": "principal officer" },
+        { "text": "Website (if you have one)", "at": "website" },
+        { "text": "Confirm receipts are $50,000 or less", "at": "confirm your receipts" }
+      ],
+      "footnote": "No financial statements. That's it.", "footAt": "no financial statements" },
+
+    { "id": "step2-due", "type": "flow",
+      "voiceover": "Step two. Find your due date. The rule is simple. Start at the end of your fiscal year, count five months, and use the fifteenth day. If your year ends June 30, the fifth month is November, and November 15 this year is a Sunday. So your deadline moves to Monday, November 16. If your year ends December 31, the due date is May 15. In 2027, that's a Saturday, so you have until Monday, May 17. Your fiscal year is whatever your board chose. Many nonprofits use the calendar year, so check your bylaws.",
+      "title": "STEP 2: Find your due date",
+      "rows": [
+        { "at": "the rule is simple", "nodes": [ { "label": "15th day of the 5th month after your year ends", "tone": "a3", "sub": "the rule" } ] },
+        { "at": "if your year ends june", "nodes": [ { "label": "June 30 year-end", "tone": "soft" }, { "label": "Nov 15 (Sunday)", "sub": "5th month, 15th day" }, { "label": "Mon, Nov 16, 2026", "tone": "a1", "sub": "your due date" } ] },
+        { "at": "if your year ends december", "nodes": [ { "label": "Dec 31 year-end", "tone": "soft" }, { "label": "May 15 (Saturday)", "sub": "5th month, 15th day" }, { "label": "Mon, May 17, 2027", "tone": "a1", "sub": "your due date" } ] }
+      ],
+      "note": "If it lands on a weekend, it moves to the next business day.", "noteAt": "so you have until" },
+
+    { "id": "example", "type": "flow",
+      "voiceover": "Let's walk through an example. This is a composite, not a real organization. Imagine a new tutoring nonprofit. Their year ends June 30, and they raised $38,000. Step one: that's under $50,000, so they file the 990-N. Step two: five months after June 30 is November, and the fifteenth is a Sunday, so the due date is Monday, November 16. Their treasurer puts a reminder on the calendar for November 1, logs in, files in ten minutes, and is done for the year.",
+      "title": "EXAMPLE: a composite, not a real organization",
+      "rows": [
+        { "at": "imagine a new", "nodes": [ { "label": "New tutoring nonprofit", "tone": "soft" }, { "label": "Year ends June 30" }, { "label": "$38,000 raised" } ] },
+        { "at": "step one", "nodes": [ { "label": "Under $50,000", "sub": "Step 1" }, { "label": "File Form 990-N", "tone": "a1" } ] },
+        { "at": "step two", "nodes": [ { "label": "Nov 15 (Sunday)", "sub": "Step 2: 5 months after June 30" }, { "label": "Due Mon, Nov 16, 2026", "tone": "a1" } ] },
+        { "at": "their treasurer", "nodes": [ { "label": "Reminder set for Nov 1", "tone": "a3", "sub": "treasurer" }, { "label": "Files in 10 minutes. Done.", "tone": "ok" } ] }
+      ] },
+
+    { "id": "mistakes", "type": "alert",
+      "voiceover": "Three mistakes to avoid. Mistake one: thinking you can get more time on the 990-N. Form 8868 gives an automatic extension for the 990-EZ and the full 990. It does not work for the 990-N. Mistake two: using one person's personal email on your IRS account. When that person leaves, your reminders leave with them. Use a shared address the board can reach. Mistake three: filing a full 990 late. The IRS can charge a penalty for every day it's late, and it adds up. Check IRS.gov for the current amount.",
+      "stamp": "MISTAKE ALERT", "stampAt": "three mistakes",
+      "items": [
+        { "text": "Form 8868 does not extend the 990-N", "at": "mistake one" },
+        { "text": "IRS reminders go to one person's personal email", "at": "mistake two" },
+        { "text": "Filing a full 990 late", "at": "mistake three" }
+      ] },
+
+    { "id": "before-after", "type": "compare", "bg": "light",
+      "voiceover": "If you file the 990-EZ or the full 990, there's one more thing to know. These are public. Funders can read them on sites like Candid. On the left is a messy return where every dollar is called \"program.\" A funder sees that and wonders if anyone is tracking costs. On the right is the same money split into program, management, and fundraising. That tells a funder you know where every dollar goes. Your 990 isn't just paperwork. It's your public résumé.",
+      "title": "Your 990 is public",
+      "left": { "label": "BEFORE", "segments": [ { "label": "Program", "pct": 100, "color": "muted" } ] },
+      "right": { "label": "AFTER", "segments": [ { "label": "Program", "pct": 70, "color": "a1" }, { "label": "Management", "pct": 20, "color": "a3" }, { "label": "Fundraising", "pct": 10, "color": "a2" } ] },
+      "illustrative": true,
+      "quote": "Your 990 is your public résumé.",
+      "leftAt": "on the left", "rightAt": "on the right", "quoteAt": "your 990 isn't" },
+
+    { "id": "fiscal-sponsor", "type": "flow",
+      "voiceover": "A quick note if your project operates under a fiscal sponsor. You generally don't file your own 990. Your money is reported on your sponsor's return. Ask your sponsor in writing how your funds are reported, and keep a copy of your agreement. More disclosure about fiscal sponsorship has also been proposed, though it isn't final, so it's worth asking now.",
+      "title": "UNDER A FISCAL SPONSOR?",
+      "rows": [
+        { "at": "you generally don't", "nodes": [ { "label": "Your project", "tone": "soft" }, { "label": "Fiscal sponsor", "tone": "a1" }, { "label": "Sponsor's 990", "tone": "a3", "sub": "money is reported here" } ] },
+        { "at": "ask your sponsor", "nodes": [ { "label": "Ask: How is my project reported?" }, { "label": "Get it in writing", "tone": "a2" } ] }
+      ] },
+
+    { "id": "gather", "type": "steps", "numbered": true,
+      "voiceover": "Before you file anything, gather three things. Your EIN. Your fiscal year-end date. And your total receipts for the year. With those three items, you can pick your form and find your due date in about five minutes.",
+      "title": "GATHER THESE 3 THINGS",
+      "items": [
+        { "text": "Your EIN", "at": "your EIN" },
+        { "text": "Your fiscal year-end date", "at": "fiscal year-end" },
+        { "text": "Last year's total receipts", "at": "your total receipts" }
+      ],
+      "footnote": "= your form and your due date in about 5 minutes", "footAt": "with those three" },
+
+    { "id": "copy-this", "type": "steps", "numbered": true, "ownerColumn": true,
+      "voiceover": "Here's a template to copy. Your Annual Compliance Calendar. Five steps, in this order. One: write down your fiscal year-end date. Two: write down your 990 due date. Three: add your state charity renewal. Four: schedule a board meeting where the board reviews and approves the 990 before it's filed. Five: update your Candid profile. Put all five on your board calendar today. Then give each one a name next to it, because a task with no owner doesn't get done.",
+      "title": "COPY THIS: ANNUAL COMPLIANCE CALENDAR",
+      "items": [
+        { "text": "Write down your fiscal year-end date", "at": "one" },
+        { "text": "Write down your 990 due date", "at": "two" },
+        { "text": "Add your state charity renewal", "at": "three" },
+        { "text": "Board reviews and approves the 990 before filing", "at": "four" },
+        { "text": "Update your Candid profile", "at": "five#2" }
+      ],
+      "ownersAt": "give each one a name" },
+
+    { "id": "quiz", "type": "quiz",
+      "voiceover": [
+        "Time for a quick check. Your year ends December 31. You raised $62,000, and you have $90,000 in assets. Which form do you file, and when is it due? Pause the video if you want.",
+        "Here's the answer. It's over $50,000, so no postcard. It's under $200,000 in receipts and under $500,000 in assets, so you file the 990-EZ. Five months after December 31 puts you at May 15, but in 2027 that's a Saturday, so it's due Monday, May 17."
+      ],
+      "gaps": [5.5],
+      "kicker": "PAUSE & CHECK",
+      "facts": ["Year-end: Dec 31", "Total revenue: $62,000", "Total assets: $90,000"],
+      "question": "Which form? When is it due?",
+      "answer": [ { "text": "Form 990-EZ", "color": "a3", "at": "990-EZ" }, { "text": "Due Monday, May 17, 2027", "color": "onDark", "at": "it's due" } ] },
+
+    { "id": "recap", "type": "recap", "tail": 1.0,
+      "voiceover": "Let's recap. One: know your form. Two: know your date. Three: put it on the board calendar. Next time, I'll show you how to write an AI policy for your nonprofit, step by step, with a template you can copy. Subscribe to my YouTube channel for more nonprofit tips.",
+      "title": "3-POINT RECAP",
+      "points": [ { "text": "Know your form.", "at": "one" }, { "text": "Know your date.", "at": "two" }, { "text": "Put it on the board calendar.", "at": "three" } ],
+      "teaser": { "label": "NEXT EPISODE", "title": "AI Policy for Nonprofits: A Step-by-Step Template for Beginners" }, "teaserAt": "next time",
+      "closer": "Subscribe to my YouTube channel for more nonprofit tips.", "closerAt": "subscribe" }
+  ]
+}
