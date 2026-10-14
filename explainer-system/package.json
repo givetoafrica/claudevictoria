@@ -1,0 +1,13 @@
+{
+  "name": "explainer-system",
+  "private": true,
+  "description": "Script in, finished explainer video out. Fun animated explainers for training and teaching.",
+  "scripts": {
+    "prep": "node prep.js",
+    "song": "node song.js",
+    "board": "node engine/render.js board",
+    "video": "node engine/render.js video",
+    "mux": "node engine/render.js mux",
+    "check": "node engine/render.js check"
+  }
+}
