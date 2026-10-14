@@ -1,0 +1,197 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>NonprofitsDaily video engine</title>
+<style>
+@font-face { font-family: "NPD Serif"; font-weight: 400; src: url("../assets/fonts/gelasio-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "NPD Serif"; font-weight: 700; src: url("../assets/fonts/gelasio-latin-700-normal.woff2") format("woff2"); }
+:root {
+  --plum: #3B0B45; --ivory: #FAF7F2; --ink: #1C1421; --violet: #6C1FE0; --gold: #E8B547; --lav: #D9C8F5; --grey: #9C92A3; --red: #C8453C;
+  --serif: "NPD Serif", Georgia, "Liberation Serif", serif; --sans: Arial, "Liberation Sans", Helvetica, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; }
+html, body { background: #000; overflow: hidden; }
+#stage { position: relative; overflow: hidden; container-type: size; font-family: var(--sans); }
+#stage.reel { width: 1080px; height: 1920px; --u: 1cqw; }
+#stage.long { width: 1920px; height: 1080px; --u: 1cqh; }
+#stage .bg { position: absolute; inset: 0; background: radial-gradient(110% 80% at 45% 40%, var(--bgA), var(--bgB)); }
+#stage.dark { --bgA: #2a1f30; --bgB: #1C1421; --fg: var(--ivory); --fg2: var(--lav); --mk: var(--gold); --card: #fff; --cardfg: var(--ink); }
+#stage .grid { position: absolute; inset: 0; opacity: .22; background-image: radial-gradient(circle, #fff 0.07u, transparent 0.08u); background-image: radial-gradient(circle, rgba(250,247,242,.55) calc(var(--u)*.08), transparent calc(var(--u)*.1)); background-size: calc(var(--u)*5) calc(var(--u)*5); }
+.sc { position: absolute; inset: 0; opacity: 0; will-change: opacity, transform; }
+.sc.plum { --bgA: #55185f; --bgB: #3B0B45; }
+.sc.dark { --bgA: #2a1f30; --bgB: #1C1421; }
+.sc.ivory { --bgA: #ffffff; --bgB: #EDE7DD; }
+.sc .scbg { position: absolute; inset: 0; background: radial-gradient(110% 80% at 45% 40%, var(--bgA), var(--bgB)); }
+.sc.dark, .sc.plum { --fg: var(--ivory); --fg2: var(--lav); --key: var(--gold); --ghost: #7a6a82; --mark: var(--gold); }
+.sc.ivory { --fg: var(--plum); --fg2: var(--grey); --key: var(--violet); --ghost: #c4bccb; --mark: var(--plum); }
+.sun { position: absolute; width: calc(var(--u)*34); height: calc(var(--u)*34); border-radius: 50%; background: var(--sunc, var(--violet)); opacity: .9; }
+.sc.plum .sun, .sc.dark .sun { --sunc: var(--gold); opacity: .92; }
+.head { position: absolute; font-family: var(--serif); color: var(--fg); letter-spacing: -0.02em; line-height: 1.12; }
+.reel .head { left: calc(var(--u)*7); right: calc(var(--u)*12); top: 8%; text-align: center; font-size: calc(var(--u)*8); }
+.long .head { left: 6%; width: 50%; top: 24%; text-align: left; font-size: calc(var(--u)*9.4); }
+.chunk { display: none; } .chunk.on { display: block; }
+.cw { color: var(--ghost); font-weight: 400; } .cw.k { font-weight: 700; } .cw.d { color: var(--fg); } .cw.k.d { color: var(--key); }
+.hero { position: absolute; display: flex; align-items: center; justify-content: center; }
+.reel .hero { left: 14%; right: 14%; top: 24%; bottom: 33%; }
+.long .hero { left: 60%; right: 6%; top: 18%; bottom: 18%; }
+.card { background: #fff; color: var(--ink); border-radius: calc(var(--u)*4); width: 100%; padding: calc(var(--u)*4.2); box-shadow: calc(var(--u)*1.4) calc(var(--u)*2.4) calc(var(--u)*5) calc(var(--u)*-1) rgba(0,0,0,.45); font-size: calc(var(--u)*3.3); }
+.long .card { font-size: calc(var(--u)*3.3); }
+.row { display: flex; align-items: center; gap: calc(var(--u)*2.6); padding: calc(var(--u)*2.4) 0; border-top: 1px solid #e6e1ea; }
+.row:first-child { border-top: 0; }
+.dot { width: calc(var(--u)*5.6); height: calc(var(--u)*5.6); flex: none; border-radius: calc(var(--u)*1.6); background: var(--lav); color: var(--plum); display: grid; place-items: center; font-weight: 700; font-size: calc(var(--u)*3); }
+.row b { display: block; font-size: calc(var(--u)*3.8); } .row small { color: #6d6475; font-size: calc(var(--u)*2.8); }
+.big { font-family: var(--serif); font-size: calc(var(--u)*17); line-height: 1; color: var(--plum); font-weight: 700; letter-spacing: -0.03em; }
+.cap2 { color: #5d5265; margin-top: calc(var(--u)*2); font-size: calc(var(--u)*3.4); } .src { color: #8b8193; margin-top: calc(var(--u)*2); font-size: calc(var(--u)*2.6); }
+.opt { border: calc(var(--u)*.3) solid #e6e1ea; border-radius: calc(var(--u)*3); padding: calc(var(--u)*3.4); } .opt + .opt { margin-top: calc(var(--u)*3); }
+.opt.good { border-color: var(--violet); background: #f1eaff; } .lbl { text-transform: uppercase; letter-spacing: .08em; font-size: calc(var(--u)*2.7); color: #6d6475; display: block; margin-bottom: calc(var(--u)*1); }
+.val { font-family: var(--serif); font-weight: 700; font-size: calc(var(--u)*9); line-height: 1; color: var(--plum); }
+.tag { display: inline-block; margin-top: calc(var(--u)*1.4); font-size: calc(var(--u)*2.6); padding: calc(var(--u)*.6) calc(var(--u)*2); border-radius: 99px; background: var(--violet); color: #fff; font-weight: 700; }
+.myth { opacity: .6; text-decoration: line-through; text-decoration-color: var(--gold); text-decoration-thickness: calc(var(--u)*.7); font-family: var(--serif); font-size: calc(var(--u)*4.4); color: #6d6475; }
+.fact { font-family: var(--serif); font-weight: 700; font-size: calc(var(--u)*4.6); color: var(--plum); margin-top: calc(var(--u)*3); }
+.quote { font-family: var(--serif); font-size: calc(var(--u)*4.8); color: var(--plum); line-height: 1.25; } .quote i { display: block; font-style: normal; color: var(--gold); font-size: calc(var(--u)*14); line-height: .6; margin-bottom: calc(var(--u)*2); }
+.phone { position: relative; width: 100%; background: #14101a; border-radius: calc(var(--u)*6); padding: calc(var(--u)*3); box-shadow: calc(var(--u)*1.6) calc(var(--u)*2.6) calc(var(--u)*5) calc(var(--u)*-1) rgba(0,0,0,.6), inset 0 0 0 calc(var(--u)*.5) #3b3340; }
+.cm { display: flex; gap: calc(var(--u)*2.2); align-items: center; padding: calc(var(--u)*1.6) 0; color: #efe9f3; font-size: calc(var(--u)*3); } .cm i { width: calc(var(--u)*5.4); height: calc(var(--u)*5.4); border-radius: 50%; background: #3f3547; flex: none; }
+.cm span { display: block; color: #a597ad; font-size: calc(var(--u)*2.5); }
+.notif { position: absolute; left: calc(var(--u)*-4); right: calc(var(--u)*-4); bottom: calc(var(--u)*-7); background: var(--plum); color: #fff; border-radius: calc(var(--u)*4); padding: calc(var(--u)*3.4) calc(var(--u)*3.8); font-size: calc(var(--u)*3.2); line-height: 1.3; outline: calc(var(--u)*.4) solid rgba(255,255,255,.14); opacity: 0; }
+.notif small { display: block; color: var(--lav); font-size: calc(var(--u)*2.5); margin-bottom: calc(var(--u)*.8); } .notif em { font-style: normal; background: var(--gold); color: var(--ink); padding: 0 calc(var(--u)*1.2); border-radius: calc(var(--u)*1); font-weight: 700; }
+.pill { position: absolute; background: var(--ink); color: #fff; font-weight: 700; font-size: calc(var(--u)*7); letter-spacing: -0.02em; padding: calc(var(--u)*1.8) calc(var(--u)*4); border-radius: calc(var(--u)*2.4); white-space: nowrap; box-shadow: calc(var(--u)*1.2) calc(var(--u)*2) calc(var(--u)*3.6) calc(var(--u)*-.8) rgba(0,0,0,.5); opacity: 0; font-family: var(--sans); }
+.sc.dark .pill, .sc.plum .pill { background: var(--gold); color: var(--ink); }
+.reel .pill { top: 80%; left: 50%; margin-left: 0; translate: -50% 0; max-width: 84%; }
+.long .pill { top: 66%; left: 6%; font-size: calc(var(--u)*6.2); }
+.mark { position: absolute; font-weight: 700; letter-spacing: .32em; color: var(--mark); font-size: calc(var(--u)*2.6); text-transform: uppercase; }
+.reel .mark { left: 0; right: 0; top: 91%; text-align: center; } .long .mark { left: 6%; bottom: 6%; }
+.series { position: absolute; font-weight: 700; letter-spacing: .3em; font-size: calc(var(--u)*2.6); color: var(--key); text-transform: uppercase; }
+.reel .series { left: 7%; top: 4.2%; } .long .series { left: 6%; top: 16%; }
+#av { position: absolute; z-index: 5; }
+.reel #av { left: 5%; top: 69.5%; width: calc(var(--u)*17); height: calc(var(--u)*17); }
+.long #av { right: 4%; bottom: 6%; width: calc(var(--u)*22); height: calc(var(--u)*22); }
+#av .ring { position: absolute; inset: 0; border-radius: 50%; background: var(--gold); display: grid; place-items: center; overflow: hidden; }
+#av img { position: absolute; inset: 4%; width: 92%; height: 92%; border-radius: 50%; object-fit: cover; }
+#av .ph { position: absolute; inset: 4%; border-radius: 50%; background: var(--plum); color: var(--gold); display: grid; place-items: center; font-family: var(--serif); font-weight: 700; font-size: calc(var(--u)*8); }
+#bub { position: absolute; background: var(--ivory); color: var(--plum); font-family: var(--serif); font-weight: 700; padding: calc(var(--u)*1.2) calc(var(--u)*3); border-radius: calc(var(--u)*3); font-size: calc(var(--u)*4.6); white-space: nowrap; opacity: 0; box-shadow: 0 calc(var(--u)*.8) calc(var(--u)*2) rgba(0,0,0,.35); }
+.reel #bub { left: calc(var(--u)*13); top: calc(var(--u)*-6); } .long #bub { right: calc(var(--u)*14); top: calc(var(--u)*-6); }
+.safe { position: absolute; inset: 0; pointer-events: none; display: none; z-index: 20; }
+.safe i { position: absolute; background: rgba(220,38,38,.18); outline: 1px dashed rgba(220,38,38,.8); }
+body.safe-on .safe { display: block; }
+</style>
+<div id="stage">
+  <div class="bg"></div>
+  <div id="scenes"></div>
+  <div id="av"><div class="ring"><div class="ph">V</div><img id="avimg" alt=""></div><div id="bub"></div></div>
+  <div class="safe"><i style="left:0;right:0;bottom:0;height:14%"></i><i style="top:0;bottom:14%;right:0;width:12%"></i></div>
+</div>
+<script>
+const CONTENT = /*CONTENT*/ null;
+(function () {
+  const C = CONTENT, st = document.getElementById('stage');
+  const fmt = C.format === 'long' ? 'long' : 'reel';
+  st.className = fmt;
+  const clamp = (x) => Math.max(0, Math.min(1, x));
+  const ease = (x) => 1 - Math.pow(1 - clamp(x), 3);
+  const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  const img = document.getElementById('avimg');
+  img.onerror = () => { img.style.display = 'none'; };
+  img.src = (C.avatar || '../assets/avatar.png');
+
+  // ---- parse say text: chunks '|' and *bold* ----
+  const scenes = C.scenes;
+  let inK = false;
+  scenes.forEach((s) => {
+    s.chunks = s.say.split('|').map((c) => c.trim().split(/\s+/).map((w) => {
+      const starts = w[0] === '*'; if (starts) inK = true; const k = inK; if (w.slice(starts ? 1 : 0).indexOf('*') >= 0) inK = false;
+      return { t: w.replace(/\*/g, ''), k };
+    }));
+    s.words = [].concat(...s.chunks);
+  });
+  // ---- timing: from real alignment (C.timing = [{w,start,end}] across all words) or an estimate ----
+  const all = [].concat(...scenes.map((s) => s.words));
+  let ti = 0, clock = 0.6;
+  if (C.timing && C.timing.length === all.length) {
+    all.forEach((w, i) => { w.start = C.timing[i].start; w.end = C.timing[i].end; });
+  } else {
+    scenes.forEach((s) => {
+      s.chunks.forEach((ch) => { ch.forEach((w) => { const d = 0.1 + 0.052 * w.t.length; w.start = clock; w.end = clock + d; clock += d + (/[.?!]$/.test(w.t) ? 0.35 : /,$/.test(w.t) ? 0.18 : 0.04); }); clock += 0.1; });
+      clock += 0.5;
+    });
+  }
+  let prevEnd = 0;
+  scenes.forEach((s, i) => {
+    const w0 = s.words[0].start, w1 = s.words[s.words.length - 1].end;
+    s.t0 = i === 0 ? 0 : Math.max(prevEnd, w0 - 0.55);
+    s.t1 = i === scenes.length - 1 ? w1 + 1.6 : Math.max(w1 + 0.35, s.t0 + 2.2);
+    prevEnd = s.t1; s.cs = s.chunks.map((ch) => ch[0].start);
+  });
+  const total = scenes[scenes.length - 1].t1;
+
+  // ---- hero builders ----
+  function hero(h) {
+    if (!h) return '';
+    if (h.kind === 'list') return '<div class="card">' + h.items.map((it, i) => `<div class="row" data-key="${esc(it.key || '')}"><span class="dot">${it.n || i + 1}</span><div><b>${esc(it.t)}</b><small>${esc(it.s || '')}</small></div></div>`).join('') + '</div>';
+    if (h.kind === 'compare') return `<div class="card"><div class="opt"><span class="lbl">${esc(h.a.label)}</span><div class="val">${esc(h.a.value)}</div></div><div class="opt good"><span class="lbl">${esc(h.b.label)}</span><div class="val">${esc(h.b.value)}</div>${h.b.tag ? '<span class="tag">' + esc(h.b.tag) + '</span>' : ''}</div></div>`;
+    if (h.kind === 'stat') return `<div class="card" style="text-align:center"><div class="big">${esc(h.number)}</div><div class="cap2">${esc(h.caption)}</div><div class="src">${esc(h.source || '')}</div></div>`;
+    if (h.kind === 'myth') return `<div class="card"><div class="myth">${esc(h.myth)}</div><div class="fact">${esc(h.fact)}</div></div>`;
+    if (h.kind === 'quote') return `<div class="card"><div class="quote"><i>&ldquo;</i>${esc(h.text)}</div></div>`;
+    if (h.kind === 'phone') return `<div class="phone">${[1, 2, 3, 4].map((n) => `<div class="cm"><i></i><div>user_0${n}<span>${esc(h.keyword)}</span></div></div>`).join('')}<div class="notif" data-key="${esc(h.notifKey || '')}"><small>@nonprofitsdaily &middot; now</small>${esc(h.notif || '')}</div></div>`;
+    return '';
+  }
+  const host = document.getElementById('scenes');
+  scenes.forEach((s) => {
+    const el = document.createElement('section');
+    el.className = 'sc ' + (s.bg || 'plum');
+    el.innerHTML = `<div class="scbg"></div><div class="grid"></div><div class="sun" style="${esc(s.sun || (fmt === 'reel' ? 'right:-17cqw;top:-17cqw' : 'right:-8cqh;top:-17cqh'))}"></div>` +
+      (s.series ? `<div class="series">${esc(s.series)}</div>` : '') +
+      `<div class="head">${s.chunks.map((ch, ci) => `<div class="chunk" data-c="${ci}">${ch.map((w, wi) => `<span class="cw${w.k ? ' k' : ''}" data-w="${ci}-${wi}">${esc(w.t)}</span>`).join(' ')}</div>`).join('')}</div>` +
+      `<div class="hero">${hero(s.hero)}</div>` + (s.pill ? `<div class="pill">${esc(s.pill)}</div>` : '') + `<div class="mark">NonprofitsDaily</div>`;
+    s.el = el; s.head = el.querySelector('.head'); s.heroEl = el.querySelector('.hero > *'); s.pillEl = el.querySelector('.pill');
+    s.chunkEls = [...el.querySelectorAll('.chunk')]; s.wordEls = [...el.querySelectorAll('.cw')];
+    s.rows = [...el.querySelectorAll('[data-key]')];
+    s.rows.forEach((r) => { const k = norm(r.dataset.key); r.keyWord = k ? s.words.find((w) => norm(w.t) === k) : null; });
+    host.appendChild(el);
+  });
+  const bub = document.getElementById('bub'), av = document.getElementById('av');
+
+  window.__total = total;
+  window.__render = function (t) {
+    scenes.forEach((s, i) => {
+      const a = ease((t - s.t0) / 0.5) * (1 - ease((t - s.t1) / 0.35));
+      s.el.style.opacity = a;
+      s.el.style.visibility = a > 0.001 ? 'visible' : 'hidden';
+      s.el.style.transform = `translateY(${(1 - ease((t - s.t0) / 0.5)) * 2}cqh)`;
+      if (a <= 0.001) return;
+      // current chunk
+      let ci = 0; s.cs.forEach((c, k) => { if (t >= c - 0.05) ci = k; });
+      s.chunkEls.forEach((c, k) => c.classList.toggle('on', k === ci));
+      const p = ease((t - (s.cs[ci] - 0.05)) / 0.4);
+      s.chunkEls[ci].style.clipPath = `inset(0 ${(1 - p) * 100}% 0 0)`;
+      let wi = 0;
+      s.words.forEach((w, k) => { const e = s.wordEls[k]; if (e) e.classList.toggle('d', t >= w.start); });
+      const hp = ease((t - s.t0 - 0.3) / 0.6);
+      if (s.heroEl) { s.heroEl.style.opacity = hp; s.heroEl.style.transform = `translateY(${(1 - hp) * 3}cqh) scale(${0.94 + 0.06 * hp})`; }
+      if (s.pillEl) { const pp = ease((t - s.t0 - 1.3) / 0.45); s.pillEl.style.opacity = pp; s.pillEl.style.transform = `translateY(${(1 - pp) * 2}cqh)`; }
+      s.rows.forEach((r) => {
+        const on = r.keyWord ? t >= r.keyWord.start : !r.dataset.key;
+        if (r.classList.contains('notif')) { r.style.opacity = on ? ease((t - (r.keyWord ? r.keyWord.start : 0)) / 0.45) : 0; }
+        else r.style.opacity = on ? 1 : 0.4;
+      });
+    });
+    // avatar reaction
+    let cur = scenes.find((s) => t >= s.t0 && t < s.t1) || scenes[scenes.length - 1];
+    const rt = t - cur.t0 - 0.35;
+    if (cur.react && rt > -0.01) {
+      bub.textContent = cur.react;
+      const bp = ease(rt / 0.3), fade = 1 - clamp((rt - 1.6) / 0.3);
+      bub.style.opacity = bp * fade; bub.style.transform = `scale(${0.4 + 0.6 * bp})`;
+      const hop = rt < 0.6 ? Math.sin(Math.PI * clamp(rt / 0.5)) * 1.8 : 0;
+      const wig = rt > 0.3 && rt < 1.1 ? Math.sin((rt - 0.3) * 22) * 5 * (1 - (rt - 0.3) / 0.8) : 0;
+      av.style.transform = `translateY(${-hop}cqh) rotate(${wig}deg)`;
+    } else { bub.style.opacity = 0; av.style.transform = ''; }
+    av.style.opacity = cur.noAvatar ? 0 : 1;
+  };
+  window.__render(0);
+  // preview: open with ?play to run in a normal browser, ?t=12.5 to freeze a moment, ?safe to show safe zones
+  const q = new URLSearchParams(location.search);
+  if (q.has('safe')) document.body.classList.add('safe-on');
+  if (q.has('t')) window.__render(parseFloat(q.get('t')));
+  if (q.has('play')) { const t0 = performance.now(); (function tick() { const t = (performance.now() - t0) / 1000; window.__render(t); if (t < total) requestAnimationFrame(tick); })(); }
+})();
+</script>

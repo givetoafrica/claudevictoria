@@ -1,0 +1,14 @@
+{
+  "format": "reel",
+  "title": "The 3-sentence need statement (sample)",
+  "scenes": [
+    { "bg": "plum", "say": "Writing a *need statement*?|Use these *three* sentences.", "pill": "3 sentences", "react": "Aha!", "sun": "right:-17cqw;top:-17cqw",
+      "hero": { "kind": "list", "items": [ { "t": "Who you serve", "s": "sentence one", "key": "one" }, { "t": "The problem they face", "s": "sentence two", "key": "two" }, { "t": "Why it matters now", "s": "sentence three", "key": "three" } ] } },
+    { "bg": "ivory", "say": "*One*: who you serve.|*Two*: the problem they face.|*Three*: why it matters now.", "pill": "short and specific", "sun": "left:-17cqw;top:-17cqw",
+      "hero": { "kind": "list", "items": [ { "t": "Who you serve", "s": "name the people", "key": "one" }, { "t": "The problem they face", "s": "one clear problem", "key": "two" }, { "t": "Why it matters now", "s": "the cost of waiting", "key": "three" } ] } },
+    { "bg": "dark", "say": "Copy this *template*|and fill in the blanks.", "pill": "pause and screenshot", "react": "Wow!", "sun": "right:-17cqw;bottom:-17cqw",
+      "hero": { "kind": "quote", "text": "We serve ___ in ___. They face ___. This matters now because ___." } },
+    { "bg": "plum", "say": "Want the full *checklist*?|Comment *NEED*,|and we'll send it|to your *DMs*.", "pill": "comment NEED", "sun": "left:-17cqw;top:-17cqw",
+      "hero": { "kind": "phone", "keyword": "NEED", "notif": "Here is your free checklist. Reply STOP to opt out.", "notifKey": "send" } }
+  ]
+}
