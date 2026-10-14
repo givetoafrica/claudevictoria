@@ -1,6 +1,6 @@
 ---
 name: videoagent1
-description: Videoagent1 makes finished videos end to end inside Claude, reels and shorts (1080x1920) and YouTube longs (1920x1080), with calm motion graphics, word-timed captions, an ElevenLabs voiceover and a 2D cartoon Victoria who lip-syncs and reacts, rendered to MP4 with no outside editor. Default brand and voice are NonprofitsDaily (Victoria Philips). Use when asked to script, voice, animate, caption or render any reel, short, explainer or YouTube video, or to make a 2D cartoon version of the presenter.
+description: Videoagent1 makes finished videos end to end inside Claude, reels and shorts (1080x1920) and YouTube longs (1920x1080), with calm motion graphics, word-timed captions, an ElevenLabs voiceover and a 2D cartoon mascot that lip-syncs and reacts, rendered to MP4 with no outside editor. Default brand, voice and writing style are NonprofitsDaily. Use when asked to script, voice, animate, caption or render any reel, short, explainer or YouTube video, or to add a 2D animated presenter.
 ---
 
 # Videoagent1 (reels, shorts and YouTube longs: motion + voice + 2D)
@@ -10,7 +10,7 @@ Claude owns the whole job: script, voiceover, animation, render, QA. No Pictory,
 ## Decisions already made by Victoria (follow these)
 - **Voice:** ElevenLabs "Bella - Professional, Bright, Warm" (voice_id `hpp4J3VqNfWAUOO0d1Us`), model `eleven_v4`. She said it is perfect. It is a stock voice, not a clone of her.
 - **Look:** calm, one idea per scene, large graphics (cards fill about 88% of a reel's width). She called the busy version "too busy": no drifting backgrounds, spinning shapes, bouncing words, floating cards. She loves the animation and motion of the calm version.
-- **Avatar:** the small corner avatar appears in **long videos only**, never in reels or shorts (`avatarMode`: `cartoon` default for long, `photo` uses assets/avatar.png, `none`). The full-size 2D cartoon Victoria can be used as a scene (`hero.kind: cartoon`) in either format when Victoria asks for a 2D scene.
+- **Avatar:** Victoria does NOT want her own likeness used. The on-screen presenter is **Sunny**, a generic gold-sun 2D mascot in the brand colors that fits any script. The small corner mascot appears in **long videos only**, never in reels or shorts (`avatarMode`: `cartoon` default for long, `none`). Sunny can also be a full scene (`hero.kind: cartoon`) in either format. Never add her photo or a drawing of her.
 - **Reel ending:** "Follow for more nonprofit tips." Do not use a checklist or comment-keyword call to action (she found it confusing). Do not add a "Reply STOP" line.
 - **Brand:** plum #3B0B45, ivory #FAF7F2, near-black #1C1421, violet #6C1FE0, gold #E8B547, lavender #D9C8F5, grey #9C92A3; Georgia-style serif headlines (Gelasio in the renderer) and Arial body. Never mention Give to Africa. Details in references/brand.md.
 - **Voice of the writing:** references/voice-victoria.md (hook, three points, one principle, one question, "Follow for more nonprofit tips.").
@@ -36,7 +36,7 @@ Claude owns the whole job: script, voiceover, animation, render, QA. No Pictory,
   "scenes": [ { "bg": "plum|dark|ivory", "say": "Hook *word*|second chunk", "pill": "short punchline",
                 "series": "Fundraising Series", "react": "Aha!", "sun": "right:-17cqw;top:-17cqw", "hero": { "kind": "..." } } ] }
 ```
-Hero kinds: `cartoon` {outfit: blue|green|plum} (2D Victoria, blinks, sways, mouth moves with the spoken words, brows lift on `react`), `list` {items:[{t,s,key}]} (row lights up when the `key` word is spoken), `compare` {a:{label,value}, b:{label,value,tag}}, `stat` {number,caption,source}, `myth` {myth,fact}, `quote` {text}, `phone` {keyword,notif,notifKey} (comment demo, only if she asks for one), `follow` {handle,line}.
+Hero kinds: `cartoon` (2D mascot Sunny: blinks, sways, mouth moves with the spoken words, brows lift on `react`), `list` {items:[{t,s,key}]} (row lights up when the `key` word is spoken), `compare` {a:{label,value}, b:{label,value,tag}}, `stat` {number,caption,source}, `myth` {myth,fact}, `quote` {text}, `phone` {keyword,notif,notifKey} (comment demo, only if she asks for one), `follow` {handle,line}.
 Without `timing`, captions use estimated timing (looks fine but will not match a real voice).
 
 ## Layouts
@@ -44,7 +44,7 @@ Without `timing`, captions use estimated timing (looks fine but will not match a
 - **long (1920x1080):** text left, hero right, avatar bottom-right. Still frames of this layout were checked; a full long render and its timing were not.
 
 ## 2D animation (built in)
-The engine draws a flat vector cartoon Victoria in code: thick outlines, solid fills, braids with an updo, gold earrings, blue wrap top or green blazer (outfits from her two photos). Lip sync follows the word timings (open and closed mouth, wide or round by vowel), plus blinks, head sway and hand motion. She is a stylized drawing, not a face swap. Use it as the corner avatar in longs or as a full scene. Alternatives: Victoria's manual Claude Design then Claude Animation route, and the `animation-studio` skill for other cartoon cut-ins (see references/2d-animation.md).
+The engine draws **Sunny**, a flat vector mascot in code: thick outlines, solid fills, a gold sun-shaped head with big round eyes, a plum body and small gold hands. The mouth follows the word timings (closed, open, wide or round by vowel), and she blinks, sways, moves her hands and lifts her brows on a `react` word. She is generic and fits any script. Use her as the corner mascot in longs or as a full scene in a reel or long. Other routes: Victoria's manual Claude Design then Claude Animation workflow for turning a clip into a cartoon (references/2d-animation.md), and the `animation-studio` skill for other cartoon cut-ins.
 
 ## Use it for any video, not only NonprofitsDaily
 The engine and pipeline are brand-neutral: swap the palette, fonts, watermark text and voice id and the same scenes, motion, captions and render work for another brand. Keep Victoria's rules above only for NonprofitsDaily. Her other brands (Philips Nonprofit Consulting, YENDAA) have not been styled yet.
@@ -53,6 +53,6 @@ The engine and pipeline are brand-neutral: swap the palette, fonts, watermark te
 references/motion-moves.md (10 moves, 4 styles, rules, from the guide she supplied), references/insiderforce-style-study.md (spacing and type measured from one @insiderforce reel), references/voice-victoria.md.
 
 ## Status (honest)
-Verified here: reel render with real ElevenLabs audio and word-timed captions, brand fonts and colors, scene types, 16:9 layout stills, cartoon Victoria stills in reel and long layouts (rig, blink, brows, mouth shapes drawn).
+Verified here: reel render with real ElevenLabs audio and word-timed captions, brand fonts and colors, scene types, 16:9 layout stills, mascot stills in reel and long layouts (rig, blink, brows, mouth shapes drawn).
 Not verified: a full long video render, ElevenLabs on a long script, cartoon lip sync against real audio as a moving video (stills only), sound effects (none made), moves other than rise/slide/underline/row-highlight/spring pop, the Claude Animation workflow.
-Open inputs: her review of the cartoon likeness (v1 is a first drawing), more scripts for the voice file, a logo file if she has one, a style for her other brands.
+Open inputs: her review of the mascot design (v1 is a first drawing), more scripts for the voice file, a logo file if she has one, a style for her other brands.
