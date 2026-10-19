@@ -1,0 +1,21 @@
+{
+  "name": "survival-untold",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Remotion motion pipeline for the Survival Untold YouTube channel",
+  "scripts": {
+    "studio": "remotion studio",
+    "render:proof": "remotion render src/index.ts WildebeestProof out/wildebeest-proof.mp4",
+    "render:proof-vertical": "remotion render src/index.ts WildebeestProofVertical out/wildebeest-proof-vertical.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.536",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.536"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.8",
+    "typescript": "5.8.3"
+  }
+}
