@@ -51,7 +51,29 @@
   }
 
   // ---------- backgrounds, the host, the wordmark ----------
-  function backdrop(ctx, sc) {
+  function newsBackdrop(ctx, t) {
+    G.bg(ctx, C.bgDark);
+    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#3B0B45'); g.addColorStop(1, '#22052B'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    ctx.save(); ctx.globalAlpha = 0.06; ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 2;
+    for (let i = -4; i < 14; i++) { const x = i * 190 + ((t * 8) % 190); ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + 520, H); ctx.stroke(); }
+    ctx.restore();
+    // the ticker
+    const y0 = 1000;
+    ctx.fillStyle = '#16091B'; ctx.fillRect(0, y0, W, H - y0);
+    ctx.fillStyle = C.a3; ctx.fillRect(0, y0, W, 4);
+    const text = (SCRIPT.ticker || []).join('   \u2022   ') + '   \u2022   ';
+    if (text.trim() !== '\u2022') {
+      const tw = mw(ctx, text, 30, F.body, F.bodyW) || 1, off = (t * 95) % tw;
+      ctx.save(); ctx.beginPath(); ctx.rect(440, y0 + 4, W - 440, H - y0); ctx.clip();
+      for (let k = -1; k < 3; k++) bodyT(ctx, text, 460 - off + k * tw, y0 + 52, { size: 30, color: C.onDark, align: 'left', alpha: 0.9 });
+      ctx.restore();
+    }
+    ctx.fillStyle = C.a3; ctx.fillRect(0, y0 + 4, 430, H - y0); ctx.fillStyle = '#16091B';
+    bodyT(ctx, SCRIPT.wordmark || 'NONPROFITSDAILY NEWS', 24, y0 + 52, { size: 24, color: C.onA3, align: 'left' });
+    if (SCRIPT.watermark) { UI.pill(ctx, W - 520, 36, SCRIPT.watermark, { size: 22, h: 42, bg: 'rgba(0,0,0,0)', fg: C.a3, weight: 800 }); }
+  }
+  function backdrop(ctx, sc, t) {
+    if (TH.newsroom) { newsBackdrop(ctx, t); return true; }
     const dark = sc.bg ? sc.bg === 'dark' : ['kinetic', 'stat', 'alert', 'quiz', 'recap'].includes(sc.type);
     G.bg(ctx, dark ? C.bgDark : C.bg);
     G.poly(ctx, [[-20, 985], [W + 20, 985], [W + 20, H + 20], [-20, H + 20]], { fill: dark ? G.tint(C.bgDark, 0.12) : C.floor, lw: 5, seed: 5, hatch: { color: dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.07)', gap: 10 } });
@@ -64,7 +86,7 @@
     Ch.person(ctx, { x: 1650, y: 1040 - hop, s: 0.8, pose: 'stand', style: HOST, gesture: gesture || null, mouth: m.talking ? m : 'smile', eyes: 'happy', seed: 900 });
   }
   const GESTURE = { kinetic: 'pointUp', stat: 'point', mythfact: 'shrug', steps: 'point', flow: 'point', compare: 'point', alert: 'point', quiz: 'think', recap: 'thumbsUp' };
-  function wordmark(ctx, dark) { if (SCRIPT.wordmark) bodyT(ctx, SCRIPT.wordmark, L, 1030, { size: 22, color: dark ? C.a3 : C.a2, align: 'left', alpha: 0.9 }); }
+  function wordmark(ctx, dark) { if (!TH.newsroom && SCRIPT.wordmark) bodyT(ctx, SCRIPT.wordmark, L, 1030, { size: 22, color: dark ? C.a3 : C.a2, align: 'left', alpha: 0.9 }); }
 
   // ---------- scene types ----------
   function kinetic(ctx, t, sc, T, dark) {
@@ -216,7 +238,80 @@
     if (sc.closer) withPop(ctx, t, T[n + 1], CX, 860, () => { bodyT(ctx, sc.closer, CX, 870, { size: fitSize(ctx, sc.closer, Wc - 40, 40, F.body, F.bodyW), color: C.a3, align: 'center' }); });
   }
 
-  const TYPES = { kinetic, stat, mythfact, steps, flow, compare, alert, quiz, recap };
+
+  // ---------- newsroom scenes ----------
+  const chip = (ctx, x, y, str, o = {}) => UI.pill(ctx, x, y, str, { size: 22, h: 40, bg: o.bg || C.a4, fg: o.fg || C.a2, weight: 800 });
+  function sourceTag(ctx, x, y, f, alpha = 1) {
+    ctx.save(); ctx.globalAlpha = alpha;
+    G.ellipse(ctx, x + 14, y - 8, 12, 12, { fill: C.ok, lw: 0, seed: 7 });
+    UI.check(ctx, x + 14, y - 8, 7, 1);
+    bodyT(ctx, 'SOURCE', x + 38, y, { size: 20, color: C.a3, align: 'left' });
+    bodyT(ctx, f, x + 128, y, { size: 22, color: C.a4, align: 'left' });
+    ctx.restore();
+  }
+  function headlines(ctx, t, sc, T) {
+    head(ctx, sc.title || 'THIS WEEK IN NONPROFITS', 120, 170, { size: 74, color: C.a3, align: 'left', alpha: fade(t, sc.t0 + 0.2, 0.6) });
+    if (sc.date) bodyT(ctx, sc.date, 124, 225, { size: 30, color: C.a4, align: 'left', alpha: fade(t, sc.t0 + 0.5, 0.6) });
+    sc.items.forEach((it, i) => {
+      const y = 330 + i * 160, a = fade(t, T[i], 0.5), dx = 40 * (1 - ease.outCubic(clamp((t - T[i]) / 0.5)));
+      if (t < T[i]) return;
+      ctx.save(); ctx.globalAlpha = a; ctx.translate(dx, 0);
+      G.rrect(ctx, 120, y - 56, 6, 110, 3, { fill: C.a3, lw: 0, seed: 20 + i });
+      head(ctx, String(i + 1).padStart(2, '0'), 160, y + 14, { size: 54, color: C.a3, align: 'left' });
+      const lines = wrap(ctx, it.text, 1150, 50, F.head, F.headW);
+      lines.forEach((s, q) => head(ctx, s, 270, y - (lines.length - 1) * 26 + q * 56, { size: 50, color: C.onDark, align: 'left' }));
+      if (it.tag) chip(ctx, W - 120 - 220, y - 28, it.tag, { bg: C.a3, fg: C.onA3 });
+      ctx.restore();
+    });
+  }
+  function story(ctx, t, sc, T) {
+    const n = sc.facts.length;
+    withPop(ctx, t, sc.t0 + 0.25, 220, 130, () => chip(ctx, 120, 108, sc.tag, { bg: C.a3, fg: C.onA3 }));
+    const lines = wrap(ctx, sc.headline, 1060, 70, F.head, F.headW);
+    lines.forEach((s, i) => head(ctx, s, 120, 230 + i * 84, { size: 70, color: C.onDark, align: 'left', alpha: fade(t, T[0], 0.6) }));
+    const y0 = 230 + lines.length * 84 + 40;
+    sc.facts.forEach((f, i) => {
+      const y = y0 + i * 140, ti = T[i + 1];
+      if (t < ti) return;
+      const a = fade(t, ti, 0.4), dx = 30 * (1 - ease.outCubic(clamp((t - ti) / 0.4)));
+      ctx.save(); ctx.globalAlpha = a; ctx.translate(dx, 0);
+      G.rrect(ctx, 120, y - 30, 12, 12, 2, { fill: C.a3, lw: 0, seed: 40 + i });
+      wrap(ctx, f.text, 1000, 36, F.body, F.bodyW).forEach((s, q) => bodyT(ctx, s, 152, y + q * 44, { size: 36, color: C.onDark, align: 'left' }));
+      if (f.source) sourceTag(ctx, 152, y + 60 + (wrap(ctx, f.text, 1000, 36, F.body, F.bodyW).length - 1) * 44, f.source);
+      ctx.restore();
+    });
+    if (sc.stat) withPop(ctx, t, T[n + 1], 1530, 470, () => {
+      G.rrect(ctx, 1240, 280, 560, 400, 22, { fill: C.card, lw: 0, seed: 50 });
+      bodyT(ctx, sc.stat.label, 1520, 360, { size: 28, color: C.a1, align: 'center' });
+      head(ctx, sc.stat.big, 1520, 540, { size: 150, color: C.a2, align: 'center' });
+      wrap(ctx, sc.stat.caption, 480, 30, F.body, F.bodyW).forEach((s, q) => bodyT(ctx, s, 1520, 600 + q * 38, { size: 30, color: C.ink, align: 'center' }));
+    });
+    if (sc.why) withPop(ctx, t, T[n + 2], 960, 840, () => {
+      G.rrect(ctx, 120, 760, 1680, 150, 18, { fill: C.card, lw: 0, seed: 60 });
+      G.rrect(ctx, 120, 760, 12, 150, 6, { fill: C.a1, lw: 0, seed: 61 });
+      bodyT(ctx, 'WHY IT MATTERS', 160, 808, { size: 24, color: C.a1, align: 'left' });
+      wrap(ctx, sc.why, 1560, 36, F.head, F.headW).forEach((s, q) => head(ctx, s, 160, 856 + q * 44, { size: 36, color: C.ink, align: 'left' }));
+    });
+  }
+  function take(ctx, t, sc, T) {
+    G.rrect(ctx, 120, 190, 14, 640, 7, { fill: C.a3, lw: 0, seed: 70 });
+    bodyT(ctx, sc.label || "VICTORIA'S TAKE", 170, 232, { size: 30, color: C.a3, align: 'left', alpha: fade(t, T[0], 0.5) });
+    const lines = wrap(ctx, '\u201C' + sc.quote + '\u201D', 1400, 66, F.head, F.headW);
+    lines.forEach((s, i) => head(ctx, s, 170, 330 + i * 82, { size: 66, color: C.onDark, align: 'left', alpha: fade(t, T[1], 0.7) }));
+    const y0 = 330 + lines.length * 82 + 50;
+    if (sc.actions) { bodyT(ctx, "WHAT I'D DO", 170, y0, { size: 24, color: C.a4, align: 'left', alpha: fade(t, T[2], 0.4) }); }
+    (sc.actions || []).forEach((a, i) => {
+      const ti = T[i + 2]; if (t < ti) return;
+      const al = fade(t, ti, 0.4);
+      ctx.save(); ctx.globalAlpha = al;
+      G.ellipse(ctx, 196, y0 + 52 + i * 62 - 10, 20, 20, { fill: C.a3, lw: 0, seed: 80 + i });
+      head(ctx, String(i + 1), 196, y0 + 52 + i * 62 + 2, { size: 24, color: C.onA3, align: 'center' });
+      bodyT(ctx, a.text, 236, y0 + 52 + i * 62, { size: 36, color: C.onDark, align: 'left' });
+      ctx.restore();
+    });
+  }
+
+  const TYPES = { headlines, story, take, kinetic, stat, mythfact, steps, flow, compare, alert, quiz, recap };
   const sceneAt = (t) => S.scenes.find((s) => t >= s.t0 && t < s.t1) || S.scenes[S.scenes.length - 1];
 
   Studio.film({
@@ -225,7 +320,7 @@
     draw(ctx, t) {
       const sc = sceneAt(t);
       G.setStyle(TH.style || 'paper');
-      const dark = backdrop(ctx, sc);
+      const dark = backdrop(ctx, sc, t);
       const shake = 9 * Math.exp(-(t - sc.t0) * 9) * (sc.idx > 0 ? 1 : 0);
       ctx.save(); ctx.translate(U.noise1(t * 30, 1) * shake, U.noise1(t * 30, 2) * shake);
       const T = cues(sc);

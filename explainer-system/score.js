@@ -67,6 +67,9 @@
       case 'alert': return [sc.stampAt, ...(sc.items || []).map(at)];
       case 'quiz': return [sc.answerAt, ...(sc.answer || []).map(at)];
       case 'recap': return [...(sc.points || []).map(at), sc.teaserAt, sc.closerAt];
+      case 'headlines': return (sc.items || []).map(at);
+      case 'story': return [sc.headlineAt, ...(sc.facts || []).map(at), sc.statAt, sc.whyAt];
+      case 'take': return [sc.labelAt, sc.quoteAt, ...(sc.actions || []).map(at)];
       default: return [];
     }
   }

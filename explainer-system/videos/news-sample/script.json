@@ -1,0 +1,27 @@
+{
+  "title": "Nonprofitsdaily News: Style Sample",
+  "theme": "newsroom",
+  "wordmark": "NONPROFITSDAILY NEWS",
+  "watermark": "STYLE SAMPLE  |  PLACEHOLDER STORIES",
+  "host": false,
+  "ticker": ["SAMPLE FOOTAGE ONLY", "Every story shows its source", "Victoria's take on every segment", "Subscribe for the weekly briefing"],
+  "scenes": [
+    { "id": "open", "type": "kinetic", "bg": "dark", "kicker": "THE WEEKLY BRIEFING",
+      "voiceover": "Welcome to Nonprofitsdaily News. Three stories this week, every one with its source on screen, and my take on what it means for you.",
+      "lines": [ {"text": "NONPROFITSDAILY", "color": "a3", "at": "Welcome"}, {"text": "NEWS", "color": "onDark", "at": "Three stories"} ],
+      "lower": {"text": "Victoria Philips", "sub": "Philips Nonprofit Consulting", "at": "my take"} },
+    { "id": "headlines", "type": "headlines", "title": "THIS WEEK", "date": "Placeholder date",
+      "voiceover": "Here is what we are covering. A sample story about donor-advised funds. A sample story about a grant program. And a sample story about a rule change.",
+      "items": [ {"text": "Sample story: donor-advised fund giving", "tag": "DAF", "at": "donor-advised"}, {"text": "Sample story: a federal grant program", "tag": "GRANTS", "at": "grant program"}, {"text": "Sample story: a nonprofit rule change", "tag": "RULES", "at": "rule change"} ] },
+    { "id": "story1", "type": "story", "tag": "DAF", "headline": "Sample headline about donor-advised funds",
+      "voiceover": "Story one. This is where the headline goes. First fact, with its source. Second fact, with its source. The number to remember is on screen. And here is why it matters to you.",
+      "headlineAt": "headline goes",
+      "facts": [ {"text": "First verified fact goes here in one sentence", "source": "Publisher, Month 2026", "at": "First fact"}, {"text": "Second verified fact goes here in one sentence", "source": "Publisher, Month 2026", "at": "Second fact"} ],
+      "stat": {"label": "SAMPLE FIGURE", "big": "$0.0B", "caption": "Placeholder number"}, "statAt": "number to remember",
+      "why": "Why it matters: one plain sentence for a CEO, founder or development director.", "whyAt": "why it matters" },
+    { "id": "take", "type": "take", "label": "VICTORIA'S TAKE",
+      "voiceover": "Here is my take. This is a placeholder opinion, said calmly and plainly. What I would do this week: first, one action. Second, another.",
+      "quote": "This is where my opinion goes, in one or two clear sentences.", "quoteAt": "my take",
+      "actions": [ {"text": "First action to take this week", "at": "first"}, {"text": "Second action to take this week", "at": "Second"} ] }
+  ]
+}
