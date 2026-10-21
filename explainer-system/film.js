@@ -52,25 +52,21 @@
 
   // ---------- backgrounds, the host, the wordmark ----------
   function newsBackdrop(ctx, t) {
-    G.bg(ctx, C.bgDark);
-    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#3B0B45'); g.addColorStop(1, '#22052B'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-    ctx.save(); ctx.globalAlpha = 0.06; ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 2;
-    for (let i = -4; i < 14; i++) { const x = i * 190 + ((t * 8) % 190); ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + 520, H); ctx.stroke(); }
-    ctx.restore();
-    // the ticker
+    G.bg(ctx, '#FAF7F2');
+    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#FFFFFF'); g.addColorStop(1, '#F1EBF6'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#3B0B45'; ctx.fillRect(0, 0, W, 10); ctx.fillStyle = C.a3; ctx.fillRect(0, 10, W, 4);
     const y0 = 1000;
-    ctx.fillStyle = '#16091B'; ctx.fillRect(0, y0, W, H - y0);
-    ctx.fillStyle = C.a3; ctx.fillRect(0, y0, W, 4);
+    ctx.fillStyle = '#3B0B45'; ctx.fillRect(0, y0, W, H - y0);
     const text = (SCRIPT.ticker || []).join('   \u2022   ') + '   \u2022   ';
     if (text.trim() !== '\u2022') {
       const tw = mw(ctx, text, 30, F.body, F.bodyW) || 1, off = (t * 95) % tw;
-      ctx.save(); ctx.beginPath(); ctx.rect(440, y0 + 4, W - 440, H - y0); ctx.clip();
-      for (let k = -1; k < 3; k++) bodyT(ctx, text, 460 - off + k * tw, y0 + 52, { size: 30, color: C.onDark, align: 'left', alpha: 0.9 });
+      ctx.save(); ctx.beginPath(); ctx.rect(440, y0, W - 440, H - y0); ctx.clip();
+      for (let k = -1; k < 3; k++) bodyT(ctx, text, 460 - off + k * tw, y0 + 50, { size: 30, color: '#FAF7F2', align: 'left', alpha: 0.92 });
       ctx.restore();
     }
-    ctx.fillStyle = C.a3; ctx.fillRect(0, y0 + 4, 430, H - y0); ctx.fillStyle = '#16091B';
-    bodyT(ctx, SCRIPT.wordmark || 'NONPROFITSDAILY NEWS', 24, y0 + 52, { size: 24, color: C.onA3, align: 'left' });
-    if (SCRIPT.watermark) { UI.pill(ctx, W - 520, 36, SCRIPT.watermark, { size: 22, h: 42, bg: 'rgba(0,0,0,0)', fg: C.a3, weight: 800 }); }
+    ctx.fillStyle = '#E8B547'; ctx.fillRect(0, y0, 430, H - y0);
+    bodyT(ctx, SCRIPT.wordmark || 'NONPROFITSDAILY NEWS', 24, y0 + 50, { size: 24, color: '#1C1421', align: 'left' });
+    if (SCRIPT.watermark) UI.pill(ctx, W - 520, 36, SCRIPT.watermark, { size: 22, h: 42, bg: 'rgba(0,0,0,0)', fg: C.a4, weight: 800 });
   }
   function backdrop(ctx, sc, t) {
     if (TH.newsroom) { newsBackdrop(ctx, t); return true; }
@@ -250,7 +246,7 @@
     ctx.restore();
   }
   function headlines(ctx, t, sc, T) {
-    head(ctx, sc.title || 'THIS WEEK IN NONPROFITS', 120, 170, { size: 74, color: C.a3, align: 'left', alpha: fade(t, sc.t0 + 0.2, 0.6) });
+    head(ctx, sc.title || 'THIS WEEK IN NONPROFITS', 120, 170, { size: 74, color: C.a2, align: 'left', alpha: fade(t, sc.t0 + 0.2, 0.6) });
     if (sc.date) bodyT(ctx, sc.date, 124, 225, { size: 30, color: C.a4, align: 'left', alpha: fade(t, sc.t0 + 0.5, 0.6) });
     sc.items.forEach((it, i) => {
       const y = 330 + i * 160, a = fade(t, T[i], 0.5), dx = 40 * (1 - ease.outCubic(clamp((t - T[i]) / 0.5)));

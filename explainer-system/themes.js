@@ -24,7 +24,7 @@
     // newsroom: a calm, mature broadcast look. Deep plum, ivory cards, gold accents, serif headlines, a ticker. No character.
     newsroom: {
       style: 'flat', newsroom: true,
-      colors: { bg: '#FAF7F2', bgDark: '#2E0836', ink: '#1C1421', onDark: '#FAF7F2', a1: '#6C1FE0', a2: '#3B0B45', a3: '#E8B547', a4: '#D9C8F5', card: '#FAF7F2', soft: '#EFE7F7', floor: '#1C1421', ok: '#2E9E6B', muted: '#9C92A3', onA3: '#1C1421' },
+      colors: { bg: '#FAF7F2', bgDark: '#FAF7F2', ink: '#1C1421', onDark: '#1C1421', a1: '#6C1FE0', a2: '#3B0B45', a3: '#C9962B', a4: '#6E6378', card: '#FFFFFF', soft: '#EFE7F7', floor: '#E8DFF0', ok: '#2E9E6B', muted: '#6E6378', onA3: '#1C1421' },
       fonts: { head: 'Georgia, "Liberation Serif", serif', headW: 700, body: 'Arial, "Liberation Sans", sans-serif', bodyW: 700 },
       host: null,
       music: { genre: 'lofi', gain: 0.4 },
