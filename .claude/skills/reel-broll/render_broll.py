@@ -58,9 +58,9 @@ def draw_visual(d, kind, e):
             d.ellipse((330 - r, 400 - r, 330 + r, 400 + r), fill=VIOLET)
         if k > 0.7:
             d.polygon([(218, 410), (382, 410), (300, 520)], fill=VIOLET)
-        d.text((520, 330), "Verified update", font=SMALL, fill=INK)
-        d.text((520, 390), "The work they", font=BODY, fill=INK)
-        d.text((520, 440), "helped fund", font=BODY, fill=INK)
+        d.text((520, 330), "Thank you", font=SMALL, fill=INK)
+        d.text((520, 390), "Every gift", font=BODY, fill=INK)
+        d.text((520, 440), "counts", font=BODY, fill=INK)
         ck = ease((e - 0.6) / 0.4)
         if ck > 0:
             d.ellipse((520, 500, 572, 552), fill=GOLD)
@@ -122,6 +122,60 @@ def draw_visual(d, kind, e):
         if k > 0:
             top = int(330 + (1 - k) * 80)
             d.polygon([(400, top), (680, top), (680, top + 300), (540, top + 230), (400, top + 300)], fill=VIOLET)
+    elif kind == "individual":  # three people, one per donor
+        for i, (px, col) in enumerate([(300, VIOLET), (540, GOLD), (780, VIOLET)]):
+            pk = ease((e - 0.2 * i) / 0.4)
+            if pk > 0:
+                r = int(46 * pk)
+                d.ellipse((px - r, 330 - r, px + r, 330 + r), fill=col)
+                bw = int(110 * pk)
+                d.rounded_rectangle((px - bw, 400, px + bw, 580), radius=50, fill=col)
+    elif kind == "matching":  # two coins, one gift matched
+        a = ease(e / 0.5)
+        if a > 0:
+            r = int(110 * a)
+            d.ellipse((370 - r, 440 - r, 370 + r, 440 + r), fill=GOLD)
+            d.ellipse((710 - r, 440 - r, 710 + r, 440 + r), fill=VIOLET)
+        if a > 0.8:
+            t = "MATCH"
+            tw = SMALL.getlength(t)
+            d.text((540 - tw / 2, 620), t, font=SMALL, fill=INK)
+    elif kind == "grant":  # written proposal
+        k = ease(e / 0.5)
+        if k > 0:
+            top = int(300 + (1 - k) * 40)
+            d.rounded_rectangle((360, top, 680, top + 350), radius=20, fill=INK)
+            d.text((400, top + 30), "PROPOSAL", font=SMALL, fill=GOLD)
+            for i in range(6):
+                y = top + 100 + i * 40
+                d.line((400, y, 640 - (i % 3) * 40, y), fill=IVORY, width=8)
+    elif kind == "events":  # ticket for a gala, walk, or auction
+        k = ease(e / 0.5)
+        if k > 0:
+            w = int(600 * k)
+            d.rounded_rectangle((540 - w // 2, 380, 540 + w // 2, 560), radius=28, fill=VIOLET)
+            d.ellipse((540 - w // 2 - 20, 455, 540 - w // 2 + 20, 495), fill=IVORY)
+            d.ellipse((540 + w // 2 - 20, 455, 540 + w // 2 + 20, 495), fill=IVORY)
+        if k > 0.8:
+            t = "GALA  WALK  AUCTION"
+            tw = SMALL.getlength(t)
+            d.text((540 - tw / 2, 455), t, font=SMALL, fill=IVORY)
+    elif kind == "government":  # building with columns
+        k = ease(e / 0.5)
+        if k > 0:
+            d.polygon([(300, 400), (780, 400), (540, 300)], fill=VIOLET)
+            for i in range(5):
+                x = 340 + i * 96
+                d.rectangle((x, 420, x + 40, 580), fill=GOLD)
+            d.rectangle((300, 580, 780, 615), fill=VIOLET)
+    elif kind == "earned":  # price tag for a service
+        k = ease(e / 0.5)
+        if k > 0:
+            d.polygon([(330, 450), (480, 300), (760, 300), (760, 580), (480, 580)], fill=VIOLET)
+            d.ellipse((720, 340, 746, 366), fill=IVORY)
+            t = "SERVICE"
+            tw = SMALL.getlength(t)
+            d.text((620 - tw / 2, 430), t, font=SMALL, fill=IVORY)
     else:
         raise ValueError(f"unknown visual: {kind}")
 
