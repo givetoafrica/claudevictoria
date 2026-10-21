@@ -1,0 +1,14 @@
+{
+  "source": "/tmp/claude-0/-home-user-claudevictoria/a3680f9c-8aa6-5eee-a5cb-617ad4c56400/scratchpad/reel1/reel1_victoria_raw.mp4",
+  "output": "/tmp/claude-0/-home-user-claudevictoria/a3680f9c-8aa6-5eee-a5cb-617ad4c56400/scratchpad/reel1/reel1_broll_full.mp4",
+  "duration": 43.92,
+  "segments": [
+    {"start": 0.0, "end": 9.8, "label": "5 DONOR CONVERSATIONS", "title": "Before your year-end appeal", "visual": "number"},
+    {"start": 9.8, "end": 16.7, "label": "POINT 1", "title": "Thank a recent donor", "visual": "heart"},
+    {"start": 16.7, "end": 20.2, "label": "POINT 2", "title": "Ask what keeps them involved", "visual": "bubbles"},
+    {"start": 20.2, "end": 24.2, "label": "POINT 3", "title": "Reconnect and ask how they are", "visual": "avatars"},
+    {"start": 24.2, "end": 31.1, "label": "POINT 4", "title": "Get a board member introduction", "visual": "network"},
+    {"start": 31.1, "end": 35.3, "label": "POINT 5", "title": "Answer the question they asked", "visual": "checklist"},
+    {"start": 35.3, "end": 44.0, "label": "SAVE THIS", "title": "For your next fundraising meeting", "visual": "bookmark"}
+  ]
+}
