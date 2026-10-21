@@ -58,6 +58,8 @@ narration re-times the whole video with no hand editing.
 | `compare` | before and after (stacked bars) | `title`, `left/right: {label, segments: [{label, pct, color}]}`, `quote`, `leftAt`, `rightAt`, `quoteAt`, `illustrative` |
 | `alert` | mistakes, warnings | `stamp`, `stampAt`, `items: [{text, at}]` |
 | `quiz` | pause and check with a countdown | `kicker`, `facts`, `question`, `answer: [{text, color, at}]`, `voiceover: [question, answer]`, `gaps: [seconds]` |
+| `source` | show a REAL web page (scrolls to the line that matters, highlights it, source chip + confirmed/unconfirmed tag) | `publisher`, `date`, `status` (`confirmed`/`unconfirmed`), `highlightAt` (a phrase the narrator says); first run `node capture.js <name> <scene-id> <url> "sentence to highlight"` |
+| `headlines`, `story`, `take` | newsroom theme: weekly headline stack, a sourced story, Victoria's take | see `videos/news-sample/script.json` |
 | `recap` | recap, next-episode teaser, closing line | `title`, `points: [{text, at}]`, `teaser: {label, title}`, `teaserAt`, `closer`, `closerAt` |
 
 Colors are theme keys: `onDark`, `ink`, `a1` to `a4`, `ok`, `muted` (or any hex). `tone` on a flow node is also a theme key.

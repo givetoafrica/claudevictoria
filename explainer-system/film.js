@@ -11,6 +11,7 @@
   const L = 80, R = HOST ? 1400 : 1840, Wc = R - L, CX = (L + R) / 2;
   UI.setTheme({ accent: C.a1, accent2: C.a2, ok: C.ok, ink: C.ink, muted: C.muted, onAccent: '#FFFFFF', app: C.card, card: '#FFFFFF', line: C.soft, shadow: 'rgba(0,0,0,0.12)' });
   let VO = null, SUBS = [];
+  const CAPS = {}; // source captures: { img, meta } by scene id
   const CACHE = new Map(); // cue times per scene (they never change once the voice is loaded)
 
   const col = (k) => C[k] || k;
@@ -307,12 +308,62 @@
     });
   }
 
-  const TYPES = { headlines, story, take, kinetic, stat, mythfact, steps, flow, compare, alert, quiz, recap };
+
+  // ---------- source scene: a real captured page, scrolling to the line that matters ----------
+  function source(ctx, t, sc, T) {
+    const cap = CAPS[sc.id]; if (!cap) { head(ctx, 'missing capture: ' + sc.id, 960, 500, { size: 40, color: C.ink, align: 'center' }); return; }
+    const { img, meta } = cap, dur = Math.max(1, sc.t1 - sc.t0);
+    const WX = 160, WY = 84, WW = 1600, WH = 850, BAR = 50, VH = WH - BAR, s = WW / meta.w;
+    const fullH = meta.h * s, maxScroll = Math.max(0, fullH - VH);
+    const hl = meta.hl, hlT = T[0];
+    // where to scroll: the line sits about 40% down the window
+    const target = hl ? Math.min(maxScroll, Math.max(0, (hl.y + hl.h / 2) * s - VH * 0.4)) : maxScroll * 0.6;
+    const t1 = hl && hlT != null ? hlT - 0.2 : sc.t0 + dur * 0.8, t0 = sc.t0 + 0.6;
+    const k = ease.inOutCubic ? ease.inOutCubic(clamp((t - t0) / Math.max(0.5, t1 - t0))) : clamp((t - t0) / Math.max(0.5, t1 - t0));
+    const scroll = target * k;
+    const zin = hl && hlT != null ? ease.outCubic(clamp((t - hlT) / 0.9)) : 0, zoom = 1 + 0.10 * zin;
+    ctx.save(); ctx.globalAlpha = fade(t, sc.t0 + 0.05, 0.4);
+    // window chrome
+    ctx.shadowColor = 'rgba(40,10,50,0.28)'; ctx.shadowBlur = 36; ctx.shadowOffsetY = 12;
+    G.rrect(ctx, WX, WY, WW, WH, 16, { fill: '#FFFFFF', lw: 0, seed: 91 });
+    ctx.shadowColor = 'transparent';
+    ctx.fillStyle = '#EFE7F7'; ctx.beginPath(); ctx.roundRect(WX, WY, WW, BAR, [16, 16, 0, 0]); ctx.fill();
+    [0, 1, 2].forEach((i) => { ctx.fillStyle = ['#E0707A', '#E8B547', '#6DBE8B'][i]; ctx.beginPath(); ctx.arc(WX + 28 + i * 26, WY + BAR / 2, 8, 0, 6.3); ctx.fill(); });
+    ctx.fillStyle = '#FFFFFF'; ctx.beginPath(); ctx.roundRect(WX + 130, WY + 9, 470, BAR - 18, 16); ctx.fill();
+    bodyT(ctx, (meta.url.length > 90 ? meta.url.slice(0, 88) + '…' : meta.url).replace(/^https?:\/\//, ''), WX + 150, WY + 34, { size: 20, color: C.muted, align: 'left' });
+    // the page
+    ctx.save(); ctx.beginPath(); ctx.roundRect(WX, WY + BAR, WW, VH, [0, 0, 16, 16]); ctx.clip();
+    const fx = hl ? (hl.x + hl.w / 2) * s : WW / 2, fy = hl ? (hl.y + hl.h / 2) * s - scroll : VH / 2;
+    ctx.translate(WX + fx, WY + BAR + fy); ctx.scale(zoom, zoom); ctx.translate(-fx, -fy);
+    ctx.drawImage(img, 0, 0, img.naturalWidth || img.width, img.naturalHeight || img.height, WX, WY + BAR - scroll, WW, fullH);
+    if (hl && hlT != null && t >= hlT) {
+      const a = fade(t, hlT, 0.35), px = WX + hl.x * s - 8, py = WY + BAR + hl.y * s - scroll - 4, pw = hl.w * s + 16, ph = hl.h * s + 8;
+      ctx.fillStyle = `rgba(232,181,71,${0.45 * a})`; ctx.fillRect(px, py, pw, ph);
+      ctx.strokeStyle = `rgba(201,150,43,${a})`; ctx.lineWidth = 3; ctx.strokeRect(px, py, pw, ph);
+    }
+    ctx.restore(); ctx.restore();
+    // the source chip: who published it, when, and whether it is confirmed
+    const conf = sc.status || 'confirmed', ok = conf === 'confirmed';
+    const lab = 'SOURCE  ' + (sc.publisher || meta.host) + (sc.date ? '  \u00B7  ' + sc.date : ''), st = ok ? 'CONFIRMED' : 'UNCONFIRMED';
+    const lw = mw(ctx, lab, 18, F.body, F.bodyW) * 1.12 + 40, sw = mw(ctx, st, 18, F.body, F.bodyW) * 1.12 + 40, cx0 = WX + WW - 20 - sw - 10 - lw;
+    withPop(ctx, t, sc.t0 + 0.5, cx0 + lw / 2, WY + BAR / 2, () => {
+      UI.pill(ctx, cx0, WY + 8, lab, { size: 18, h: 34, bg: '#3B0B45', fg: '#FAF7F2', weight: 800 });
+      UI.pill(ctx, cx0 + lw + 10, WY + 8, st, { size: 18, h: 34, bg: ok ? C.ok : '#C9962B', fg: '#FFFFFF', weight: 800 });
+    });
+  }
+
+  const TYPES = { source, headlines, story, take, kinetic, stat, mythfact, steps, flow, compare, alert, quiz, recap };
   const sceneAt = (t) => S.scenes.find((s) => t >= s.t0 && t < s.t1) || S.scenes[S.scenes.length - 1];
 
   Studio.film({
     fadeOut: 1.4,
-    async init() { VO = await Studio.loadJSON('out/voice.json'); SUBS = Subs.fromVoice(VO, { maxWords: 6 }); },
+    async init() {
+      VO = await Studio.loadJSON('out/voice.json'); SUBS = Subs.fromVoice(VO, { maxWords: 6 });
+      for (const sc of S.scenes.filter((x) => x.type === 'source')) {
+        const base = `videos/${S.A.name}/captures/${sc.id}`;
+        try { CAPS[sc.id] = { img: await Studio.loadImage(base + '.png'), meta: await Studio.loadJSON(base + '.json') }; } catch (e) { console.error('capture missing: ' + base); }
+      }
+    },
     draw(ctx, t) {
       const sc = sceneAt(t);
       G.setStyle(TH.style || 'paper');
