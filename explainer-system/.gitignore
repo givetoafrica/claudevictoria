@@ -1,0 +1,5 @@
+out/
+node_modules/
+videos/*/final*.mp4
+active.js
+needs-narration.json
