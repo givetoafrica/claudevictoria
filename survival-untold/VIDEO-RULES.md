@@ -103,4 +103,12 @@ Scout (deadpan intern, red puffer jacket, big "SU" mic) interviews a legendary e
 |---|---|---|
 | 1 | Edison vs Swan (light bulb) | Edison's office |
 | 2 | Tesla roasts Edison | Staircase, car chase, Ferris wheel, pigeon park, tower rooftop |
-| 3 | Benjamin Franklin gets arrested at airport security | Airport hall, scanner, liquids table, terminal doors. Next: the Wright brothers |
+| 3 | Benjamin Franklin gives an interview from his car and zooms away (final version; the airport cut was dropped) | Town street, school zone, highway, gas station, sunset lake road. Scheduled Fri Nov 13, 10:00 AM PT. Next: the Wright brothers |
+
+## Rules learned from Episode 3 (approved by Victoria)
+- Keep the screen clean: captions plus one graphic at most. Victoria loved the uncluttered Ep3.
+- Guest voice about 1.15x, never faster. Background sound stays very quiet (soft engine hum or room tone), no crowd noise. Sound effects sit under the voices.
+- Legs must read as two separate legs: wide stance, visible knees, dark outlines. Walk and run cycles derive their phase from distance travelled so feet never slide.
+- Cinematic camera: tracking moves, whip pans between locations, dutch angles on rants, depth-of-field blur on close-ups, film grain and a warm grade.
+- A moving vehicle (car plus scooter) is a strong format: the scrolling background changes setting at each cut and the characters stay in motion.
+- Ending pattern: guest gets angry, makes a physical exit (zoom away) and Scout delivers a deadpan hook to the next episode.
