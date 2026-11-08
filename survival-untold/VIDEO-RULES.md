@@ -112,3 +112,10 @@ Scout (deadpan intern, red puffer jacket, big "SU" mic) interviews a legendary e
 - Cinematic camera: tracking moves, whip pans between locations, dutch angles on rants, depth-of-field blur on close-ups, film grain and a warm grade.
 - A moving vehicle (car plus scooter) is a strong format: the scrolling background changes setting at each cut and the characters stay in motion.
 - Ending pattern: guest gets angry, makes a physical exit (zoom away) and Scout delivers a deadpan hook to the next episode.
+
+## Rules learned from Episode 4 (Wright brothers on a plane)
+- Do not show characters walking. Victoria found the walk cycles awkward; the driving episode worked because legs were never seen.
+- Hide the legs: use foreground blockers (seat backs, counters, panels) so characters are seen from the chest up, and change location with camera cuts and whip pans instead of walking.
+- Moving vehicles beat static interiors. Victoria rated the plane-cabin setting about 65%, so prefer a vehicle or a setting with motion for the next episode.
+- Two guests plus Scout works: give each guest a distinct voice (Orville higher, Wilbur gravelly) and a distinct cap and moustache.
+- Episode 4 (Wright brothers) is scheduled for Sat Nov 14, 10:00 AM PT with an AUTO-WHAT?! thumbnail.
