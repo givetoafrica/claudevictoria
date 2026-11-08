@@ -126,3 +126,6 @@ Scout (deadpan intern, red puffer jacket, big "SU" mic) interviews a legendary e
 - Claymation was tested and rejected for now (soft and muddy at close range).
 - The Vox flat-vector look stays as the fallback; Episodes 1-4 were made in it.
 - The McCarthy AI episode (Ep5) is being rebuilt in the cutout style before scheduling.
+
+## Posting time (updated)
+- New default: 9:00 AM PT (noon Eastern), moved up from 10:00 AM PT so viewers in other US time zones are reached sooner. RobinReach's own data (last 90 days) shows 9:00-12:00 PT is the best block, so 9:00 stays inside it.
