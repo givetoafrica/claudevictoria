@@ -26,7 +26,7 @@
 
 ---
 
-# The series: "Interviewing History's Biggest Egos"
+# The series: "GENIUSES GONE MAD" (formerly working-titled "Interviewing History's Biggest Egos")
 
 Scout (deadpan intern, red puffer jacket, big "SU" mic) interviews a legendary ego. The moment she names their rival, the guest turns into an unstoppable yap machine: brilliant, petty, dramatic, personally offended. Always fictional comedy built on a real, documented rivalry.
 
@@ -64,3 +64,43 @@ Scout (deadpan intern, red puffer jacket, big "SU" mic) interviews a legendary e
 - Alexander Graham Bell vs Elisha Gray (telephone patent race)
 - Marconi vs Tesla (the radio patent)
 - Da Vinci vs Michelangelo (the Florence feud)
+
+---
+
+# Rules added with Episode 3 (Franklin at the airport)
+
+## Clean screen
+- **Don't put too much on the screen.** Captions plus at most ONE other graphic at a time. No stacked cards, doodles and stamps together. Space around the characters. Infographic cards are optional and only for a key fact.
+- Facts must come out of the arguments, never from a lecture or a title card.
+
+## Real Vox look
+- Flat vector shapes, a limited palette per scene, soft shadows, a light paper-grain overlay, clean bold type.
+- Smooth eased motion (anticipation and overshoot), parallax, small camera drift. No jittery filters.
+
+## Camera language (every episode)
+- Open on an **extreme-wide establishing shot**, then **medium-wide two-shots** for arguments, **close-ups** only for the strongest insults and deadpan punchlines, and back to wide whenever the guest causes physical chaos.
+- Fast cuts, sudden zooms, dramatic pauses, sudden silence before punchlines.
+- Keep the background alive (crowds reacting, things moving) and the space roomy.
+
+## Comedy rules
+- Hook inside the first second: the alarm/problem is already happening.
+- Guest dominates with extreme yap; Scout is calm, dry, almost bored, and never competes on volume.
+- A fresh joke, reaction or visual escalation every 5-7 seconds.
+- Insults get more inventive, never repeat. Keep "MAGNIFICENT MORON" as the signature.
+- Historical facts stay accurate; only the situation is outrageous.
+- End on a physical gag plus a direct hook to the next episode.
+- Hidden yellow duck, never acknowledged.
+- Avoid labs, long intros, narration, and plain interview setups.
+
+## Sound
+- Real ambience for the setting, impact sounds, orchestral stings on big moments, and sudden silence before punchlines.
+
+## Locations
+- A brief can fix one location (like the airport). Then the video still uses at least 4 distinct zones of that place with cuts between them.
+
+## Episode log (updated)
+| Ep | Episode | Setting |
+|---|---|---|
+| 1 | Edison vs Swan (light bulb) | Edison's office |
+| 2 | Tesla roasts Edison | Staircase, car chase, Ferris wheel, pigeon park, tower rooftop |
+| 3 | Benjamin Franklin gets arrested at airport security | Airport hall, scanner, liquids table, terminal doors. Next: the Wright brothers |
