@@ -29,7 +29,7 @@ Victoria already moved the posting time up from 10:00 to 9:00 AM PT (inside the 
 - A different setting every episode, at least 4 visible cuts, hidden yellow rubber duck in every setting (never acknowledged), clean screen (captions plus at most one other graphic), AI disclosure on screen.
 - NO WALKING. Victoria found walk cycles awkward. Hide legs with foreground objects (seat backs, counters, tables) or use a vehicle; change location with cuts and whip pans.
 - Moving vehicles beat static interiors (the driving episode was loved; the plane cabin scored about 65%).
-- New default style: **paper cutout** (wobbling edges redrawn each frame, about 12 fps stepped motion, flapping mouths, cardboard tint). Claymation was tested and rejected. Victoria said "you are right" to the cutout recommendation, so use it from now on.
+- House styles (Victoria's correction): BOTH **Vox animation** (flat vector) AND **paper cutout** (wobbling edges redrawn each frame, about 12 fps stepped motion, flapping mouths, cardboard tint) are house styles. Use either, and compare their analytics. Claymation was tested and rejected.
 - Packaging: title, description with an accuracy note (one real fact), hashtags, pinned comment carrying the meta description ("Did you spot the duck? ..."), thumbnail text per brief. Each description ends "AI-generated fictional comedy inspired by real historical figures."
 
 ## How the videos are made (all code, no AI video generator)
@@ -42,8 +42,8 @@ Everything is in `survival-untold/pipeline/`.
 Videos and frames are not stored in the repo (too large). Rebuild from the scripts if a video is needed again.
 
 ## Open items for Victoria / next session
-1. Add Ep3 (Franklin) to the playlist by hand on YouTube; optionally rename the playlist to remove the stray quote.
+1. DONE: Victoria added Ep3 (Franklin) to the playlist herself. Optional: rename the playlist to remove the stray quote.
 2. Thumbnails: Ep4 (AUTO-WHAT?!) and Ep5 (I INVENTED AI?!) are attached; Ep1, Ep2 have none (YouTube auto frame); custom thumbnails only work on verified channels.
-3. Next episode ideas: Scout meets a new genius (no walking, cutout style, moving setting such as a vehicle). Keep the script locked once approved.
+3. PLAN (Victoria): start the next batch of videos on Mon Nov 16 (prepare over the weekend of Nov 14-15 if needed). By Nov 16 review the analytics for the five Geniuses Gone Mad episodes (RobinReach analytics, YouTube Studio). Then decide: continue the series, compare Vox vs paper cutout, or go back to the original "yap" format (the earlier Survival Untold Shorts with the Scout interviews, such as the Edison yap). Keep scripts locked once approved.
 4. Weekend Nov 14-15 is filled; the next open slot is Mon Nov 16 at 9:00 AM PT.
 5. The Tesla title says "90 Seconds" while the video is about 108 seconds; Victoria said the titles are fine as they are.

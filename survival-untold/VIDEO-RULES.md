@@ -129,3 +129,7 @@ Scout (deadpan intern, red puffer jacket, big "SU" mic) interviews a legendary e
 
 ## Posting time (updated)
 - New default: 9:00 AM PT (noon Eastern), moved up from 10:00 AM PT so viewers in other US time zones are reached sooner. RobinReach's own data (last 90 days) shows 9:00-12:00 PT is the best block, so 9:00 stays inside it.
+
+## Correction on house style (Victoria, Nov 9)
+- The house styles are BOTH Vox animation and paper cutout, not cutout alone. Use either, and let the analytics decide.
+- Plan: start new videos Mon Nov 16. By then review the analytics for the Geniuses Gone Mad episodes, then choose between continuing the series, comparing the two styles, or returning to the original "yap" format. Franklin (Ep3) is now in the playlist.
